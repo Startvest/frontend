@@ -1,0 +1,32 @@
+/* Css for footer page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+.footer{
+     margin: 0;
+     background-color: var(--primary);
+     /* border-radius: 10px 10px 0 0; */
+     color: var(--faded);
+     position: relative;
+     bottom: 0;
+     width: 100%;
+     font: small;
+     height: fit-content;
+     overflow-x: hidden;
+     max-height: min-content;
+     padding: .2em auto;
+ }
+
+ .right{;
+      margin-right: 0;
+ }
+
+ .right span{ 
+      margin: auto .5em !important;
+ }
+
+.footer-text{
+     margin: 0;
+     padding: 0;
+     width: 100%;
+}

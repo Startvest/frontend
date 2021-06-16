@@ -1,0 +1,39 @@
+/* Css for navbar */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+
+.navigation{
+     background-color: white !important;
+     margin-bottom: 2em;
+}
+.Navlinks-active{
+     border-bottom: 2px solid black;
+}
+.navitems{
+     background-color: transparent;
+}
+
+.Navlinks{
+     font-weight: bold;
+     font-size: large;
+     margin: auto 1em;
+     color: var(--primary) !important;
+   
+}
+
+.Navlinks:hover{
+     border-bottom: 3px solid var(--primary);
+}
+.line-break{
+     height: 100%;
+     width: 1px;
+     margin: 0;
+     padding: 0;
+     background-color: black;
+     opacity: .5;
+     
+}
+.views{
+     min-height: 81vh;
+}

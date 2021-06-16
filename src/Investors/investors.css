@@ -1,0 +1,33 @@
+/* Css for Startups page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+
+.investors-head{
+     font-size: xx-large;
+     font-weight: bold;
+     color: var(--primary);
+     text-align: center;
+}
+.investor-name{
+     font-size:x-large;
+     font-weight: bold;
+     color: var(--primary);
+     margin: 1em auto;
+}
+.investor-column{
+     margin: 2em auto;
+}
+#avatar{
+     border-radius: 50%;
+     background-color: var(--primary);
+     text-align: center;
+     width: max-content;
+     height: max-content;
+     padding: 1em;
+}
+.investor-industry{
+     color: var(--primary);
+     font-size: small;
+     font-weight: bold;
+}

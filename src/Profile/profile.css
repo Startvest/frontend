@@ -1,0 +1,128 @@
+/* Css for profile page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+.load{
+     margin: 0;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     color: var(--secondary);
+}
+
+.profile{
+     color: var(--primary);
+     text-align: center;
+     overflow: auto;
+}
+.profile-head{
+     font-size: xx-large;
+     font-weight: bold;
+     color: var(--primary);
+}
+.form{
+     margin: 1em auto;
+     width: fit-content;
+     font-weight: bold;
+}
+.form_box{
+     height: max-content;
+     width: fit-content;
+     background-color: var(--altfade);
+     border-radius: 20px;
+     max-width: max-content;
+}
+.svgIcon{
+     background-color: var(--primary);
+     border-radius: 20px ;
+}
+.svgIcon-image{
+    margin-top: 20%;
+}
+.form_items{
+     background-color: transparent;
+     font-size: medium;
+     margin: .5em auto;
+}
+.form_items h2{
+     font-weight: bold;
+}
+Form{
+     text-align: left;
+     margin: auto .5em;
+     color: black;
+}
+.forgot{
+     color: var(--primary);
+     cursor: pointer;
+}
+.forgot:hover{
+     border-bottom: 2px solid var(--primary);
+}
+.submit{
+     text-align: center;
+}
+.submit Button{
+     background-color: var(--primary);
+     color: white;
+     width: 100%;
+     border: none !important;
+     font-weight: bold;
+}
+.submit Button:hover{
+    background-color: var(--secondary);
+}
+.icons{
+     color: white;
+     height: 1em;
+     width: 1em;
+     margin: auto .25em;
+}
+/* .icons:hover{
+     height: 65%;
+     width: 65%;
+} */
+.user_type{
+     margin: 1em auto;
+}
+.inline{
+     display: inline;
+     margin: 0;
+}
+/* Css for Startup Form */
+.form{
+     width: 70%;
+     height: max-content;
+     border-radius: 10px;
+     padding: 1em;
+     color: var(--primary);
+}
+.form-input{
+     height: 34px;
+     width: 100%;
+     border-radius: 3px;
+     border: 1px solid transparent;
+     border-top: none;
+     border-bottom: 1px solid #DDD;
+     box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+   }
+Form{
+     color: var(--primary);
+}
+.google-signin{
+     height: 2em;
+     width: fit-content;
+     background-color: var(--primary);
+     border-radius: 20px ;
+     color: white;
+     padding: .25em;
+}
+@media only screen and (max-width: 600px) {
+     .form{
+          width: 90%;
+     }
+     .svgIcon-image{
+          margin-top: 0;
+      }
+}
+

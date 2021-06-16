@@ -1,0 +1,18 @@
+/* Css for Jobs page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+
+
+
+.job-container{
+     width: fit-content;
+     height: max-content;
+     border-radius: 5px;
+     background-color: white;
+     padding: 1em;
+     margin: 2em auto;
+}
+.job-view{
+     margin: .5em auto;
+}

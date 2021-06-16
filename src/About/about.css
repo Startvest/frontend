@@ -1,0 +1,36 @@
+/* Css for hoome page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+
+.about-team-image{
+     height: 100%;
+     width: 100%;
+}
+.heading{
+     font-size: xx-large;
+     font-weight: bold;
+     color: var(--primary)
+}
+.teambrief{
+     height: max-content;
+}
+.teamHead{
+     font-weight: bold;
+     color: var(--primary);
+}
+#avatar{
+     border-radius: 50%;
+     background-color: var(--primary);
+     text-align: center;
+     width: max-content;
+     height: max-content;
+     padding: 1em;
+     display: inline-block;
+}
+#avatar Person{
+     margin: 0.3em;
+}
+Col{
+     text-align: center;
+}

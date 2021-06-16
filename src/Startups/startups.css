@@ -1,0 +1,187 @@
+/* Css for Startups page */
+
+/* To import the colors of the brand */
+@import "../utility/colors.css";
+
+.startups{
+     margin: 1em auto;
+}
+.startups-head{
+     font-size: xx-large;
+     font-weight: bold;
+     color: var(--primary);
+     text-align: center;
+}
+
+.load{
+     margin: 0;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     color: var(--secondary);
+}
+.col-startup{
+     width: fit-content;
+     height: max-content;
+     background-color: var(--altfade);
+     border-radius: 20px;
+     margin: 2em auto;
+     padding: 1em;
+}
+.logo{
+     width: max-content;
+     height: max-content;
+     background-color: var(--primary);
+     border-radius:  20px;
+     display: inline-block;
+     color: white;
+     padding: 1em;
+     margin: 0;
+}
+.col-startups-row{
+     text-align: center !important
+}
+.col-startup-name{
+     font-size: xx-large;
+     font-weight: bold;
+     color: var(--primary);
+}
+.col-startup-name:hover{
+     color: var(--secondary);
+     cursor: pointer;
+}
+.col-startup-sm{
+     color: var(--primary);
+     font-size: small;
+     font-weight: bold;
+}
+.col-startup-job{
+     background-color: var(--primary);
+     border-radius: 10px;
+     width: min-content;
+     height: max-content;
+     color: white;
+     cursor: pointer;
+}
+.col-startup-job:hover{
+     background-color: transparent;
+     border: 2px solid var(--primary);
+     color: var(--primary);
+}
+.center{
+     text-align: center !important;
+}
+
+/* Css for Detailed view of startup */
+.icon-back{
+     color: var(--primary);
+}
+.icon-back:hover{ 
+     color: var(--faded);
+     cursor: pointer;
+}
+.description {
+     text-align:left;
+     margin: 2em auto;
+}
+.description-desc {
+    font-weight: normal;
+    font-size: small;
+    line-height: 200%;
+}
+
+.bold{
+     font-weight: bold;
+}
+.link{
+     color: var(--secondary);
+     text-decoration: none;
+}
+.link:hover{ 
+     text-decoration: none !important;
+     color: var(--secondary) !important;
+     border-bottom: 2px solid var(--primary);
+}
+.gallery{
+     height: fit-content;
+     width: fit-content;
+     margin: 1em ;
+     color: black;
+}
+.gallery-head{
+     font-size: large;
+     font-weight: bold;
+     text-align: left;
+     margin-top: 2em;
+}
+.gallery-pic{
+     width: 100%;
+     height: 100%;
+}
+.gallery-video{
+     width: 100%;
+     height: 100%;
+     border-radius: 20px;
+}
+
+/* Team */
+#avatar{
+     border-radius: 50%;
+     background-color: var(--primary);
+     text-align: center;
+     width: max-content;
+     height: max-content;
+     padding: 1em;
+     display: inline-block;
+}
+#avatar Person{
+     margin: 0.3em;
+}
+/* Working with company */
+.working-list li{
+     text-align: left;
+     list-style-type: none;
+     line-height: 1.5;
+}
+
+/* Button */
+.btn-fill Button{ 
+     border-radius: 10px;
+     background-color: var(--primary);
+     color: white;
+     border: none;
+}
+.btn-fill Button:hover{ 
+     background-color: var(--secondary);
+     border: none;
+}
+.btn-fill Button a{
+     text-decoration: none;
+     color: white;
+}
+@media only screen and (max-width: 600px) {
+     .gallery{
+          height: 90%;
+          width: 90%;
+     }
+}
+
+/* Jobs Screen */
+.job-overview{ 
+     width: fit-content;
+     text-align: left;
+     border-bottom: 2px solid var(--primary);
+}
+.job-overview span{
+     margin-right: .5em;
+}
+.job-group{
+     text-align: left;
+}
+.more-information{
+     margin: 1em auto;
+}
+.alt-link{
+     color: var(--primary);
+     margin: auto .25em;
+}

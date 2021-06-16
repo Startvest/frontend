@@ -1,0 +1,47 @@
+:root{
+  --primary: #21295C;
+  --secondary: #1B3B6F;
+  --alternate: #065A82;
+  --faded: #9EB3C2;
+}
+.App {
+  text-align: center;
+}
+*{
+  font-family: Montserrat,"Helvetica";
+}
+/* Styling to change the appearance of the scroll bars */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* background: var(--dark); */
+  background: transparent;
+  /* background: #f1f1f1; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: var(--secondary); */
+  background: var(--primary);
+  border-radius: 5px;
+}
+/* The arrows at the beginning and end*/
+::-webkit-scrollbar-button{
+  display: none;
+}
+/* the track (progress bar) NOT covered by the handle. */
+/* ::-webkit-scrollbar-track-piece{
+  background: red;
+} */
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #555; */
+  background: var(--secondary);
+  cursor: pointer;
+}
+
