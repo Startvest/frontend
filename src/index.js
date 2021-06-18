@@ -25,6 +25,7 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
+// ServiceWorker.unregister();
 // To push changes to the repo
 // gir remote add Hanif-adedotun https://github.com/Hanif-adedotun/startvest-phase-1.git
 // git remote set-url origin https://github.com/Hanif-adedotun/startvest-phase-1.git

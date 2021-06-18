@@ -1,6 +1,6 @@
 import React from 'react';
 import  {Navbar, Nav, }  from 'react-bootstrap';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter, Route, Link} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {PersonCircle} from 'react-bootstrap-icons';
@@ -34,9 +34,9 @@ class nav extends React.Component {
      render() {
           return(
                <div>
-               <Router>
+               <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm" collapseOnSelect expand="lg" bg="light" sticky='top' >
-               <Navbar.Brand href="/"><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
+               <Navbar.Brand href={process.env.PUBLIC_URL}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                <Navbar.Collapse id="responsive-navbar-nav">
                  <Nav className="mr-auto">
@@ -44,42 +44,31 @@ class nav extends React.Component {
                  </Nav>
                  <Nav className=" navitems" defaultActiveKey="/" onSelect={this.handleSelect}>    
                  {/* <NavLink exact activeClassName="Navlinks-active"><Nav.Link active className='Navlinks' href="/" >Home</Nav.Link></NavLink>  */}
-                 <Nav.Item><Nav.Link active eventKey="home" className='Navlinks ' href="/frontend" >Home</Nav.Link></Nav.Item>
-                 <Nav.Item><Nav.Link active eventKey="about" className='Navlinks' href="/frontend/about">About Us</Nav.Link></Nav.Item>
-                 <Nav.Item><Nav.Link active eventKey="jobs" className='Navlinks' href="/frontend/jobs">Jobs</Nav.Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="home"   className='Navlinks ' to="/" >Home</Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="about" className='Navlinks' to="/about">About Us</Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="jobs" className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Nav.Link active eventKey="startup" className='Navlinks' href="/frontend/startups" id='line-left-border'>Startups</Nav.Link></Nav.Item>
-                 <Nav.Item><Nav.Link active eventKey="investors" className='Navlinks' href="/frontend/investors" id='line-right-border'>Investors</Nav.Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="startup" className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="investors" className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Nav.Link active eventKey="profile" className='Navlinks' href="/frontend/profile"><PersonCircle color='#21295C' height={30} width={30}/></Nav.Link></Nav.Item>
+                 <Nav.Item><Link active eventKey="profile" className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
                  </Nav>
 
                  
                </Navbar.Collapse>
              </Navbar>
+             
              <div className='views'>
-             <Switch >
-                  <Route exact path="/frontend">
-                    <Home/>
-                  </Route>
-                  <Route exact path="/frontend/about">
-                    <About/>
-                  </Route>
-                  <Route exact path="/frontend/startups">
-                    <Startups/>
-                  </Route>
-                  <Route exact path="/frontend/investors">
-                    <Investors/>
-                  </Route>
-                  <Route exact path="/frontend/profile">
-                    <Profile/>
-                  </Route>
-                  <Route exact path="/frontend/jobs">
-                    <Jobs/>
-                  </Route>
-             </Switch>
+            
+                  <Route exact path="/" component={Home}/>
+                  <Route exact path="/about" component={About}/>
+                  <Route exact path="/startups" component={Startups}/>
+                  <Route exact path="/investors" component={Investors}/>                  
+                  <Route exact path="/profile" component={Profile}/> 
+                  <Route exact path="/jobs" component={Jobs}/> 
+                  
              </div>
-             </Router>
+             </HashRouter>
              </div>
           )
      }
