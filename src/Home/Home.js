@@ -245,7 +245,7 @@ class investors extends React.Component {
                          <p className='counter'>{Object.keys(investor).length}+ Investors looking for startups</p>
                          </div>
                          <Row >   
-                              {Object.values(investor).slice(3, 6).map((val, ind) => 
+                              {Object.values(investor).slice(1, 3).map((val, ind) => 
                               <div key={ind} className='job-container shadow'>
                                    <Row>
                                    {/* <Col sm='auto' ><CircleFill className='icon-back' height={50} width={50}/></Col> */}
