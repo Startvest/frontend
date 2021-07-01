@@ -97,3 +97,15 @@
      margin: auto;
      text-align: center;
 }
+
+
+/* Css for Loading home screen */
+
+.Load{
+     margin: 40vh auto;
+     text-align: center;
+}
+
+.load-animation{
+     margin: auto;
+}

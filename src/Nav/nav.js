@@ -17,6 +17,8 @@ import Jobs from '../jobs/jobs';
 // The logo
 import Logo from '../images/logo.png';
 
+// Import footer
+import Footer from '../footer/footer';
 class nav extends React.Component {
   constructor(props) {
       super(props);
@@ -40,18 +42,18 @@ class nav extends React.Component {
                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                <Navbar.Collapse id="responsive-navbar-nav">
                  <Nav className="mr-auto">
-                 {/* <Nav.Link active className='Navlinks' href="/" >Home</Nav.Link> */}
+                 {/* <Nav.Link  className='Navlinks' href="/" >Home</Nav.Link> */}
                  </Nav>
                  <Nav className=" navitems" defaultActiveKey="/" onSelect={this.handleSelect}>    
-                 {/* <NavLink exact activeClassName="Navlinks-active"><Nav.Link active className='Navlinks' href="/" >Home</Nav.Link></NavLink>  */}
-                 <Nav.Item><Link active eventKey="home"   className='Navlinks ' to="/" >Home</Link></Nav.Item>
-                 <Nav.Item><Link active eventKey="about" className='Navlinks' to="/about">About Us</Link></Nav.Item>
-                 <Nav.Item><Link active eventKey="jobs" className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
+                 {/* <NavLink exact ="Navlinks-active"><Nav.Link active className='Navlinks' href="/" >Home</Nav.Link></NavLink>  */}
+                 <Nav.Item><Link eventKey="home"   className='Navlinks ' to="/" >Home</Link></Nav.Item>
+                 <Nav.Item><Link eventKey="about" className='Navlinks' to="/about">About Us</Link></Nav.Item>
+                 <Nav.Item><Link  eventKey="jobs" className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link active eventKey="startup" className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
-                 <Nav.Item><Link active eventKey="investors" className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
+                 <Nav.Item><Link eventKey="startup" className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
+                 <Nav.Item><Link  eventKey="investors" className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link active eventKey="profile" className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
+                 <Nav.Item><Link eventKey="profile" className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
                  </Nav>
 
                  
@@ -69,6 +71,8 @@ class nav extends React.Component {
                   
              </div>
              </HashRouter>
+
+             <Footer/>
              </div>
           )
      }
