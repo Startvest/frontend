@@ -1,5 +1,10 @@
+<p align='center'>
+  <img src="https://github.com/Startvest/frontend/blob/main/public/logo-bar.png?raw=true" alt='Startvest logo' height='200' >
+</p>
+ 
+ ---
 # The frontend of Startvest platform
-The live version is available at this [startvest.github.io](https://startvest.github.io/frontend/#/)
+The live version is available at this [startvest.github.io/frontend](https://startvest.github.io/frontend/#/)
 
 ### Hosting
 
