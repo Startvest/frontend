@@ -14,6 +14,7 @@ import Investors from '../Investors/investors';
 import Profile from '../Profile/profile';
 import Jobs from '../jobs/jobs';
 
+
 // The logo
 import Logo from '../images/logo.png';
 
@@ -45,15 +46,14 @@ class nav extends React.Component {
                  {/* <Nav.Link  className='Navlinks' href="/" >Home</Nav.Link> */}
                  </Nav>
                  <Nav className=" navitems" defaultActiveKey="/" onSelect={this.handleSelect}>    
-                 {/* <NavLink exact ="Navlinks-active"><Nav.Link active className='Navlinks' href="/" >Home</Nav.Link></NavLink>  */}
-                 <Nav.Item><Link eventKey="home"   className='Navlinks ' to="/" >Home</Link></Nav.Item>
-                 <Nav.Item><Link eventKey="about" className='Navlinks' to="/about">About Us</Link></Nav.Item>
-                 <Nav.Item><Link  eventKey="jobs" className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
+                 <Nav.Item><Link className='Navlinks ' to="/" >Home</Link></Nav.Item>
+                 <Nav.Item><Link className='Navlinks' to="/about">About Us</Link></Nav.Item>
+                 <Nav.Item><Link  className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link eventKey="startup" className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
-                 <Nav.Item><Link  eventKey="investors" className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
+                 <Nav.Item><Link className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
+                 <Nav.Item><Link  className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link eventKey="profile" className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
+                 <Nav.Item><Link className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
                  </Nav>
 
                  
@@ -77,5 +77,6 @@ class nav extends React.Component {
           )
      }
 }
+
 
 export default nav;

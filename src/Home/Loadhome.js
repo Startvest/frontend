@@ -33,6 +33,7 @@ class Loader extends React.Component {
           )
      }
 
+
      renderviews(){
           switch(this.state.done){
                default: return this.loadScreen();

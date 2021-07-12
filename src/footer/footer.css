@@ -15,18 +15,40 @@
      overflow-x: hidden;
      max-height: min-content;
      padding: .2em auto;
+     padding-top: 1em;
  }
 
- .right{;
-      margin-right: 0;
- }
 
- .right span{ 
+ /* .right span{ 
       margin: auto .5em !important;
+ } */
+ 
+.links-head{
+      font-size: medium;
+      font-weight: bold;
+      margin: 2em 0;
+ }
+ .links-a-head{
+      /* color: white; */
+      font-weight: bold;
+ }
+ .footer-links ul{
+      margin: auto;
+      text-align: center;
+      display: block;
+ }
+ .footer-links ul li{
+     text-decoration: none;
+     list-style-type: none;
+     margin: auto;
+     cursor: pointer;
  }
 
 .footer-text{
-     margin: 0;
+     border-top: 1px solid var(--faded);
+     margin-top: 1em;
      padding: 0;
-     width: 100%;
+     width: 100vw;
 }
+
+

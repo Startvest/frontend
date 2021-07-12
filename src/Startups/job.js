@@ -21,7 +21,7 @@ const Job = ({startup, goback}) => {
                      </Col>
                 </Row>
                 <Row className='job-group'>
-                     <Col >
+                     <Col md={6} sm={12}>
                           <h3 className='gallery-head'>Job description</h3>
                           Lorem ipsum dolor sit amet, consectetur
                          adipiscing elit. Nulla semper mi adipiscing
@@ -29,7 +29,7 @@ const Job = ({startup, goback}) => {
                          Feugiat mauris turpis eget phasellus eget sed
                          libero ullamcorper. Turpis amet urna.
                     </Col>
-                     <Col >
+                     <Col md={6} sm={12}>
                          <h3 className='gallery-head'>Perks and Benefits</h3>
                           Lorem ipsum dolor sit amet, consectetur
                          adipiscing elit. Nulla semper mi adipiscing
@@ -39,7 +39,7 @@ const Job = ({startup, goback}) => {
                     </Col>
                     </Row>
                     <Row className='job-group'>
-                    <Col >
+                    <Col md={6} sm={12}>
                          <h3 className='gallery-head'>About Us</h3>
                           Lorem ipsum dolor sit amet, consectetur
                          adipiscing elit. Nulla semper mi adipiscing
@@ -47,7 +47,7 @@ const Job = ({startup, goback}) => {
                          Feugiat mauris turpis eget phasellus eget sed
                          libero ullamcorper. Turpis amet urna.
                     </Col>
-                    <Col >
+                    <Col md={6} sm={12}>
                          <h3 className='gallery-head'>Requirements</h3>
                           Lorem ipsum dolor sit amet, consectetur
                          adipiscing elit. Nulla semper mi adipiscing

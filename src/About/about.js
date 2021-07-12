@@ -34,7 +34,7 @@ class about extends React.Component {
           return(
           <div>
                <h1 className="heading">About Us</h1>
-               <Container >
+               <Container className='about-content'>
                     <Row className="teambrief" >
                          <Col><img src={TeamPic} className='about-team-image ' sm={12} md={6} alt="Team pic svg"/></Col>
 

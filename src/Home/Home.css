@@ -15,8 +15,11 @@
 }
 .home-image{
      margin-top: 9%;
-     width: 80%;
-     height: 80%;
+     width: 90%;
+     height: 70%;
+     padding: 0;
+     margin-right: 0;
+     border: 2px solid var(--primary);
 }
 .tagline{
      font-size: xx-large;
@@ -36,15 +39,19 @@
 }
 .text{
      margin-top: 9%;
-     
+     border: 2px solid var(--primary);
 }
 .teamIcon{
-     margin-right: 0;   
+     margin-right: 0;  
+     padding: 0; 
+     border: 2px solid var(--primary);
 }
 .home-btns{
      margin-top: 15%;
      margin-left: 0;
-     
+}
+.home-btns .btn-fill{
+     width: max-content;
 }
 .btn-outline Button{
      background-color: transparent;
@@ -52,6 +59,7 @@
      color: var(--primary);
      border-radius: 10px;
      font-weight: bolder;
+
 }
 
 .btn-outline Button:hover{
@@ -78,8 +86,11 @@
 }
 /* Startup view on homepage */
 .home-startup{
+     padding: 1em;
      margin: 10% auto;
-     border-radius: 20px;
+     border-radius: 8px;
+
+     background-color: var(--faded);
 }
 .counter{
      font-size: xx-large;

@@ -12,6 +12,9 @@
      font-weight: bold;
      color: var(--primary)
 }
+.about-content + .teambrief{
+     margin-top: 5em;
+}
 .teambrief{
      height: max-content;
 }

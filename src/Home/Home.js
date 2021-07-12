@@ -217,27 +217,28 @@ class investors extends React.Component {
                <div className="Home">
                     <h1 className='Home-head'>Where idea meets funding!</h1>
                     <Container className='homePage'>
-                         <Row >
-                              <Col className='text'>
+                         <Row className='flex-column-reverse flex-md-row'>
+                              <Col className='text '>
                                    <h5 className='tagline'>We believe in your vision!</h5>
-                                   <p className='homeText'>
+                                   <div className='homeText'>
                                         Present your ideas and
                                         <p> connect with top investors to achieve your dreams today!</p>
-                                   </p>
+                                   </div>
                                    <Fade left>
                                    <Row className='home-btns'>
-                                        <Col className='btn-outline'><Link to='/about'><Button>Learn More</Button></Link></Col>
-                                        <Col  className='btn-fill'><Link to='/profile'><Button>Get Started<ArrowRightShort  height={25} width={25}/></Button></Link></Col>
+                                        <Col  className='btn-outline '><Link to='/about'><Button>Learn More</Button></Link></Col>
+                                        <Col  className='btn-fill '><Link to='/profile'><Button>Get Started<ArrowRightShort  height={25} width={25}/></Button></Link></Col>
                                    </Row>
                                    </Fade>
                               </Col>
                               <Zoom right>
-                              <Col  className='teamIcon'><img className='home-image'  src={Teampic} alt="teamates discussing"  /></Col>
+                              <Col  className='teamIcon '><img className='home-image'  src={Teampic} alt="teamates discussing"  /></Col>
                               </Zoom>
                          </Row>
                     </Container>
 
                     {/* Container for top investors*/}
+                    
                     <Container className='home-startup' >
                          <Slide  right>
                          <div className='center'>
@@ -245,7 +246,7 @@ class investors extends React.Component {
                          <p className='counter'>{Object.keys(investor).length}+ Investors looking for startups</p>
                          </div>
                          <Row >   
-                              {Object.values(investor).slice(1, 3).map((val, ind) => 
+                              {Object.values(investor).slice(3, 6).map((val, ind) => 
                               <div key={ind} className='job-container shadow'>
                                    <Row>
                                    {/* <Col sm='auto' ><CircleFill className='icon-back' height={50} width={50}/></Col> */}
@@ -274,8 +275,8 @@ class investors extends React.Component {
                          
                          <Zoom cascade right>
                               <Col >
-                              {Object.values(startups).slice(1, 3).map((val, ind) => 
-                              <div key={ind} className='job-container shadow'>
+                              {Object.values(startups).slice(2, 4).map((val, ind) => 
+                              <div key={ind} className='job-container shadow '>
                                    <Row>
                                    {/* <Col sm='auto' ><CircleFill className='icon-back' height={50} width={50}/></Col> */}
                                    <Col sm='auto'>

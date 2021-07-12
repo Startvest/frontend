@@ -174,7 +174,7 @@ class profile extends React.Component {
                <div>
                     <Form.Group as={ Row } controlId="formHorizontalAltLogin">
                          <Col sm={ 4 }>{ (signup) ? 'Sign up with: ' : 'Login with: ' }</Col>
-                         <Col><div className='google-signin'><Google className='icons' />{ (signup) ? 'Google Signin ' : 'Google login' }</div></Col>
+                         <Col><div className='google-signin'><Google className='icons' />{ (signup) ? 'Google  ' : 'Google ' }</div></Col>
 
                     </Form.Group>
 

@@ -169,6 +169,8 @@ class Startup extends React.Component {
           this.state =({
             view: 'startups',
             id: null , //id number of the startup to open
+
+            hover: true
           })
         }
 
@@ -181,7 +183,7 @@ class Startup extends React.Component {
                     <Container fluid >
                     <Row className='center col-startups-row'>
                     {Object.values(startups).map((val, index)=>
-                              <Col className='col-startup shadow' key={index}  sm={5} >
+                              <Col className={(this.state.hover) ? 'col-startup shadow': 'col-startup '} key={index}  sm={5} >
                                    <h3 className='col-startup-name' onClick={()=> {this.setState({view: 'startup', id: index})}}>{val.name}</h3>
                                    <p className='col-startup-sm'>{val.location}</p>
                                    <p className='col-startup-sm'>Est. {val.est}</p>
