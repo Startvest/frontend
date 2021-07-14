@@ -1,6 +1,6 @@
 import React from 'react';
-import  {Navbar, Nav, }  from 'react-bootstrap';
-import {HashRouter, Route, Link} from 'react-router-dom';
+import  {Navbar, Nav}  from 'react-bootstrap';
+import {HashRouter, Route} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {PersonCircle} from 'react-bootstrap-icons';
@@ -28,50 +28,45 @@ class nav extends React.Component {
       })
     }
 
-      handleSelect(key){
-        this.setState({
-            key: key
-        })
-        alert(`selected ${key}`);
-    }
+    //   handleSelect(key){
+    //     this.setState({
+    //         key: key
+    //     })
+    //     alert(`selected ${key}`);
+    //onSelect={this.handleSelect}>   
+    // }
      render() {
           return(
                <div>
                <HashRouter basename='/'>
-               <Navbar className="navigation shadow-sm" collapseOnSelect expand="lg" bg="light" sticky='top' >
-               <Navbar.Brand href={process.env.PUBLIC_URL}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
-               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-               <Navbar.Collapse id="responsive-navbar-nav">
-                 <Nav className="mr-auto">
-                 {/* <Nav.Link  className='Navlinks' href="/" >Home</Nav.Link> */}
-                 </Nav>
-                 <Nav className=" navitems" defaultActiveKey="/" onSelect={this.handleSelect}>    
-                 <Nav.Item><Link className='Navlinks ' to="/" >Home</Link></Nav.Item>
-                 <Nav.Item><Link className='Navlinks' to="/about">About Us</Link></Nav.Item>
-                 <Nav.Item><Link  className='Navlinks' to="/jobs">Jobs</Link></Nav.Item>
-                 <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link className='Navlinks' to="/startups" id='line-left-border'>Startups</Link></Nav.Item>
-                 <Nav.Item><Link  className='Navlinks' to="/investors" id='line-right-border'>Investors</Link></Nav.Item>
-                 <Nav.Item><div className='line-break'></div></Nav.Item>
-                 <Nav.Item><Link className='Navlinks' to="/profile"><PersonCircle color='#21295C' height={30} width={30}/></Link></Nav.Item>
-                 </Nav>
-
-                 
-               </Navbar.Collapse>
-             </Navbar>
+               <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
+                <Navbar.Brand href={process.env.PUBLIC_URL+'#home'}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav" >
+                  <Nav className="ml-auto navitems" defaultActiveKey="/">  
+                  <Nav.Link href="#home" className='Navlinks'>Home</Nav.Link>
+                  <Nav.Link href="#about"  className='Navlinks'>About</Nav.Link>
+                  <Nav.Link href="#jobs"  className='Navlinks'>Jobs</Nav.Link>
+                  <Nav.Item><div className='line-break'></div></Nav.Item>
+                  <Nav.Link href="#startups"  className='Navlinks'>Startups</Nav.Link>
+                  <Nav.Link href="#investors"  className='Navlinks'>Investors</Nav.Link>
+                  <Nav.Item><div className='line-break'></div></Nav.Item>
+                  <Nav.Link href="#profile"  className='Navlinks'><PersonCircle color='#21295C' height={30} width={30}/></Nav.Link>
+                  </Nav>
+                </Navbar.Collapse>
+               </Navbar>
              
              <div className='views'>
-            
-                  <Route exact path="/" component={Home}/>
+                  <Route exact path="/home" component={Home}/>
                   <Route exact path="/about" component={About}/>
                   <Route exact path="/startups" component={Startups}/>
                   <Route exact path="/investors" component={Investors}/>                  
                   <Route exact path="/profile" component={Profile}/> 
                   <Route exact path="/jobs" component={Jobs}/> 
-                  
              </div>
              </HashRouter>
-
+             
+             {/* Added footer to the navbar content */}
              <Footer/>
              </div>
           )

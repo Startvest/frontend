@@ -8,7 +8,7 @@ class footer extends React.Component {
      render(){
           return(
           <div className='footer'>
-               <Container >
+               <Container fluid>
                <Row>
                     <Col className='footer-links'>
                     <ul>

@@ -5,7 +5,7 @@
 
 .Home{
      text-align: center;
-     margin-top: 2em;
+     margin: 2em 0 0 0 0;
 }
 .Home-head{
      font-size: 200%;
@@ -13,44 +13,31 @@
      color: var(--primary);
      text-align: center;
 }
-.home-image{
-     margin-top: 9%;
-     width: 90%;
-     height: 70%;
-     padding: 0;
-     margin-right: 0;
-     border: 2px solid var(--primary);
-}
+
 .tagline{
      font-size: xx-large;
      font-weight: bold;
      color: var(--primary);
 }
-
 .homePage{
      height: max-content;
      color: var(--primary);
-    
+     margin: 0;
 }
 .homeText{
-    margin-top: 12%;
+    margin-top: 15%;
      font-weight: bold;
      font-size: larger;
 }
 .text{
-     margin-top: 9%;
-     border: 2px solid var(--primary);
+     margin: 9% 0 0 0;
 }
-.teamIcon{
-     margin-right: 0;  
-     padding: 0; 
-     border: 2px solid var(--primary);
-}
+
 .home-btns{
-     margin-top: 15%;
-     margin-left: 0;
+     /* margin-top: 15%; */
+     margin: 15% 0 0 0;
 }
-.home-btns .btn-fill{
+.home-btns .btn-fill Button, .home-btns .btn-outline Button{
      width: max-content;
 }
 .btn-outline Button{
@@ -59,13 +46,12 @@
      color: var(--primary);
      border-radius: 10px;
      font-weight: bolder;
-
 }
 
 .btn-outline Button:hover{
-     background-color: var(--primary);
+     background-color: var(--secondary);
      color: white;
-     border: 2px solid var(--primary);
+     border: 2px solid var(--secondary);
      
 }
 
@@ -82,7 +68,16 @@
 }
 .btn-fill Button:active + .btn-outline Button:active{
      background-color: var(--secondary);
+}
 
+.teamIcon{
+     margin: auto; 
+}
+.home-image{
+     margin-top: 9%;
+     width: 92%;
+     padding: 0;
+     margin-right: 0;
 }
 /* Startup view on homepage */
 .home-startup{

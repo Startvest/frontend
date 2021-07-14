@@ -215,10 +215,10 @@ class investors extends React.Component {
      render(){
           return(
                <div className="Home">
-                    <h1 className='Home-head'>Where idea meets funding!</h1>
-                    <Container className='homePage'>
+                    <h1 className='Home-head'>Where your idea meets funding!</h1>
+                    <Container className='homePage' fluid>
                          <Row className='flex-column-reverse flex-md-row'>
-                              <Col className='text '>
+                              <Col className='text ' >
                                    <h5 className='tagline'>We believe in your vision!</h5>
                                    <div className='homeText'>
                                         Present your ideas and
@@ -232,7 +232,7 @@ class investors extends React.Component {
                                    </Fade>
                               </Col>
                               <Zoom right>
-                              <Col  className='teamIcon '><img className='home-image'  src={Teampic} alt="teamates discussing"  /></Col>
+                              <Col  className='teamIcon'><img className='home-image'  src={Teampic} alt="teamates discussing"  /></Col>
                               </Zoom>
                          </Row>
                     </Container>

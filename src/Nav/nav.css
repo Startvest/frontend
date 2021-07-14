@@ -25,7 +25,9 @@
      text-decoration: none;
      border-bottom: 3px solid var(--primary);
 }
-
+.Navlinks:active{
+     border-bottom: 2px solid black;
+}
 
 .line-break{
      height: 100%;
