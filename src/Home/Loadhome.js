@@ -21,7 +21,7 @@ class Loader extends React.Component {
      }
 
      componentDidMount() {
-          setTimeout(() => this.setState({ done: true }), 2500)
+          setTimeout(() => this.setState({ done: true }), 2000)
      }
 
      loadScreen = () => {

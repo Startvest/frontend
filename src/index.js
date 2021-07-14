@@ -32,3 +32,6 @@ serviceWorker.register();
 // To run client app
 // cd frontend
 // then run: npm run client
+
+// To deploy to github pages
+// npm run deploy

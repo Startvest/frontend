@@ -40,11 +40,11 @@ class nav extends React.Component {
                <div>
                <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
-                <Navbar.Brand href={process.env.PUBLIC_URL+'#home'}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
+                <Navbar.Brand href={process.env.PUBLIC_URL}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  
-                  <Nav.Link href="#home" className='Navlinks'>Home</Nav.Link>
+                  <Nav.Link href="#/" className='Navlinks'>Home</Nav.Link>
                   <Nav.Link href="#about"  className='Navlinks'>About</Nav.Link>
                   <Nav.Link href="#jobs"  className='Navlinks'>Jobs</Nav.Link>
                   <Nav.Item><div className='line-break'></div></Nav.Item>
@@ -57,7 +57,7 @@ class nav extends React.Component {
                </Navbar>
              
              <div className='views'>
-                  <Route exact path="/home" component={Home}/>
+                  <Route exact path="/" component={Home}/>
                   <Route exact path="/about" component={About}/>
                   <Route exact path="/startups" component={Startups}/>
                   <Route exact path="/investors" component={Investors}/>                  
