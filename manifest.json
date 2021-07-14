@@ -1,15 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Startvest",
+  "name": "Startvest",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "logo-2.png",
       "type": "image/png",
-      "sizes": "400x200"
+      "sizes": "364x364"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "orientation": "portrait",
+  "theme_color": "#21295C",
   "background_color": "#ffffff"
 }
