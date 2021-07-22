@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+
 // Importing the main homepage svg picture
 import Teampic from '../images/teamates.svg';
 import { ArrowRightShort, CircleFill} from 'react-bootstrap-icons';
@@ -196,6 +197,7 @@ class investors extends React.Component {
           this.state =({
                count_startup: 0,
                count_investors: 0,
+               shadow: false
           })
      }
 
@@ -211,6 +213,7 @@ class investors extends React.Component {
                this.setState({count_startup: this.state.count_startup + 1})
           }
      }
+
 
      render(){
           return(
@@ -247,9 +250,8 @@ class investors extends React.Component {
                          </div>
                          <Row >   
                               {Object.values(investor).slice(3, 6).map((val, ind) => 
-                              <div key={ind} className='job-container shadow'>
+                              <div key={ind} className='job-container hover-shadow'>
                                    <Row>
-                                   {/* <Col sm='auto' ><CircleFill className='icon-back' height={50} width={50}/></Col> */}
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{val.name}</div>
                                         <span className='underText'> {val.industry}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span>
@@ -276,9 +278,8 @@ class investors extends React.Component {
                          <Zoom cascade right>
                               <Col >
                               {Object.values(startups).slice(2, 4).map((val, ind) => 
-                              <div key={ind} className='job-container shadow '>
+                              <div id={ind} key={ind} className='job-container' >
                                    <Row>
-                                   {/* <Col sm='auto' ><CircleFill className='icon-back' height={50} width={50}/></Col> */}
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{val.name}</div>
                                         <span className='underText'>Est. {val.est}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.industry}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.location}</span>

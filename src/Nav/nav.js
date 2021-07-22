@@ -13,6 +13,7 @@ import Startups from '../Startups/startups';
 import Investors from '../Investors/investors';
 import Profile from '../Profile/profile';
 import Jobs from '../jobs/jobs';
+import Dashboard from '../dashboard/dashboard';
 
 
 // The logo
@@ -63,6 +64,7 @@ class nav extends React.Component {
                   <Route exact path="/investors" component={Investors}/>                  
                   <Route exact path="/profile" component={Profile}/> 
                   <Route exact path="/jobs" component={Jobs}/> 
+                  <Route exact path="/dashboard" component={Dashboard}/>
              </div>
              </HashRouter>
              

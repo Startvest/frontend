@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 import './Home.css';
 
 // Logo
-import Logo from '../images/logo.png';
+import Logo from '../images/load-logo.png';
 
 // Import nav view
 import Nav from '../Nav/nav';
@@ -14,14 +14,14 @@ class Loader extends React.Component {
      constructor(props) {
           super(props);
           this.state = {
-               done: undefined,
+               done: false,
                data: [],
                url: 'https://startvest.github.io/frontend'
           }
      }
 
      componentDidMount() {
-          setTimeout(() => this.setState({ done: true }), 2000)
+          setTimeout(() => this.setState({ done: true }), 2500)
      }
 
      loadScreen = () => {

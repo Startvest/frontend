@@ -45,7 +45,7 @@
  }
 
 .footer-text{
-     border-top: 1px solid var(--faded);
+     /* border-top: 1px solid var(--faded); */
      margin-top: 1em;
      padding: 0;
      width: 100vw;
