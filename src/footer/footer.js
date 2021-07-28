@@ -2,14 +2,14 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './footer.css';
 import {Container, Row, Col} from 'react-bootstrap';
-import {GeoAltFill, TelephoneOutboundFill, Twitter, Github, EnvelopeFill } from 'react-bootstrap-icons';
+import {GeoAltFill, TelephoneOutboundFill,  EnvelopeFill } from 'react-bootstrap-icons';
 
 class footer extends React.Component {
      render(){
           return(
           <div className='footer'>
                <Container fluid>
-               <Row>
+               <Row >
                     <Col className='footer-links'>
                     <ul>
                          <li className='links-head'>Quick Links</li>
@@ -20,7 +20,7 @@ class footer extends React.Component {
                     </ul>
                     </Col>
 
-                    <Col className='footer-links'>
+                    <Col className='footer-links' >
                     <ul>
                          <li className='links-head'>Policies</li>
                          <li>Privacy Policy</li>
@@ -37,11 +37,14 @@ class footer extends React.Component {
                          </ul>
                     </Col>
                </Row>
-               <Row className='footer-text'>
-                    
+              
+               <Row className='footer-text' fluid> 
                     <Col >
-                    Copyright &copy;  2021 StartVest Inc.   <span><Twitter color='#9EB3C2' /></span>  <span>{<Github color='#9EB3C2 '/>}</span>
+                    Copyright &copy;  2021 StartVest Inc.   
                     </Col>
+                    {/* <Col className='ml-auto'>
+                    <span><Twitter color='#9EB3C2' /></span>  <span>{<Github color='#9EB3C2 '/>}</span>
+                    </Col> */}
                </Row>
                </Container>
               

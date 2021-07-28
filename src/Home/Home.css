@@ -79,13 +79,14 @@
      padding: 0;
      margin-right: 0;
 }
+
 /* Startup view on homepage */
 .home-startup{
      padding: 1em;
      margin: 10% auto;
-     border-radius: 8px;
+     /* border-radius: 8px; */
 
-     background-color: var(--faded);
+     background-color: var(--accent);
 }
 .counter{
      font-size: xx-large;
@@ -103,7 +104,11 @@
      margin: auto;
      text-align: center;
 }
-
+.shad:hover{
+     background: #D3E2ED !important;
+     box-shadow:  -12px 12px 24px #b3c0c9,
+                  6px -6px 24px #f3ffff;
+}
 
 /* Css for Loading home screen */
 

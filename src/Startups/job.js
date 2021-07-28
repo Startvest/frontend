@@ -13,7 +13,7 @@ const Job = ({startup, goback}) => {
                {Object.values(startup.job).map((val, ind) =>
                 <Container key={ind}>
                 <Row>
-                    <Col sm='auto'><ArrowLeft className='icon-back' width={40} height={40} onClick={goback}/></Col>
+                    <Col xs={1}><ArrowLeft className='icon-back' width={40} height={40} onClick={goback}/></Col>
                     <Col sm='auto'><span className='logo'>Startup Logo</span></Col>
                      <Col sm='auto'>
                      <h1 className='startups-head'>{val.name}</h1>

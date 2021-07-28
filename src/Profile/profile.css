@@ -22,15 +22,13 @@
 }
 .form{
      margin: 1em auto;
-     width: fit-content;
      font-weight: bold;
+     text-align: center;
 }
 .form_box{
      height: max-content;
-     width: fit-content;
-     background-color: var(--altfade);
+     background-color: var(--accent);
      border-radius: 20px;
-     max-width: max-content;
 }
 .svgIcon{
      background-color: var(--primary);
@@ -52,6 +50,9 @@ Form{
      margin: auto .5em;
      color: black;
 }
+.user_type{
+     text-align: left;
+}
 .forgot{
      color: var(--primary);
      cursor: pointer;
@@ -66,11 +67,13 @@ Form{
      background-color: var(--primary);
      color: white;
      width: 100%;
-     border: none !important;
+     border: none ;
      font-weight: bold;
 }
 .submit Button:hover{
-    background-color: var(--secondary);
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
 }
 .icons{
      color: white;
@@ -78,10 +81,7 @@ Form{
      width: 1em;
      margin: auto .25em;
 }
-/* .icons:hover{
-     height: 65%;
-     width: 65%;
-} */
+
 .user_type{
      margin: 1em auto;
 }
@@ -89,7 +89,9 @@ Form{
      display: inline;
      margin: 0;
 }
-/* Css for Startup Form */
+
+
+/* Css for Startup Form and Investor form*/
 .form{
      width: 70%;
      height: max-content;
@@ -113,7 +115,7 @@ Form{
      height: 2em;
      width: fit-content;
      background-color: var(--primary);
-     border-radius: 20px ;
+     border-radius: 10px ;
      color: white;
      padding: .25em;
 }

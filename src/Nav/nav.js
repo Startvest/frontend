@@ -45,7 +45,7 @@ class nav extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  
-                  <Nav.Link href="#/" className='Navlinks'>Home</Nav.Link>
+                  <Nav.Link href="#/" className='Navlinks' active>Home</Nav.Link>
                   <Nav.Link href="#about"  className='Navlinks'>About</Nav.Link>
                   <Nav.Link href="#jobs"  className='Navlinks'>Jobs</Nav.Link>
                   <Nav.Item><div className='line-break'></div></Nav.Item>

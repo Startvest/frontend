@@ -175,15 +175,14 @@ class Startup extends React.Component {
         }
 
      // Render the startups in column view
-     startups = () => {
-          
+     startups = () => {  
           return(
                <div>
                     <h1 className='startups-head'>Startups</h1>
                     <Container fluid >
                     <Row className='center col-startups-row'>
                     {Object.values(startups).map((val, index)=>
-                              <Col className={(this.state.hover) ? 'col-startup shadow': 'col-startup '} key={index}  sm={5} >
+                              <Col className='col-startup ' key={index}  sm={5} >
                                    <h3 className='col-startup-name' onClick={()=> {this.setState({view: 'startup', id: index})}}>{val.name}</h3>
                                    <p className='col-startup-sm'>{val.location}</p>
                                    <p className='col-startup-sm'>Est. {val.est}</p>
@@ -195,9 +194,7 @@ class Startup extends React.Component {
                               </Col>
                     )}
                     </Row>
-                    </Container>
-
-                    
+                    </Container> 
                </div>
           )
      }

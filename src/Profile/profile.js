@@ -23,19 +23,25 @@ class profile extends React.Component {
 
                // Login or signup
                signup: true,
-               username: 'Tamunokorite Briggs',
-               email: 'obriggs03@gmail.com'
 
+               // st the default values of the radio buttons
+               check2: true, //Making the radio of startup true
+               check1: false
           });
      }
 
-     handlecheckbox = (e) => {
-          console.log(e.target.checked);
-          this.setState({ check: e.target.checked });
+     handlecheckbox = ({target}) => {
+          console.log(target.checked);
+          if(target.name === 'check1'){
+               this.setState({[target.name]: target.checked , check2: !target.checked});
+          }else{
+               this.setState({[target.name]: target.checked , check1: !target.checked});
+          }
+          
      };
 
      handleChange = ({ target }) => {
-          this.setState({ [target.name]: target.type === 'checkbox' ? target.checked : target.value });
+          this.setState({[target.name]: target.type === 'checkbox' ? target.checked : target.value });
      };
 
 
@@ -100,31 +106,37 @@ class profile extends React.Component {
      Signin = () => {
           return (
                <div>
-                    <Container className='form '>
+                    <Container className='form' fluid='md'>
                          <Row className='form_box shadow-lg'>
-                              <Col className='svgIcon' ><img src={ SignUp } className='svgIcon-image' height={300} width={300}  alt="Team pic svg" /></Col>
-                              <Col className='form_items'>
+                              <Col className='svgIcon' md={6} sm={12}><img src={ SignUp } className='svgIcon-image' height={300} width={300}  alt="Team pic svg" /></Col>
+                              <Col className='form_items' md={6} sm={12}>
                                    <h2>Sign Up</h2>
                                    <Form >
-
                                         <Form.Group as={ Row } className='user_type' >
-                                             <Col sm='auto'> Investor</Col>
-                                             <Col sm='auto'>
-                                                  <Form.Check
+                                             <Col > 
+                                             <Form.Check
                                                        name='check1'
-                                                       type="switch"
+                                                       type="radio"
                                                        id="custom-switch"
-                                                       onChange={ this.handleChange }
+                                                       label='Investor'
+                                                       onChange={ this.handlecheckbox }
                                                        checked={ this.state.check1 }
                                                   />
                                              </Col>
-                                             <Col sm='auto'>Startup</Col>
+                                             <Col > <Form.Check
+                                                       name='check2'
+                                                       type="radio"
+                                                       id="custom-switch"
+                                                       label='Startup'
+                                                       onChange={ this.handlecheckbox }
+                                                       checked={ this.state.check2 }
+                                                  /></Col>
                                         </Form.Group>
 
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formHorizontalPassword">
-                                                  <Form.Label  > {(this.state.check1)? 'Startup name': 'Investor name'}</Form.Label>
+                                             <Form.Group as={ Col } controlId="formHorizontalUsername">
+                                                  <Form.Label  > {(this.state.check1)? 'Investor name' : 'Startup name'}</Form.Label>
                                                   <Form.Control name='username' onChange={ this.handleChange } value={ this.state.username } className='shadow-sm textbox' type="text" placeholder="Enter username" />
                                              </Form.Group>
                                         </Form.Row>
@@ -173,9 +185,8 @@ class profile extends React.Component {
           return (
                <div>
                     <Form.Group as={ Row } controlId="formHorizontalAltLogin">
-                         <Col sm={ 4 }>{ (signup) ? 'Sign up with: ' : 'Login with: ' }</Col>
+                         <Col >{ (signup) ? 'Sign up with: ' : 'Login with: ' }</Col>
                          <Col><div className='google-signin'><Google className='icons' />{ (signup) ? 'Google  ' : 'Google ' }</div></Col>
-
                     </Form.Group>
 
 
@@ -202,7 +213,7 @@ class profile extends React.Component {
           switch (this.state.authenticated) {
                default: return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case false: return (this.state.signup) ? this.Signin() : this.login();
-               case true: return (this.state.registered) ? <InvestorForm /> : <StartForm />; //this.userProfile()
+               case true: return (this.state.registered) ? <StartForm  /> : <InvestorForm /> ; //this.userProfile()
           }
      }
 
@@ -210,7 +221,6 @@ class profile extends React.Component {
      render() {
           return (
                <div className="profile">
-                    {/* <h3 className="profile-head">Profile</h3> */ }
                     {this.renderview() }
                </div>
           );

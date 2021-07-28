@@ -5,6 +5,8 @@ import './profile.css';
 import {Button, Form, Col, Row} from 'react-bootstrap';
 import {Info} from 'react-bootstrap-icons';
 
+// Back button
+import {ArrowLeft} from 'react-bootstrap-icons';
 class StartupForm extends React.Component {
      constructor(props) {
           super(props);
@@ -15,7 +17,6 @@ class StartupForm extends React.Component {
           })
      }
 
-
      handleChange = ({ target }) => {
           this.setState({ [target.name]: target.type === 'checkbox' ? target.checked : target.value });
      };
@@ -23,9 +24,16 @@ class StartupForm extends React.Component {
 render(){
      return(
           <div className='form shadow'>
-               <h3 className="profile-head">Registration form for starturps</h3>
+               <Row>
+                    <Col xs={1} >
+                         <ArrowLeft className='icon-back' width={30} height={30} />
+                    </Col>
+
+                    <Col>
+                         <h3 className="profile-head">Registration form for starturps</h3>
+                    </Col>
+               </Row>
                <Form>
-               
                <Form.Group controlId="formBasicEmail">
                <Form.Label>Name of Startup</Form.Label>
                <Form.Control className='form-input' type="text" placeholder="Enter Startup's name" value={ this.state.username } />
@@ -60,8 +68,8 @@ render(){
 
                <Form.Group as={Row}>
                    <Col sm='auto'> <Form.Label>Registered?</Form.Label></Col>
-                   <Col sm='auto'>  <Form.Check type="radio" label="True" name="formHorizontalRadios" id="formHorizontalRadios1"  /></Col>
-                   <Col sm='auto'> <Form.Check type="radio" label="False" name="formHorizontalRadios" id="formHorizontalRadios2" /></Col>
+                   <Col sm='auto'>  <Form.Check type="radio" label="Yes" name="formHorizontalRadios" id="formHorizontalRadios1"  /></Col>
+                   <Col sm='auto'> <Form.Check type="radio" label="No" name="formHorizontalRadios" id="formHorizontalRadios2" /></Col>
                </Form.Group>
 
                <Form.Group controlId="formBasicEmail">

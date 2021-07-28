@@ -1,12 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Loading animation for react
 import ReactLoading from 'react-loading';
 import './Home.css';
 
 // Logo
 import Logo from '../images/load-logo.png';
 
-// Import nav view
+// Import navigation view
 import Nav from '../Nav/nav';
 
 
@@ -21,9 +23,66 @@ class Loader extends React.Component {
      }
 
      componentDidMount() {
-          setTimeout(() => this.setState({ done: true }), 2500)
-     }
+          setTimeout(() => this.setState({ done: true }), 2000);
 
+          // fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/registration/', {
+          //      method: 'POST', // or 'PUT'
+          //      headers: {
+          //      'Content-Type': 'application/json',
+          //      },
+          //      body: JSON.stringify({"username": "frontend",
+          //      "email": "startvest4@gmail.com",
+          //      "password1": "/]yyJM!R=m:77^",
+          //      "password2": "/]yyJM!R=m:77^"}),
+          //      })
+          //      .then(response => response.json())
+          //      .then(data => {
+          //      console.log(data);
+          //      })
+          //      .catch((error) => {
+          //      console.error('Error:', error);
+          // });
+
+          const username = 'hanif.adedotun@gmail.com';
+          const password = '24vJiKSu42z8VD8';
+
+          setTimeout(() => 
+          fetch('http://startvest-staging.herokuapp.com/api/v1.0/investors/', {
+          method:'GET', 
+          headers: {
+               'Authorization': 'Basic ' + btoa(username + ":" + password)
+          }})
+          .then(response => response.json())
+          .then((response) => {
+               console.log(response);
+                })
+                 .catch((error) => {
+               console.error(error);
+                 }) , 4000);
+
+          fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/login/', {
+               method: 'POST', 
+               headers: {
+               'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({"username": "Hanif Adedotun",
+               "email": "hanif.adedotun@gmail.com",
+               "password": "24vJiKSu42z8VD8"}),
+               })
+               .then(response => response.json())
+               .then(data => {
+               console.log('Success:', data.user);
+               })
+               .catch((error) => {
+               console.error('Error:', error);
+          });
+     }
+     // 24vJiKSu42z8VD8
+// hanif.adedotun@gmail.com
+// Hanif Adedotun
+
+     // Loading screen to simulate a native application
+     // It takes 2 seconds to show
      loadScreen = () => {
           return(
                <div className='Load'>

@@ -29,7 +29,7 @@ render() {
                The dashboard 
                <div>
                     <button onClick={() => this.setState({external: true})}>Show the external notification</button>
-                    {(this.state.external) ? <Notifyer head='Headline' message='This is the message, your password is incorrect' type='info' onDismissed={() => this.setState({external: false})} />:null}
+                    {(this.state.external) ? <Notifyer message='This is the message, your password is incorrect' type='danger' onDismissed={() => this.setState({external: false})} />:null}
                </div>
           </div>
      )

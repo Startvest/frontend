@@ -10,6 +10,9 @@ import { ArrowRightShort, CircleFill} from 'react-bootstrap-icons';
 
 import {Fade, Zoom, Slide} from 'react-reveal';
 
+// Notification bar
+import Notifyer from '../utility/notification';
+
 //Startup json from the backend
 var startups = {
      'voltex': {
@@ -197,17 +200,47 @@ class investors extends React.Component {
           this.state =({
                count_startup: 0,
                count_investors: 0,
-               shadow: false
+               shadow: false,
+               
+               // The investors list from the database
+               investors: []
+
           })
      }
 
      componentDidMount(){
           this.interval = setInterval(() => {
               this.countStartups()
-          }, 1000);
-          
+          }, 2000);
+
+          // Get investors
+     //      fetch("http://startvest-staging.herokuapp.com/api/v1.0/investors/")
+     //      .then(res => res.json())
+     //      .then(
+     //      (result) => {
+     //           this.setState({
+     //           investors: result,
+
+     //           error: true,
+     //           errMessage: result.detail,
+     //           type: 'danger',
+     //           });
+     //           console.log(result);
+     //    },
+     //    (error) => {
+     //      this.setState({
+     //        error: true,
+     //        errMessage: error.message,
+     //        type: 'danger',
+     //      });
+     //    }
+     //  )
      }
+
+
      
+     // Count and iterate over the amount of startups,
+     //  to give an animation of counting on the home page
      countStartups = () =>{
           if(this.state.count_startup < Object.keys(startups).length){
                this.setState({count_startup: this.state.count_startup + 1})
@@ -218,6 +251,7 @@ class investors extends React.Component {
      render(){
           return(
                <div className="Home">
+                     {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} onDismissed={() => this.setState({error: false})} />:null}
                     <h1 className='Home-head'>Where your idea meets funding!</h1>
                     <Container className='homePage' fluid>
                          <Row className='flex-column-reverse flex-md-row'>
@@ -242,7 +276,7 @@ class investors extends React.Component {
 
                     {/* Container for top investors*/}
                     
-                    <Container className='home-startup' >
+                    <Container className='home-startup' fluid>
                          <Slide  right>
                          <div className='center'>
                          <h5 className='tagline ' >Connect to top investors</h5>            
@@ -250,7 +284,7 @@ class investors extends React.Component {
                          </div>
                          <Row >   
                               {Object.values(investor).slice(3, 6).map((val, ind) => 
-                              <div key={ind} className='job-container hover-shadow'>
+                              <div key={ind} className='job-container shad'>
                                    <Row>
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{val.name}</div>
@@ -265,7 +299,7 @@ class investors extends React.Component {
                     </Container>
 
                     {/* Container for options for startups */}
-                    <Container className='home-startup'>
+                    <Container className='home-startup ' fluid>
                          <Row >
                               <Slide left>
                               <Col>
@@ -278,7 +312,7 @@ class investors extends React.Component {
                          <Zoom cascade right>
                               <Col >
                               {Object.values(startups).slice(2, 4).map((val, ind) => 
-                              <div id={ind} key={ind} className='job-container' >
+                              <div id={ind} key={ind} className='job-container shadow' >
                                    <Row>
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{val.name}</div>
