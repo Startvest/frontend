@@ -2,13 +2,22 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 
-import {Button, Form,} from 'react-bootstrap';
-// import {Info} from 'react-bootstrap-icons';
+import {Button, Form, Col, Row} from 'react-bootstrap';
+import {ArrowLeft} from 'react-bootstrap-icons';
 
-const InvestorForm = ()=>{
+const InvestorForm = ({goback})=>{
      return(
           <div className='form shadow'>
-               <h3 className="profile-head">Registration form for Investors</h3>
+               <Row>
+                    <Col xs={1} >
+                         <ArrowLeft className='icon-back' width={30} height={30} onClick={goback}/>
+                    </Col>
+
+                    <Col>
+                    <h3 className="profile-head">Registration as an Investor</h3>
+                    </Col>
+               </Row>
+               
                <Form>
 
                <Form.Group controlId="Investorname">

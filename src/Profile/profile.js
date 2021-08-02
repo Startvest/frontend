@@ -213,7 +213,7 @@ class profile extends React.Component {
           switch (this.state.authenticated) {
                default: return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case false: return (this.state.signup) ? this.Signin() : this.login();
-               case true: return (this.state.registered) ? <StartForm  /> : <InvestorForm /> ; //this.userProfile()
+               case true: return (this.state.registered) ? <StartForm  goback={() => this.setState({authenticated: false})}/> : <InvestorForm  goback={() => this.setState({authenticated: false})}/> ; //this.userProfile()
           }
      }
 
@@ -222,6 +222,7 @@ class profile extends React.Component {
           return (
                <div className="profile">
                     {this.renderview() }
+                    {this.state.live}
                </div>
           );
      }

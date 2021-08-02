@@ -1,0 +1,18 @@
+# GET http://startvest-staging.herokuapp.com/api/v1.0/startups/
+# Authorization: Basic hanif.adedotun@gmail.com:324vJiKSu42z8VD8
+
+# POST http://startvest-staging.herokuapp.com/api/v1.0/users/token/verify/
+# Content-Type: application/json
+
+# {
+#      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI3NjcyMDI2LCJqdGkiOiI0ZTNkYzFkODE1Njc0OTViYWU4NzdiM2M2MTUzY2U0MyIsInVzZXJfaWQiOjJ9.AVweChlTxGU-st90we7F92TKGSJI0V9LOweJAXtvBRM"
+# }
+
+POST http://startvest-staging.herokuapp.com/api/v1.0/users/login/
+Content-Type: application/json
+
+{
+"username": "Hanif Adedotun",
+"email": "hanif.adedotun@gmail.com",
+"password": "24vJiKSu42z8VD8"
+}

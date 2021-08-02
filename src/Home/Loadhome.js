@@ -43,23 +43,7 @@ class Loader extends React.Component {
           //      console.error('Error:', error);
           // });
 
-          const username = 'hanif.adedotun@gmail.com';
-          const password = '24vJiKSu42z8VD8';
-
-          setTimeout(() => 
-          fetch('http://startvest-staging.herokuapp.com/api/v1.0/investors/', {
-          method:'GET', 
-          headers: {
-               'Authorization': 'Basic ' + btoa(username + ":" + password)
-          }})
-          .then(response => response.json())
-          .then((response) => {
-               console.log(response);
-                })
-                 .catch((error) => {
-               console.error(error);
-                 }) , 4000);
-
+          
           fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/login/', {
                method: 'POST', 
                headers: {
@@ -71,11 +55,65 @@ class Loader extends React.Component {
                })
                .then(response => response.json())
                .then(data => {
-               console.log('Success:', data.user);
+               console.log('Success:', data);
+               
+               localStorage.clear('token');
+               localStorage.setItem('token', data.access_token);
                })
                .catch((error) => {
                console.error('Error:', error);
           });
+
+          // const username = 'Hanif Adedotun';//'hanif.adedotun@gmail.com';
+          // const password = '24vJiKSu42z8VD8';
+
+     
+          setTimeout(() =>
+          fetch('http://startvest-staging.herokuapp.com/api/v1.0/startups/', {
+          method:'GET', 
+          headers: {
+               // 'Authorization': 'Basic ' + username + ":" + password
+               Authorization: `Bearer ${localStorage.getItem('token')}` 
+          }})
+          .then(response => response.json())
+          .then((response) => {
+               console.log(response);
+               console.log(localStorage.getItem('token'));
+                })
+                 .catch((error) => {
+               console.error(error);
+                 }) ,10000);
+
+                 
+
+                 fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/token/verify/', {
+                    method:'POST', 
+                    headers: {
+                         'Content-Type': 'application/json',
+                    },body: JSON.stringify({
+                    "token": localStorage.getItem('token'),
+                   }),
+                    })
+                    .then(response => response.json())
+                    .then((response) => {
+                         console.log(response);
+                          })
+                           .catch((error) => {
+                         console.error(error);
+                           });
+
+               // setTimeout(() =>
+               // fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/logout/', {
+               //      method:'POST', 
+               //      })
+               //      .then(response => response.json())
+               //      .then((response) => {
+               //           console.log(response.detail);
+               //            })
+               //             .catch((error) => {
+               //           console.error(error);
+               //             }),14000);;
+         
      }
      // 24vJiKSu42z8VD8
 // hanif.adedotun@gmail.com
