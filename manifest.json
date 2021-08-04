@@ -8,8 +8,8 @@
       "sizes": "364x364"
     }
   ],
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/frontend/#/",
+  "scope": "/frontend/#/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#21295C",
