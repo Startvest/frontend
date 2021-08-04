@@ -38,7 +38,7 @@ class footer extends React.Component {
                     </Col>
                </Row>
               
-               <Row className='footer-text' fluid> 
+               <Row className='footer-text' fluid='true'> 
                     <Col >
                     Copyright &copy;  2021 StartVest Inc.   
                     </Col>

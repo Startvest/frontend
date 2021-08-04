@@ -11,6 +11,8 @@ import Logo from '../images/load-logo.png';
 // Import navigation view
 import Nav from '../Nav/nav';
 
+// Import Connector to server
+import Connect from '../utility/connectdb';
 
 class Loader extends React.Component {
      constructor(props) {
@@ -25,49 +27,8 @@ class Loader extends React.Component {
      componentDidMount() {
           setTimeout(() => this.setState({ done: true }), 2000);
 
-          // fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/registration/', {
-          //      method: 'POST', // or 'PUT'
-          //      headers: {
-          //      'Content-Type': 'application/json',
-          //      },
-          //      body: JSON.stringify({"username": "frontend",
-          //      "email": "startvest4@gmail.com",
-          //      "password1": "/]yyJM!R=m:77^",
-          //      "password2": "/]yyJM!R=m:77^"}),
-          //      })
-          //      .then(response => response.json())
-          //      .then(data => {
-          //      console.log(data);
-          //      })
-          //      .catch((error) => {
-          //      console.error('Error:', error);
-          // });
-
+          Connect();
           
-          fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/login/', {
-               method: 'POST', 
-               headers: {
-               'Content-Type': 'application/json',
-               },
-               body: JSON.stringify({"username": "Hanif Adedotun",
-               "email": "hanif.adedotun@gmail.com",
-               "password": "24vJiKSu42z8VD8"}),
-               })
-               .then(response => response.json())
-               .then(data => {
-               console.log('Success:', data);
-               
-               localStorage.clear('token');
-               localStorage.setItem('token', data.access_token);
-               })
-               .catch((error) => {
-               console.error('Error:', error);
-          });
-
-          // const username = 'Hanif Adedotun';//'hanif.adedotun@gmail.com';
-          // const password = '24vJiKSu42z8VD8';
-
-     
           setTimeout(() =>
           fetch('http://startvest-staging.herokuapp.com/api/v1.0/startups/', {
           method:'GET', 
@@ -84,40 +45,8 @@ class Loader extends React.Component {
                console.error(error);
                  }) ,10000);
 
-                 
-
-                 fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/token/verify/', {
-                    method:'POST', 
-                    headers: {
-                         'Content-Type': 'application/json',
-                    },body: JSON.stringify({
-                    "token": localStorage.getItem('token'),
-                   }),
-                    })
-                    .then(response => response.json())
-                    .then((response) => {
-                         console.log(response);
-                          })
-                           .catch((error) => {
-                         console.error(error);
-                           });
-
-               // setTimeout(() =>
-               // fetch('http://startvest-staging.herokuapp.com/api/v1.0/users/logout/', {
-               //      method:'POST', 
-               //      })
-               //      .then(response => response.json())
-               //      .then((response) => {
-               //           console.log(response.detail);
-               //            })
-               //             .catch((error) => {
-               //           console.error(error);
-               //             }),14000);;
-         
+                         
      }
-     // 24vJiKSu42z8VD8
-// hanif.adedotun@gmail.com
-// Hanif Adedotun
 
      // Loading screen to simulate a native application
      // It takes 2 seconds to show

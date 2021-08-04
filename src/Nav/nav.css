@@ -4,9 +4,14 @@
 @import "../utility/colors.css";
 
 .navigation{
-     background-color: white !important;
+     /* background-color: white !important; */
+     /* background: transparent !important; */
      margin-bottom: 2em;
+
+     background: rgba(255, 255, 255, 0.7) !important;
+     backdrop-filter: saturate(180%) blur(10px) !important;
 }
+
 .Navlinks-active{
      border-bottom: 2px solid black;
 }

@@ -12,6 +12,7 @@ import {Fade, Zoom, Slide} from 'react-reveal';
 
 // Notification bar
 import Notifyer from '../utility/notification';
+import ConnectDB from '../utility/connectdb';
 
 //Startup json from the backend
 var startups = {
@@ -203,38 +204,34 @@ class investors extends React.Component {
                shadow: false,
                
                // The investors list from the database
-               investors: []
+               investors: [],
+               startups: [],
 
           })
      }
 
-     componentDidMount(){
+     async componentDidMount(){
           this.interval = setInterval(() => {
               this.countStartups()
           }, 2000);
 
-          // Get investors
-     //      fetch("http://startvest-staging.herokuapp.com/api/v1.0/investors/")
-     //      .then(res => res.json())
-     //      .then(
-     //      (result) => {
-     //           this.setState({
-     //           investors: result,
+          const token = await ConnectDB();
+          fetch('http://startvest-staging.herokuapp.com/api/v1.0/startups/', {
+          method:'GET', 
+          headers: {
+               // 'Authorization': 'Basic ' + username + ":" + password
+               Authorization: `Bearer ${token}` 
+          }})
+          .then(response => response.json())
+          .then((response) => {
+               this.setState({startups: response})
+               console.log(response);
+                })
+                 .catch((error) => {
+               console.error(error);
+                 })        
+     
 
-     //           error: true,
-     //           errMessage: result.detail,
-     //           type: 'danger',
-     //           });
-     //           console.log(result);
-     //    },
-     //    (error) => {
-     //      this.setState({
-     //        error: true,
-     //        errMessage: error.message,
-     //        type: 'danger',
-     //      });
-     //    }
-     //  )
      }
 
 
@@ -242,7 +239,7 @@ class investors extends React.Component {
      // Count and iterate over the amount of startups,
      //  to give an animation of counting on the home page
      countStartups = () =>{
-          if(this.state.count_startup < Object.keys(startups).length){
+          if(this.state.count_startup < Object.keys(this.state.startups).length){
                this.setState({count_startup: this.state.count_startup + 1})
           }
      }
@@ -304,7 +301,7 @@ class investors extends React.Component {
                               <Slide left>
                               <Col>
                               <h5 className='tagline'>See all the top startups</h5>
-                              <p className='counter margin-top'>{this.state.count_startup}+ startups Registered</p>
+                              <p className='counter margin-top'>{this.state.count_startup}+ startup{(this.state.count_startup > 1)? 's':''} Registered</p>
                               <p className='homeText'>Join us today to make you take a step closer in achieving your goals!</p>
                               </Col>
                               </Slide>
