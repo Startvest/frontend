@@ -4,23 +4,37 @@ import './footer.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {GeoAltFill, TelephoneOutboundFill,  EnvelopeFill } from 'react-bootstrap-icons';
 
+// Logo Import
+import Logo from '../images/logo-white.png';
 class footer extends React.Component {
      render(){
           return(
           <div className='footer'>
                <Container fluid>
                <Row >
-                    <Col className='footer-links'>
+                    <Col className='footer-links' md={'auto'}>
+                         <img src={Logo} height={40}  alt='Our logo'/>
+                    </Col>
+
+                    <Col className='footer-links' md={'auto'} sm={12}>
+                    <ul>
+                         <li className='links-head'>Company</li>
+                         <li>About Us</li>
+                         <li>Profile</li>
+                         <li>Career</li>
+                    </ul>
+                    </Col>
+
+                    <Col className='footer-links' md={'auto'} sm={12}>
                     <ul>
                          <li className='links-head'>Quick Links</li>
                          <li>Startups</li>
-                         <li>About Us</li>
                          <li>Investors</li>
                          <li>Available Jobs</li>
                     </ul>
                     </Col>
 
-                    <Col className='footer-links' >
+                    <Col className='footer-links' md={'auto'} sm={12}>
                     <ul>
                          <li className='links-head'>Policies</li>
                          <li>Privacy Policy</li>
@@ -28,7 +42,7 @@ class footer extends React.Component {
                     </ul>
                     </Col>
 
-                    <Col className='right footer-links' >
+                    <Col className='footer-links' md={'auto'} sm={12}>
                          <ul>
                               <li className='links-head'>Contact us</li>
                               <li><span><EnvelopeFill color='#9EB3C2' /></span> <span className='links-a-head'>Email</span> - <a href='mailto:admin@startvest.io'>admin@startvest.io</a></li>

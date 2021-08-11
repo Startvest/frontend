@@ -87,7 +87,7 @@ class investors extends React.Component {
                                    <Row>
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{'name'}</div>
-                                        <span className='underText'> {Object.values(val.interests).map((v,i) => <span> {v}  <CircleFill className='icon-back' height={5} width={5}/> </span>)} 
+                                        <span className='underText'> {Object.values(val.interests).map((v,i) => <span key={i}> {v}  <CircleFill className='icon-back' height={5} width={5}/> </span>)} 
                                         </span>
                                    </Col>
                                    </Row>
