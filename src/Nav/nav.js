@@ -41,8 +41,8 @@ class nav extends React.Component {
                <div>
                <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
-                <Navbar.Brand href={process.env.PUBLIC_URL}><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Brand href='#/'><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle'/>
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  
                   <Nav.Link href="#/" className='Navlinks' active>Home</Nav.Link>
@@ -58,13 +58,13 @@ class nav extends React.Component {
                </Navbar>
              
              <div className='views'>
-                  <Route exact path="/" component={Home}/>
-                  <Route exact path="/about" component={About}/>
-                  <Route exact path="/startups" component={Startups}/>
-                  <Route exact path="/investors" component={Investors}/>                  
-                  <Route exact path="/profile" component={Profile}/> 
-                  <Route exact path="/jobs" component={Jobs}/> 
-                  <Route exact path="/dashboard" component={Dashboard}/>
+                  <Route exact path="/"><Home investors={this.props.investors} startups={this.props.startups}/></Route>  
+                  <Route exact path="/about"><About/></Route>  
+                  <Route exact path="/startups"><Startups startups={this.props.startups}/></Route>
+                  <Route exact path="/investors"><Investors investors={this.props.investors}/></Route>  
+                  <Route exact path="/profile"><Profile/></Route>  
+                  <Route exact path="/jobs"><Jobs/></Route>  
+                  <Route exact path="/dashboard"><Dashboard/></Route> 
              </div>
              </HashRouter>
              

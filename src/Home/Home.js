@@ -12,189 +12,8 @@ import {Fade, Zoom, Slide} from 'react-reveal';
 
 // Notification bar
 import Notifyer from '../utility/notification';
-import ConnectDB from '../utility/connectdb';
+// import ConnectDB from '../utility/connectdb';
 
-//Startup json from the backend
-var startups = {
-     'voltex': {
-          'logo':false, 
-          'name':'Voltex Designs', 
-          'location': 'Abuja, Nigeria',
-          'est': '2019',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Graphics Design',
-          'job': {
-               '1':{
-                    'name': 'Internship opportunity at voltex',
-                    'role': 'FullStack developer',
-                    'location': 'Abuja, Nigeria',
-                    'salary': 'Unpaid'
-               }  
-          },
-          'website': 'https://voltexdesign.io',
-          'email': 'admin@spartech.com.ng',
-          'number': '09096281736',
-          'staff': 2,
-          'model': 'B2C',
-          'funding': 'Seed',
-          'registered': false,
-          'team':{
-               '1':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'CEO/Founder'
-               },
-               '2':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Marketing Strategist'
-               },
-               '3':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Senior Developer'
-               }
-               
-          }
-     },
-     'alpha': {
-          'logo':false, 
-          'name':'Alpha Tech', 
-          'location': 'Lagos, Nigeria',
-          'est': '2017',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Cable Networks',
-          'job': {
-               '1':{
-                    'name': 'Senior Developer at Alpha Tech',
-                    'role': 'FullStack developer',
-                    'location': 'Lagos, Nigeria',
-                    'salary': 'Unpaid'
-               }, 
-          },
-          'website': 'https://alphatech.com.ng',
-          'email': 'admin@alphatech.com.ng',
-          'number': '0816431736',
-          'staff': 20,
-          'model': 'B2B',
-          'funding': '2nd Round',
-          'registered': true,
-          'team':{
-               '1':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'CEO/Founder'
-               },
-               '2':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Marketing Strategist'
-               },
-               '3':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Senior Developer'
-               }
-               
-          }
-     },
-     'spartech': {
-          'logo':false, 
-          'name':'Spartech Energy ', 
-          'location': 'Ogun, Nigeria',
-          'est': '2018',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Energy solution',
-          'job': null,
-          'website': 'https://spartech.com.ng',
-          'email': 'admin@spartech.com.ng',
-          'number': '09076281736',
-          'staff': 13,
-          'model': 'B2C',
-          'funding': 'Seed',
-          'registered': false,
-          'team':{
-               '1':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'CEO/Founder'
-               },
-               '2':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Marketing Strategist'
-               },
-               '3':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Senior Developer'
-               }
-               
-          }
-     },
-     'slick': {
-          'logo':false, 
-          'name':'Slick Cloud', 
-          'location': 'Kaduna, Nigeria',
-          'est': '2020',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Saas, Iaas',
-          'job': {
-               '1':{
-                    'name': 'Field Technician at Slick Cloud',
-                    'role': 'Technician',
-                    'location': 'Lagos, Nigeria',
-                    'salary': 'N500,000 monthly'
-               }  
-          },
-          'website': 'https://slickcloud.io',
-          'email': 'admin@slickcloud.com.ng',
-          'number': '09076284736',
-          'staff': 5,
-          'model': 'B2C',
-          'funding': 'Seed',
-          'registered': false,
-          'team':{
-               '1':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'CEO/Founder',
-               },
-               '2':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Marketing Strategist'
-               },
-               '3':{
-                    'name': 'Lorem Ipsum',
-                    'position': 'Senior Developer'
-               }
-               
-          }
-     }
-}
-
-const investor={
-     '1': {
-          'name': 'PWZ Ventures',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Cloud Computing, Networking'
-     },
-     '2': {
-          'name': 'Tony Elumelu Foundation',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Fintech, MSE, Female Entrepreneurs'
-     },
-     '3': {
-          'name': 'Angel Tech Inc',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Networking, IT, Manufacturing'
-     },
-     '4': {
-          'name': 'Y Combinator',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Networking, IT, Manufacturing'
-     },
-     '5': {
-          'name': 'Dangote foundation',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Insuretech, IT, Manufacturing'
-     },
-     '6': {
-          'name': 'Carrington Atlantic',
-          'details': 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Porttito neque, risus euismod cursus tellus, tellus viverra vel fusce. Etiam fermentum mattis enim sed.',
-          'industry': 'Fintech, MSE, Female Entrepreneurs'
-     },
-}
 class investors extends React.Component {
      constructor(props) {
           super(props);
@@ -204,8 +23,8 @@ class investors extends React.Component {
                shadow: false,
                
                // The investors list from the database
-               investors: [],
-               startups: [],
+               investors: this.props.investors,
+               startups: this.props.startups,
 
           })
      }
@@ -214,24 +33,7 @@ class investors extends React.Component {
           this.interval = setInterval(() => {
               this.countStartups()
           }, 2000);
-
-          const token = await ConnectDB();
-          fetch('http://startvest-staging.herokuapp.com/api/v1.0/startups/', {
-          method:'GET', 
-          headers: {
-               // 'Authorization': 'Basic ' + username + ":" + password
-               Authorization: `Bearer ${token}` 
-          }})
-          .then(response => response.json())
-          .then((response) => {
-               this.setState({startups: response})
-               console.log(response);
-                })
-                 .catch((error) => {
-               console.error(error);
-                 })        
      
-
      }
 
 
@@ -277,15 +79,16 @@ class investors extends React.Component {
                          <Slide  right>
                          <div className='center'>
                          <h5 className='tagline ' >Connect to top investors</h5>            
-                         <p className='counter'>{Object.keys(investor).length}+ Investors looking for startups</p>
+                         <p className='counter'>{this.state.investors.length}+ Investor{(this.state.investors > 1)? 's':''} looking for startups</p>
                          </div>
                          <Row >   
-                              {Object.values(investor).slice(3, 6).map((val, ind) => 
+                              {Object.values(this.state.investors).slice(0, 2).map((val, ind) => 
                               <div key={ind} className='job-container shad'>
                                    <Row>
                                    <Col sm='auto'>
-                                        <div key={ind} className='col-startup-name' >{val.name}</div>
-                                        <span className='underText'> {val.industry}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span>
+                                        <div key={ind} className='col-startup-name' >{'name'}</div>
+                                        <span className='underText'> {Object.values(val.interests).map((v,i) => <span> {v}  <CircleFill className='icon-back' height={5} width={5}/> </span>)} 
+                                        </span>
                                    </Col>
                                    </Row>
                               </div>
@@ -307,13 +110,13 @@ class investors extends React.Component {
                               </Slide>
                          
                          <Zoom cascade right>
-                              <Col >
-                              {Object.values(startups).slice(2, 4).map((val, ind) => 
+                              <Col sm={12}>
+                              {Object.values(this.state.startups).slice(0, 2).map((val, ind) => 
                               <div id={ind} key={ind} className='job-container shadow' >
                                    <Row>
                                    <Col sm='auto'>
-                                        <div key={ind} className='col-startup-name' >{val.name}</div>
-                                        <span className='underText'>Est. {val.est}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.industry}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.location}</span>
+                                        <div key={ind} className='col-startup-name' >{val.company_name}</div>                                                                
+                                        <span className='underText'>Est. {val.est}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{Object.values(val.category).map((v,i) => v, )}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.location}</span>
                                    </Col>
                                    </Row>
                               </div>

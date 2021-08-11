@@ -120,3 +120,12 @@
 .load-animation{
      margin: auto;
 }
+.err-message{
+     font-weight: bold;
+     /* background-color: rgb(241, 34, 34); */
+     color: red;
+     /* border-radius: 2px; */
+     width: fit-content;
+     margin: auto;
+     /* padding: 0 1em; */
+}

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './investors.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {Person} from 'react-bootstrap-icons';
-import ConnectDB from '../utility/connectdb';
+
 
 const investor={
      '1': {
@@ -41,29 +41,11 @@ class investors extends React.Component {
      constructor(props) {
           super(props);
           this.state =({
-               investors: [],
-
+               investors: this.props.investors,
           })
      }
      
      async componentDidMount() {
-          const token = await ConnectDB();
-          fetch('http://startvest-staging.herokuapp.com/api/v1.0/investors/', {
-          method:'GET', 
-          headers: {
-               // 'Authorization': 'Basic ' + username + ":" + password
-               Authorization: `Bearer ${token}` 
-          }})
-          .then(response => response.json())
-          .then((response) => {
-               this.setState({investors: response})
-               console.log(response);
-                })
-                 .catch((error) => {
-               console.error(error);
-                 })
-
-          
      }
 
      render(){
@@ -73,11 +55,11 @@ class investors extends React.Component {
                {/* <h1 className='investors-head'>{this.state.investors}</h1> */}
                <Container fluid>
                     <Row>
-                    {Object.values(investor).map((val, ind) =>
-                    <Col sm={4} className='investor-column'>
+                    {Object.values(this.state.investors).map((val, ind) =>
+                    <Col sm={4} className='investor-column' key={ind}>
                          <span id='avatar' className='shadow'><Person color='white'  height={60} width={60}/></span>
-                         <h3 className='investor-name'>{val.name}</h3>
-                         <p className='investor-industry'>{val.industry}</p>
+                         <h3 className='investor-name'>{'name'}</h3>
+                         <p className='investor-industry'>{Object.values(val.interests).map((v,i) => v,)}</p>
                          <p>{val.details}</p>
                     </Col>
                     )}

@@ -197,22 +197,31 @@ class jobs extends React.Component {
           return(
           <div > 
                <h1 className='investors-head'>Latest jobs at startups</h1>
-               <h5>Showing {Object.keys(jobsList).length} available jobs</h5>  
-               <Container >
-               <Row>
-               {Object.values(jobsList).map((val, ind) => 
-               <div key={ind} className='job-container shadow'>
-               <Row>
-               <Col sm='auto'><CircleFill className='icon-back' height={50} width={50}/></Col>
-               <Col sm='auto'>
-                    <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: val.id, view: 'job' })}}>{val.name}</div>
-                    <span >{val.role}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.type}</span>
-               </Col>
-               </Row>
+               {(this.state.j) ?
+               <div>
+                    <h5>Showing {Object.keys(jobsList).length} available jobs</h5>  
+                    <Container >
+                         <Row>
+                         {Object.values(jobsList).map((val, ind) => 
+                         <div key={ind} className='job-container shadow'>
+                         <Row>
+                         <Col sm='auto'><CircleFill className='icon-back' height={50} width={50}/></Col>
+                         <Col sm='auto'>
+                              <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: val.id, view: 'job' })}}>{val.name}</div>
+                              <span >{val.role}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.type}</span>
+                         </Col>
+                         </Row>
+                         </div>
+                         )}
+                         </Row>
+                    </Container>
+                </div>
+               :
+               <div>
+                    There is no current job listing available now, plesae check again later
                </div>
-               )}
-                </Row>
-                </Container>
+               }
+               
           </div>
           )
      }

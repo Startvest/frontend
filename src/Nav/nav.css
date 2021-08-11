@@ -11,6 +11,12 @@
      background: rgba(255, 255, 255, 0.7) !important;
      backdrop-filter: saturate(180%) blur(10px) !important;
 }
+.nav-toggle{
+     border: none;
+}
+.nav-toggle span{
+     color: var(--primary) !important;
+}
 
 .Navlinks-active{
      border-bottom: 2px solid black;
