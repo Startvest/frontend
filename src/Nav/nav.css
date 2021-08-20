@@ -10,6 +10,7 @@
 
      background: rgba(255, 255, 255, 0.7) !important;
      backdrop-filter: saturate(180%) blur(10px) !important;
+
 }
 .nav-toggle{
      border: none;
@@ -35,6 +36,7 @@
 .Navlinks:hover{
      text-decoration: none;
      border-bottom: 3px solid var(--primary);
+
 }
 .Navlinks[active]{
      border-bottom: 2px solid black;

@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CheckLg, ExclamationCircleFill, ExclamationTriangle  } from 'react-bootstrap-icons';
+import {Alert, AlertContainer} from 'react-bs-notifier';
 
-import {AlertList} from 'react-bs-notifier';
+// Css
+import './notification.css';
 
 
-export default function Notifyer({head, message, type, onDismissed}) {
-  const [alertTimeout] = useState(3000);
-  const [position] = useState('top-right');
+export default function Notifyer({message, type, onDismissed}) {
+  // const [alertTimeout] = useState(3000);
+//   const [position] = useState('top-right');
 
-  const alerts = [{
-     id: new Date().getTime(),
-     type: type,
-     headline: head,
-     message: message,
-}]
 // info, warning, danger, or success 
+        setTimeout(() => {
+          onDismissed(); //Clears the notification after 3 seconds
+        },3000);
+
+         function icon(){
+          switch(type){
+            default: return <CheckLg width={20} className='not-icon'/>;
+            case 'success': return <CheckLg width={20} className='not-icon'/>;
+            case 'danger': return <ExclamationCircleFill width={20} className='not-icon'/>;
+            case 'warning': return <ExclamationTriangle width={20} className='not-icon'/>;
+          }
+        }
 
   return (
-    <div>
-      <AlertList
-				position={position}
-				alerts={alerts}
-				timeout={alertTimeout}
-				dismissTitle="Close"
-				onDismiss={onDismissed}
-		/>
-    </div>
+          <div>
+              <AlertContainer>
+                  <Alert type={type} >{icon()} {message}</Alert>
+                </AlertContainer>
+          </div>
   );
 }

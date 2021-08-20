@@ -13,10 +13,10 @@ class footer extends React.Component {
                <Container fluid>
                <Row >
                     <Col className='footer-links' md={'auto'}>
-                         <img src={Logo} height={40}  alt='Our logo'/>
+                         <img src={Logo} height={30}  alt='Our logo'/>
                     </Col>
 
-                    <Col className='footer-links' md={'auto'} sm={12}>
+                    <Col className='footer-links' md={'auto'} sm={'auto'}>
                     <ul>
                          <li className='links-head'>Company</li>
                          <li>About Us</li>
@@ -25,7 +25,7 @@ class footer extends React.Component {
                     </ul>
                     </Col>
 
-                    <Col className='footer-links' md={'auto'} sm={12}>
+                    <Col className='footer-links' md={'auto'} sm={'auto'}>
                     <ul>
                          <li className='links-head'>Quick Links</li>
                          <li>Startups</li>
@@ -34,7 +34,7 @@ class footer extends React.Component {
                     </ul>
                     </Col>
 
-                    <Col className='footer-links' md={'auto'} sm={12}>
+                    <Col className='footer-links' md={'auto'} sm={'auto'}>
                     <ul>
                          <li className='links-head'>Policies</li>
                          <li>Privacy Policy</li>
@@ -42,7 +42,7 @@ class footer extends React.Component {
                     </ul>
                     </Col>
 
-                    <Col className='footer-links' md={'auto'} sm={12}>
+                    <Col className='footer-links' md={'auto'} sm={'auto'}>
                          <ul>
                               <li className='links-head'>Contact us</li>
                               <li><span><EnvelopeFill color='#9EB3C2' /></span> <span className='links-a-head'>Email</span> - <a href='mailto:admin@startvest.io'>admin@startvest.io</a></li>
@@ -54,7 +54,7 @@ class footer extends React.Component {
               
                <Row className='footer-text' fluid='true'> 
                     <Col >
-                    Copyright &copy;  2021 StartVest Inc.   
+                    &copy;  2021 StartVest Inc. All rights reserved   
                     </Col>
                     {/* <Col className='ml-auto'>
                     <span><Twitter color='#9EB3C2' /></span>  <span>{<Github color='#9EB3C2 '/>}</span>

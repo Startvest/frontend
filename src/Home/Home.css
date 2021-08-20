@@ -11,8 +11,9 @@
      font-size: 200%;
      font-weight: bold;
      color: var(--primary);
-     text-align: center;
+     text-align: center;    
 }
+
 
 .tagline{
      font-size: xx-large;

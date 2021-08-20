@@ -12,6 +12,8 @@ import InvestorForm from './investorForm';
 import Login from '../images/login.svg';
 import SignUp from '../images/sign_in.svg';
 
+// Import Notifications
+import Notifyer from '../utility/notification';
 class profile extends React.Component {
      constructor (props) {
           super(props);
@@ -31,7 +33,6 @@ class profile extends React.Component {
      }
 
      handlecheckbox = ({target}) => {
-          console.log(target.checked);
           if(target.name === 'check1'){
                this.setState({[target.name]: target.checked , check2: !target.checked});
           }else{
@@ -45,7 +46,8 @@ class profile extends React.Component {
      };
 
 
-     //   Render the User Profile if exist or in session
+     //   Render the User Profile if exist or in session, 
+     // it would be external, connected to the dashboard
      userProfile = () => {
           return (
                <div>
@@ -54,6 +56,42 @@ class profile extends React.Component {
           );
      };
 
+
+     // Function to get data from the form and 
+     // send a notification if any of them is empty
+     checkSignForm = (e) =>{
+          e.preventDefault();
+          let signupfields = {
+               investor: this.state.check1, 
+               startup: this.state.check2, 
+               name: this.state.username,
+               email: this.state.email,
+               password: this.state.password,
+               forgotpass: this.state.check
+          }
+         if(!signupfields.name || !signupfields.email || !signupfields.password){
+          this.setState({error: true, errMessage:'One or more required fields are empty', type:'danger'})
+          }else{
+               this.setState({error: true, errMessage:'Signed up successfully!', type:'success'})
+          }
+
+          console.log(signupfields);
+     }
+
+     checkloginForm = (e) =>{
+          e.preventDefault();
+
+          let loginFields={
+               email: this.state.email,
+               password: this.state.password
+          }
+
+          if(!loginFields.email || !loginFields.password){
+               this.setState({error: true ,errMessage:'One or more required fields are empty', type:'danger'})
+               }
+
+               console.log(loginFields);
+     }
 
      //   Render the login screen
      login = () => {
@@ -68,14 +106,14 @@ class profile extends React.Component {
                                         <Form.Row>
                                              <Form.Group as={ Col } controlId="formGridEmail">
                                                   <Form.Label>Email</Form.Label>
-                                                  <Form.Control name='email' onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" />
+                                                  <Form.Control name='email' onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
                                              </Form.Group>
                                         </Form.Row>
 
                                         <Form.Row>
                                              <Form.Group as={ Col } controlId="formHorizontalPassword">
                                                   <Form.Label  > Password</Form.Label>
-                                                  <Form.Control name='password' onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" />
+                                                  <Form.Control name='password' onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" required/>
                                              </Form.Group>
                                         </Form.Row>
 
@@ -90,7 +128,7 @@ class profile extends React.Component {
 
                                         <Form.Group as={ Row }>
                                              <Col className='submit'>
-                                                  <Button type="submit" >Login</Button>
+                                                  <Button type="submit" onClick={ this.checkloginForm }>Login</Button>
                                              </Col>
                                         </Form.Group>
                                         { this.altLogin(false) }
@@ -117,7 +155,7 @@ class profile extends React.Component {
                                              <Form.Check
                                                        name='check1'
                                                        type="radio"
-                                                       id="custom-switch"
+                                                       id="custom-switch1"
                                                        label='Investor'
                                                        onChange={ this.handlecheckbox }
                                                        checked={ this.state.check1 }
@@ -126,7 +164,7 @@ class profile extends React.Component {
                                              <Col > <Form.Check
                                                        name='check2'
                                                        type="radio"
-                                                       id="custom-switch"
+                                                       id="custom-switch2"
                                                        label='Startup'
                                                        onChange={ this.handlecheckbox }
                                                        checked={ this.state.check2 }
@@ -137,7 +175,7 @@ class profile extends React.Component {
                                         <Form.Row>
                                              <Form.Group as={ Col } controlId="formHorizontalUsername">
                                                   <Form.Label  > {(this.state.check1)? 'Investor name' : 'Startup name'}</Form.Label>
-                                                  <Form.Control name='username' onChange={ this.handleChange } value={ this.state.username } className='shadow-sm textbox' type="text" placeholder="Enter username" />
+                                                  <Form.Control name='username' onChange={ this.handleChange } value={ this.state.username } className='shadow-sm textbox' type="text" placeholder="Enter username" required/>
                                              </Form.Group>
                                         </Form.Row>
 
@@ -145,7 +183,7 @@ class profile extends React.Component {
                                         <Form.Row>
                                              <Form.Group as={ Col } controlId="formGridEmail">
                                                   <Form.Label>Email</Form.Label>
-                                                  <Form.Control name='email' onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" />
+                                                  <Form.Control name='email' onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
                                              </Form.Group>
                                         </Form.Row>
 
@@ -153,7 +191,7 @@ class profile extends React.Component {
                                         <Form.Row>
                                              <Form.Group as={ Col } controlId="formHorizontalPassword">
                                                   <Form.Label  > Password</Form.Label>
-                                                  <Form.Control name='password' onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" />
+                                                  <Form.Control name='password' onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" required/>
                                              </Form.Group>
                                         </Form.Row>
 
@@ -167,7 +205,7 @@ class profile extends React.Component {
 
                                         <Form.Group as={ Row }>
                                              <Col className='submit'>
-                                                  <Button type="submit" onClick={ () => {this.setState({ authenticated: true }); (this.state.check1)? this.setState({registered: false}): this.setState({registered: true})}}>Sign Up</Button>
+                                                  <Button type="submit" onClick={this.checkSignForm}>Sign Up</Button>
                                              </Col>
                                         </Form.Group>
 
@@ -213,7 +251,8 @@ class profile extends React.Component {
           switch (this.state.authenticated) {
                default: return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case false: return (this.state.signup) ? this.Signin() : this.login();
-               case true: return (this.state.registered) ? <StartForm  goback={() => this.setState({authenticated: false})}/> : <InvestorForm  goback={() => this.setState({authenticated: false})}/> ; //this.userProfile()
+               case true: return (this.state.registered) ? <StartForm  goback={() => this.setState({authenticated: false})}/> : <InvestorForm  goback={() => this.setState({authenticated: false})}/> ; 
+               //this.dashboard()
           }
      }
 
@@ -221,6 +260,7 @@ class profile extends React.Component {
      render() {
           return (
                <div className="profile">
+                    {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} onDismissed={() => this.setState({error: false})} />:null}
                     {this.renderview() }
                     {this.state.live}
                </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import  {Navbar, Nav}  from 'react-bootstrap';
-import {HashRouter, Route} from 'react-router-dom';
+import {HashRouter, Link, Route} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {PersonCircle} from 'react-bootstrap-icons';
@@ -41,7 +41,7 @@ class nav extends React.Component {
                <div>
                <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
-                <Navbar.Brand href='#/'><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand>
+               <Link to='/'><Navbar.Brand><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle'/>
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  

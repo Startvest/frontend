@@ -14,7 +14,7 @@ import {Fade, Zoom, Slide} from 'react-reveal';
 import Notifyer from '../utility/notification';
 // import ConnectDB from '../utility/connectdb';
 
-class investors extends React.Component {
+class home extends React.Component {
      constructor(props) {
           super(props);
           this.state =({
@@ -133,4 +133,4 @@ class investors extends React.Component {
           
      }
 }
-export default investors;
+export default home;

@@ -29,7 +29,9 @@
      padding: 1em;
 }
 .col-startup:hover{
-     box-shadow: 2px 2px 10px 7px var(--altfade);
+     /* box-shadow: 2px 2px 10px 7px var(--altfade); */
+
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .logo{
      width: max-content;
