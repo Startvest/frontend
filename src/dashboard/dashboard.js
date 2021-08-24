@@ -1,11 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-// External notification
-import Notifyer from '../utility/notification';
-
-
 // Css File
 import './dashboard.css';
 
@@ -25,12 +19,11 @@ class Dashboard extends React.Component {
 
 render() {
      return(
-          <div>
+          <div>  
+               <div className="teamHead">
                The dashboard 
-               <div>
-                    <button onClick={() => this.setState({external: true})}>Show the external notification</button>
-                    {(this.state.external) ? <Notifyer message='This is the message, your password is incorrect' type='danger' onDismissed={() => this.setState({external: false})} />:null}
                </div>
+               <h3>Welcome Startup</h3>
           </div>
      )
 }}

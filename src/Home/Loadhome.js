@@ -31,11 +31,14 @@ class Loader extends React.Component {
      }
 
      async componentDidMount() {
+
+          // Display a warnign message that the user internet is slow
+          // If it takes long to change screen
           setTimeout(() => {
                if(this.state.load){
                     this.setState({internet: false});
                }
-          }, 4000);
+          }, 8000);
 
           let token = await Connect();
 
@@ -47,8 +50,8 @@ class Loader extends React.Component {
                     }})
                .then(response => response.json())
                .then(data => {    
-                    console.log('Investors: '); 
-                    this.setState({ investors: data , load_start:true});
+                    console.log('Investors: '+ JSON.stringify(data)); 
+                    this.setState({ investors: data.results , load_start:true});
                })
                .catch((error) => {
                console.error('Error:', error);
@@ -62,7 +65,7 @@ class Loader extends React.Component {
                .then(response => response.json())
                .then(data => {    
                     console.log('Startups: '+ data); 
-                    this.setState({ startups: data , load_invest:true});
+                    this.setState({ startups: data.results , load_invest:true});
                })
                .catch((error) => {
                console.error('Error:', error);
@@ -73,7 +76,7 @@ class Loader extends React.Component {
                     if(this.state.load_start===true && this.state.load_invest===true){
                          this.setState({load: false})   
                     }
-               }, 400);
+               }, 40);
           
      }
 

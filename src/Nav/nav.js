@@ -63,7 +63,7 @@ class nav extends React.Component {
                   <Route exact path="/startups"><Startups startups={this.props.startups}/></Route>
                   <Route exact path="/investors"><Investors investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile/></Route>  
-                  <Route exact path="/jobs"><Jobs/></Route>  
+                  <Route exact path="/jobs"><Jobs startups={this.props.startups}/></Route>  
                   <Route exact path="/dashboard"><Dashboard/></Route> 
              </div>
              </HashRouter>

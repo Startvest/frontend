@@ -86,8 +86,8 @@ class home extends React.Component {
                               <div key={ind} className='job-container shad'>
                                    <Row>
                                    <Col sm='auto'>
-                                        <div key={ind} className='col-startup-name' >{'name'}</div>
-                                        <span className='underText'> {Object.values(val.interests).map((v,i) => <span key={i}> {v}  <CircleFill className='icon-back' height={5} width={5}/> </span>)} 
+                                        <div key={ind} className='col-startup-name' >{val.name}</div>
+                                        <span className='underText'> {Object.values(val.interests).map((v,i) => <span key={i}><CircleFill className='icon-back' height={5} width={5}/> {v}  </span>)} 
                                         </span>
                                    </Col>
                                    </Row>
@@ -116,7 +116,7 @@ class home extends React.Component {
                                    <Row>
                                    <Col sm='auto'>
                                         <div key={ind} className='col-startup-name' >{val.company_name}</div>                                                                
-                                        <span className='underText'>Est. {val.est}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{Object.values(val.category).map((v,i) => v, )}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.location}</span>
+                                        <span className='underText'>Est. {val.year_established}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{Object.values(val.category).map((v,i) => v, )}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span className='underText' >{val.location}</span>
                                    </Col>
                                    </Row>
                               </div>

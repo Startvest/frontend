@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
 import { Spinner, Col, Container, Row, Carousel, Button} from 'react-bootstrap';
 import {ArrowLeft, ArrowRightShort, Person, CircleFill} from 'react-bootstrap-icons';
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 
 // Import Job view
-import Job from './job';
+import Job from '../jobs/job';
 
 // Import pictures
 import Teampic1 from '../images/gallery1.png';
@@ -36,10 +36,10 @@ class Startup extends React.Component {
                               <Col className='col-startup ' key={index}  sm={5} >
                                    <h3 className='col-startup-name' onClick={()=> {this.setState({view: 'startup', id: index})}}>{val.company_name}</h3>
                                    <p className='col-startup-sm'>{val.location}</p>
-                                   <p className='col-startup-sm'>Est. {val.est}</p>
+                                   <p className='col-startup-sm'>Established {val.year_established}</p>
                                    <p>{val.snapshot}</p>
                                    <Row>
-                                        <Col className='col-startup-sm' >{val.category[0]}</Col>
+                                        <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => v )}</Col>
                                         {(val.jobs.length > 0) ? <Col className='col-startup-job' onClick={() => {this.setState({view: 'job', id: index})}}>{Object.keys(val.jobs).length} job</Col> :''}
                                    </Row>
                               </Col>
@@ -59,43 +59,61 @@ class Startup extends React.Component {
                <div className='startups'>
                     <Container fluid>
                          <Row>
-                              <Col sm='auto'><ArrowLeft className='icon-back' width={40} height={40} onClick={() =>{this.setState({view: 'startups'})}}/></Col>
-                              <Col sm='auto'><span className='logo'>Startup Logo</span></Col>
+                              <Col xs={1}><ArrowLeft className='icon-back' width={30} height={30} onClick={() =>{this.setState({view: 'startups'})}}/></Col>
+                              <Col sm='auto'><span className='logo'><img src={startup.logo} alt={startup.company_name + ' Logo'}/></span></Col>
                               <Col sm='auto'><h3 className='startups-head'>{startup.company_name}</h3><p className='col-startup-sm'>{startup.location}</p></Col>
                          </Row>
                     </Container>
                    <Container fluid className='description'>
                     <Row>
-                         <Col sm={9}>{startup.snapshot}</Col>
-                         <Col sm='auto' className='description-desc'>
+                         <Col md={'8'} sm='auto'>{startup.snapshot}</Col>
+                         <Col md='4' sm='auto' className='description-desc'>
                          <Row ><Col>Website</Col><Col><a href={startup.website} className='link bold'>{startup.website}</a></Col></Row>
-                         <Row><Col>Staff Strength</Col><Col className='bold'>{startup.team.length}</Col></Row>
-                         <Row><Col>Founded</Col><Col className='bold'>{startup.est}</Col></Row>
+                         <Row><Col>Staff Strength</Col><Col className='bold'>{startup.company_size}</Col></Row>
+                         <Row><Col>Founded</Col><Col className='bold'>{startup.year_established}</Col></Row>
                          <Row><Col>Registered</Col ><Col className='bold'>{(startup.registered) ? 'Yes':'No'}</Col></Row>
-                         <Row><Col>Industry</Col><Col className='bold'>{startup.category[0]}</Col></Row>
+                         <Row><Col>Industry</Col><Col className='bold'>{Object.values(startup.category).map((v,i) => v )}</Col></Row>
                          <Row><Col>Business Model</Col><Col className='bold'>{startup.business_model}</Col></Row>
-                         <Row><Col>Funding State</Col><Col className='bold'>{startup.funding}</Col></Row>
+                         <Row><Col>Funding Stage</Col><Col className='bold'>{startup.funding_stage}</Col></Row>
                          </Col>
                     </Row>
                    </Container>
 
                         {/* Gallery Section */}
                         <Container fluid>
-                         <h3 className="gallery-head">Gallery</h3>
+                         
                          <Row>
                          <Col>
-                         <Carousel className='gallery shadow'>
+                         <h3 className="gallery-head">Gallery</h3>
                               {/* Add a .map function that loops throught the amount of picture given */}
-                              <Carousel.Item>
+                              {(startup.gallery.length > 0) ? 
+                                   
+                                   Object.values(startup.gallery).map((val,i) => 
+                                   <Carousel className='gallery shadow' key={i}>
+                                   <Carousel.Item key={i}>
+                                        <span>{startup.gallery}</span>
+                                   <img
+                                        className="gallery-pic"
+                                        src={val.image}
+                                        alt={ val.startup + ' slide ' + val.id }
+                                   />
+                                   <Carousel.Caption>
+                                        <h3>val.startup</h3>
+                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                   </Carousel.Caption>
+                                   </Carousel.Item>    
+                                   </Carousel>
+                                   )                               
+                              :<Carousel className='gallery shadow'><Carousel.Item>
                               <img
                                    className="gallery-pic"
                                    src={Teampic1}
                                    alt="First slide"
                               />
-                              <Carousel.Caption>
+                              {/* <Carousel.Caption>
                                    <h3>First slide label</h3>
                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                              </Carousel.Caption>
+                              </Carousel.Caption> */}
                               </Carousel.Item>
                               
                               <Carousel.Item>
@@ -105,38 +123,45 @@ class Startup extends React.Component {
                                    alt="Second slide"
                               />
                              
-                              <Carousel.Caption>
+                              {/* <Carousel.Caption>
                                    <h3>Second slide label</h3>
                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </Carousel.Caption>
+                              </Carousel.Caption> */}
                               </Carousel.Item>
-                         </Carousel>
+                              </Carousel>}
+                         
                          </Col>
+                         
                          <Col>
-                         {/* <div>Video Column</div> */}
-                         <ReactPlayer className='gallery-video' url='https://www.youtube.com/embed/suuTbKJV7Ik?autoplay=1'/>
+                         <h3 className="gallery-head">{startup.company_name + ' pitch'}</h3>
+                         <img className='gallery-video' src={startup.pitch} alt={startup.company_name + ' pitch'}/>
                          </Col>
                          </Row>
                          </Container>
 
                          {/* Team Executives Section */}
                          <Container>
-                         <h3 className="gallery-head">Key Executives</h3>
-                         <Row>
-                         {Object.values(startup.team).map((val, ind)=>
-                          <Col key={ind}><p><span id='avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
-                         )} 
-                         </Row>
-                         </Container>
+                              <Row>
+                                   <Col md={'auto'}>
+                                   <h3 className="gallery-head">Key Executives</h3>
+                                   <Row>
+                                   {Object.values(startup.team).map((val, ind)=>
+                                   <Col key={ind}><p><span id='avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
+                                   )} 
+                                   </Row>
+                                   </Col>
+                                   
 
-                         {/* Benefits of working */}
-                         <Container>
-                              <h3 className="gallery-head">Working at {startup.company_name}</h3>
-                              <ul className='working-list'> 
-                                   {startup.work_benefits.map((val, ind) => 
-                                    <li key={ind}><CircleFill className='icon-back' height={10} width={10}/>  {val} </li>
-                                   )}
-                              </ul>
+                                   {/* Benefits of working */}
+                                   <Col md={'auto'}>
+                                        <h3 className="gallery-head">Working at {startup.company_name}</h3>
+                                        <ul className='working-list'> 
+                                             {startup.work_benefits.map((val, ind) => 
+                                             <li key={ind}><CircleFill className='icon-back' height={10} width={10}/>  {val} </li>
+                                             )}
+                                        </ul>
+                                   </Col>
+                              </Row>
                          </Container>
 
                          {/* Send a mail */}

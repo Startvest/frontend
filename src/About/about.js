@@ -43,7 +43,6 @@ class about extends React.Component {
                          </Col>
                          
                     </Row>
-
                     <Container>
                          <h3 className="teamHead">Vision Statement</h3>
                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
@@ -55,10 +54,11 @@ class about extends React.Component {
                     <h2 className="teamHead">Meet our team</h2>
                     <Row>
                    
+                   
                     {Object.values(team).map((val, i)=>
-                    <div className='team-container' key={i}>
+                    <Col className='team-container' key={i} md={6}>
                          <Col key={i}><p><span id='avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val.name}</b><p>{val.position}</p></Col>     
-                    </div>
+                    </Col>
                     //   <th key={ind}>{(val) ? val:' '}</th>
                     )} 
                         

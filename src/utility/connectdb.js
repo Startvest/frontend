@@ -18,11 +18,13 @@ export default async function ConnectDB(){
                localStorage.clear('token');
                localStorage.setItem('token', data.access_token);
                console.log('Server connected successfully');
+               console.log(data);
                })
                .catch((error) => {
                console.error('Error:', error);
           });
 
+          
           return localStorage.getItem('token');
      
      // https://startvest.herokuapp.com/api/v1.0/investors/

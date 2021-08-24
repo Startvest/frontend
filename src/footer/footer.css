@@ -42,15 +42,23 @@
      text-decoration: none;
      list-style-type: none;
      margin: auto;
-     cursor: pointer;
-
  }
+
+ .footer-links ul li:not(.links-head) {
+     cursor: pointer;
+}
+ 
+.footer-links ul li:not(.links-head, .coming-soon):hover{
+     color: white;
+}
 
 .footer-text{
      margin-top: 1em;
      padding: 0;
      width: 100vw;
 }
-
+.coming-soon{
+     opacity: .3;
+}
 
 

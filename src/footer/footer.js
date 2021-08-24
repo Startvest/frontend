@@ -21,7 +21,7 @@ class footer extends React.Component {
                          <li className='links-head'>Company</li>
                          <li>About Us</li>
                          <li>Profile</li>
-                         <li>Career</li>
+                         <li className='coming-soon'>Career @ StartVest</li>
                     </ul>
                     </Col>
 
@@ -45,7 +45,7 @@ class footer extends React.Component {
                     <Col className='footer-links' md={'auto'} sm={'auto'}>
                          <ul>
                               <li className='links-head'>Contact us</li>
-                              <li><span><EnvelopeFill color='#9EB3C2' /></span> <span className='links-a-head'>Email</span> - <a href='mailto:admin@startvest.io'>admin@startvest.io</a></li>
+                              <li><span><EnvelopeFill color='#9EB3C2' /></span> <span className='links-a-head'>Email</span> - <a href='mailto:admin@startvest.io'>contact@startvest.io</a></li>
                               <li><span><TelephoneOutboundFill color='#9EB3C2' /></span> <span className='links-a-head'>Phone</span> - <a href='tel:+2349096281736'>+234 909 628 1736</a></li>
                               <li><span><GeoAltFill color='#9EB3C2' /></span> <span className='links-a-head'>Location</span> - Abuja, Nigeria</li>
                          </ul>

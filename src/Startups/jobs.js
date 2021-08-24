@@ -16,7 +16,7 @@ const Job = ({startup, goback}) => {
                     <Col sm={6}><ArrowLeft className='icon-back' width={40} height={40} onClick={goback}/></Col>
                     <Col sm={6}><span className='logo'>Startup Logo</span></Col>
                      <Col sm={12}>
-                     <h1 className='startups-head'>{val.name}</h1>
+                     <h1 className='startups-head '>{val.name}</h1>
                      <p className='job-overview'><span>{val.role}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span>{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span>  <span>{val.salary}</span></p>
                      </Col>
                 </Row>

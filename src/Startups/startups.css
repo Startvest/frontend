@@ -6,6 +6,7 @@
 .startups{
      margin: 1em auto;
 }
+
 .startups-head{
      font-size: xx-large;
      font-weight: bold;
@@ -34,10 +35,10 @@
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .logo{
-     width: max-content;
-     height: max-content;
+     width: min-content;
+     height: min-content;
      background-color: var(--primary);
-     border-radius:  20px;
+     border-radius:  50%;
      display: inline-block;
      color: white;
      padding: 1em;
@@ -116,8 +117,9 @@
 .gallery-head{
      font-size: large;
      font-weight: bold;
-     text-align: left;
+     text-align: center;
      margin-top: 2em;
+     color: var(--primary);
 }
 .gallery-pic{
      width: 100%;
