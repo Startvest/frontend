@@ -7,6 +7,10 @@ import { Google  } from 'react-bootstrap-icons';
 import StartForm from './startupForm';
 import InvestorForm from './investorForm';
 
+// Loading animation
+import { css } from "@emotion/react";
+import SyncLoader from "react-spinners/SyncLoader";
+
 // SVG Images used
 // import TeamPic from '../images/team_3.svg';
 import Login from '../images/login.svg';
@@ -24,18 +28,47 @@ class profile extends React.Component {
                user: [],
                authenticated: false,
                registered: false,//If the user is a new user
-               startup: true,
+               is_startup: true,
 
                // Login or signup
-               signup: true,
+               signup: false,
 
                // st the default values of the radio buttons
                check2: true, //Making the radio of startup true
-               check1: false
+               check1: false,
 
-
+               // Disable multiple notificationns by default
+               multiple:false,
           });
      }
+     // override css file for loading bar
+     override = css`
+          display: block;
+          margin: auto;
+          `;
+     componentDidMount(){
+          window.scrollTo(0, 0);
+
+     // Check if the current user is signed in 
+     // Then deletes the token and user data stored in the local storage if not found
+          if(localStorage.getItem('user_token') !== null){
+
+                // Stores the user data in the local storage
+                this.setState({is_startup: localStorage.getItem('is_startup'), authenticated:true, registered: false});
+
+               // Thes are highlighted until the dashboard has been designed so a startup can get the appropriate information when called
+               // localStorage.getItem('registered')
+               //  localStorage.getItem('user_data', [{'results':'Coming Soon'}]);
+          }else{
+               localStorage.removeItem('user_token')
+               localStorage.removeItem('is_startup');
+                localStorage.removeItem('registered');
+                localStorage.removeItem('user_data');
+          }
+
+          console.log(localStorage.getItem('user_token'))
+     }
+     
 
      handlecheckbox = ({target}) => {
           if(target.name === 'check1'){
@@ -56,6 +89,10 @@ class profile extends React.Component {
      // send a notification if any of them is empty
      checkSignForm = (e) =>{
           e.preventDefault();
+
+          // Set the login button to load
+          this.setState({loading: true});
+
           let signupfields = {
                investor: this.state.check1, 
                startup: this.state.check2, 
@@ -65,12 +102,12 @@ class profile extends React.Component {
                password2: this.state.password2,
                forgotpass: this.state.check
           }
-         if(!signupfields.name || !signupfields.email || !signupfields.password){
-          this.setState({error: true, errMessage:'One or more required fields are empty', type:'danger'})
+         if(!signupfields.name || !signupfields.email || !signupfields.password1 || !signupfields.password2){
+          this.setState({error: true, errMessage:'One or more required fields are empty', type:'danger', loading:false})
+       
           }else{
                     const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';
 
-                    
                     fetch(`${staging}users/registration/`, {
                               method: 'POST', 
                               headers: {
@@ -80,14 +117,16 @@ class profile extends React.Component {
                                         "username": signupfields.name,
                                         "email": signupfields.email,
                                         "password1": signupfields.password1,
-                                        "password2": signupfields.password2}),
+                                        "password2": signupfields.password2
+                                   }),
                               })
                               .then(res => res.json())
                               .then(data => {    
-                                   console.log(data); 
+                                   // console.log(data); 
                                    if(data.access_token){
-                    //                // this.setState({error: true, errMessage:'Signed up successfully!', type:'success'})
-                                   // https://startvest-staging.herokuapp.com/api/v1.0/users/create_user_type/{uid}
+           
+                                        // Stores the token in the local storage
+                                        localStorage.setItem('user_token', data.access_token);
 
                                    fetch(`${staging}users/create_user_type/${data.user.pk}`, {
                                         method: 'POST', 
@@ -104,25 +143,37 @@ class profile extends React.Component {
                                         .then(response => response.json())
                                         .then(data => {    
                                              console.log(data); 
-                                             // Show notification error
+                                             // Show notification message
                                              this.setState({error: true, errMessage:'Signed up successfully!', type:'success'})
 
                                              // Change View
-                                             this.setState({startup : data.is_startup, authenticated:true, registered:false}) //registere
+                                             this.setState({is_startup : data.is_startup, authenticated:true, registered:data.verified, loading:false})
+
+                                              // Stores the user data in the local storage
+                                              localStorage.setItem('is_startup', data.is_startup);
+                                              localStorage.setItem('registered', data.verified)
+                                              localStorage.setItem('user_data', [{'results':'Coming Soon'}]);
                                         })
                                         .catch((error) => {
                                         console.error('Error:', error);
-                                        this.setState({error: true, errMessage:'Unable to assign status, Server Error', type:'danger'})
-                                        
+                                        this.setState({error: true, errMessage:'Unable to assign status, Server Error', type:'danger', loading:false})
+                                       
+                                        // Deletes the token from local storage
+                                        localStorage.removeItem('user_token');
                                    });
                               }else{
-                                   throw new Error(data);
+                                   this.setState({error: true, errMessage: Object.values(data), type:'danger', multiple:true, loading:false});
+                                   // Deletes the token from local storage
+                                   localStorage.removeItem('user_token');
                               }
                               })
                               .catch((error) => {
                               console.error('Error:', error);
                               // this.setState({error: true, errMessage:Object.values(error).map((v,i) => v), type:'danger'})
-                              this.setState({error: true, errMessage:'Unable to sign you in', type:'danger'})
+                              this.setState({error: true, errMessage:'Unable to sign you in', type:'danger', loading:false})
+
+                              // Deletes the token from local storage
+                              localStorage.removeItem('user_token');
                          });
 
 
@@ -132,13 +183,17 @@ class profile extends React.Component {
      checkloginForm = (e) =>{
           e.preventDefault();
 
+          // Set the login button to load
+          this.setState({loading: true});
+
           let loginFields={
                email: this.state.email,
                password: this.state.password
           }
 
           if(!loginFields.email || !loginFields.password){
-               this.setState({error: true ,errMessage:'One or more required fields are empty', type:'danger'})
+               this.setState({error: true ,errMessage:'One or more required fields are empty', type:'danger', loading: false})
+
           }else{
                const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';
 
@@ -155,9 +210,11 @@ class profile extends React.Component {
                               })
                               .then(response => response.json())
                               .then(data => {    
-                                   // console.log(data.access_token); 
-                                   // this.setState({error: true, errMessage:'Signed up successfully!', type:'success'})
-                                   // https://startvest-staging.herokuapp.com/api/v1.0/users/create_user_type/{uid}
+
+                                   // Stores the token in the local storage
+                                   localStorage.setItem('user_token', data.access_token);
+
+                                   if(data.access_token){
 
                                    fetch(`${staging}users/get_user_type/${data.user.pk}`, {
                                         method: 'GET', 
@@ -166,22 +223,40 @@ class profile extends React.Component {
                                         }})
                                         .then(response => response.json())
                                         .then(data => {    
-                                             // console.log(data);
-
+                                             
                                              // Notification bar
                                              this.setState({error: true, errMessage:'Logged in successfully!', type:'success'})
 
                                              // Change view
-                                             this.setState({startup : data.is_startup, authenticated:true, registered:false}) //registere
+                                             this.setState({is_startup : data.is_startup, authenticated:true, registered: data.verified, loading:false}) 
+                                            
+                                             // Stores the user data in the local storage
+                                            
+
+                                             localStorage.setItem('is_startup', data.is_startup);
+                                             localStorage.setItem('registered', data.verified)
+                                             localStorage.setItem('user_data', [{'results':'Coming Soon'}]);
                                         })
                                         .catch((error) => {
                                         console.error('Error:', error);
-                                        this.setState({error: true, errMessage:'Unable to get status, Server Error', type:'danger'})
+                                        this.setState({error: true, errMessage:'Unable to get status, Server Error', type:'danger', loading:false})
+
+                                        // Deletes the token from local storage
+                                        localStorage.removeItem('user_token');
                                    });
+                              }else{
+                                   this.setState({error: true, errMessage: Object.values(data), type:'danger', multiple:true, loading:false});
+
+                                   // Deletes the token from local storage
+                                   localStorage.removeItem('user_token');
+                              }
                               })
                               .catch((error) => {
                               console.error('Error:', error);
-                              this.setState({error: true, errMessage:'Check your login details and try again', type:'danger'})
+                              this.setState({error: true, errMessage:'Check your login details and try again', type:'danger', loading:false});
+
+                              // Deletes the token from local storage
+                              localStorage.removeItem('user_token');
                          });
           }
      }
@@ -197,21 +272,21 @@ class profile extends React.Component {
                                    <h2>Login</h2>
                                    <Form autoComplete='on'>
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formGridEmail">
+                                             <Form.Group as={ Col } controlId="loginEmail">
                                                   <Form.Label>Email</Form.Label>
-                                                  <Form.Control name='email' autocomplete="email" onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
+                                                  <Form.Control name='email' autoComplete="email" onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
                                              </Form.Group>
                                         </Form.Row>
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formHorizontalPassword">
+                                             <Form.Group as={ Col } controlId="loginPassword">
                                                   <Form.Label  > Password</Form.Label>
-                                                  <Form.Control name='password' autocomplete="current-password" onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" required/>
+                                                  <Form.Control name='password' autoComplete="current-password" onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' type="password" placeholder="Password" required/>
                                              </Form.Group>
                                         </Form.Row>
 
 
-                                        <Form.Group as={ Row } controlId="formHorizontalCheck">
+                                        <Form.Group as={ Row } controlId="loginCheck">
                                              <Col>
                                                   <Form.Check name='check' onChange={ this.handleChange } value={ this.state.check } label="Remember me" checked={ this.state.check } />
                                              </Col>
@@ -219,9 +294,10 @@ class profile extends React.Component {
                                         </Form.Group>
 
 
+
                                         <Form.Group as={ Row }>
                                              <Col className='submit'>
-                                                  <Button type="submit" onClick={ this.checkloginForm }>Login</Button>
+                                                  <Button type="submit" onClick={ this.checkloginForm }> {(this.state.loading) ? <SyncLoader color={'#21295C'} loading={this.state.loading} css={this.override} size={7} margin={5} speedMultiplier={0.8} /> : 'Login'} </Button>
                                              </Col>
                                         </Form.Group>
                                         { this.altLogin(false) }
@@ -267,37 +343,42 @@ class profile extends React.Component {
 
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formHorizontalUsername">
+                                             <Form.Group as={ Col } controlId="SignUsername">
                                                   <Form.Label  > {(this.state.check1)? 'Investor name' : 'Startup name'}</Form.Label>
-                                                  <Form.Control name='username' autocomplete="username" onChange={ this.handleChange } value={ this.state.username } className='shadow-sm textbox' type="text" placeholder={(this.state.check1)? 'Enter investor\'s name' : 'Enter Business name'} required/>
+                                                  <Form.Control name='username' autoComplete="username" onChange={ this.handleChange } value={ this.state.username } className='shadow-sm textbox' type="text" placeholder={(this.state.check1)? 'Enter investor\'s name' : 'Enter Business name'} required/>
                                              </Form.Group>
                                         </Form.Row>
 
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formGridEmail">
+                                             <Form.Group as={ Col } controlId="signEmail">
                                                   <Form.Label>Email</Form.Label>
-                                                  <Form.Control name='email' autocomplete="email" onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
+                                                  <Form.Control name='email' autoComplete="email" onChange={ this.handleChange } value={ this.state.email } className='shadow-sm textbox' type="email" placeholder="Enter email" required/>
                                              </Form.Group>
                                         </Form.Row>
 
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formHorizontalPassword">
+                                             <Form.Group as={ Col } controlId="signPassword">
                                                   <Form.Label  > Password</Form.Label>
-                                                  <Form.Control name='password1' autocomplete="new-password" onChange={ this.handleChange } value={ this.state.password1 } className='shadow-sm textbox' type="password" placeholder="Enter password" required/>
+                                                  <Form.Control name='password1' autoComplete="new-password" onChange={ this.handleChange } value={ this.state.password1 } className='shadow-sm textbox' type="password" placeholder="Enter password" required/>
+                                                  <Form.Text id="passwordHelpBlock" muted>
+                                                  Your password must be 8-20 characters long, contain letters and numbers, and
+                                                  must not contain spaces, special characters, or emoji.
+                                                  </Form.Text>
+
                                              </Form.Group>
                                         </Form.Row>
 
                                         <Form.Row>
-                                             <Form.Group as={ Col } controlId="formHorizontalPassword">
+                                             <Form.Group as={ Col } controlId="signPassword2">
                                                   <Form.Label  > Confirm Password</Form.Label>
-                                                  <Form.Control name='password2' autocomplete="new-password" onChange={ this.handleChange } value={ this.state.password2 } className='shadow-sm textbox' type="password" placeholder="Confirm password" required/>
+                                                  <Form.Control name='password2' autoComplete="new-password" onChange={ this.handleChange } value={ this.state.password2 } className='shadow-sm textbox' type="password" placeholder="Confirm password" required/>
                                              </Form.Group>
                                         </Form.Row>
 
 
-                                        <Form.Group as={ Row } controlId="formHorizontalCheck">
+                                        <Form.Group as={ Row } controlId="signCheck">
                                              <Col>
                                                   <Form.Check name='check' onChange={ this.handleChange } value={ this.state.check } label="Remember me" />
                                              </Col>
@@ -306,7 +387,7 @@ class profile extends React.Component {
 
                                         <Form.Group as={ Row }>
                                              <Col className='submit'>
-                                                  <Button type="submit" onClick={this.checkSignForm}>Sign Up</Button>
+                                                  <Button type="submit" onClick={this.checkSignForm}> {(this.state.loading) ? <SyncLoader color={'#21295C'} loading={this.state.loading} css={this.override} size={7} margin={5} speedMultiplier={0.8} /> : 'Sign Up'}</Button>
                                              </Col>
                                         </Form.Group>
 
@@ -353,7 +434,7 @@ class profile extends React.Component {
           switch (this.state.authenticated) {
                default: return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case false: return (this.state.signup) ? this.Signin() : this.login();
-               case true: return (this.state.registered) ? <Dashboard/> : (this.state.startup) ? <StartForm  goback={() => this.setState({authenticated: false})}/> : <InvestorForm  goback={() => this.setState({authenticated: false})}/> ; 
+               case true: return (this.state.registered) ? <Dashboard/> : (this.state.is_startup) ? <StartForm  goback={() => this.setState({authenticated: false})}/> : <InvestorForm  goback={() => this.setState({authenticated: false})}/> ; 
                //this.dashboard()
           }
      }
@@ -362,7 +443,7 @@ class profile extends React.Component {
      render() {
           return (
                <div className="profile">
-                    {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} onDismissed={() => this.setState({error: false})} />:null}
+                    {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} multiple={this.state.multiple} onDismissed={() => this.setState({error: false})} />:null}
                     {this.renderview() }
                     {this.state.live}
                </div>

@@ -26,10 +26,13 @@ class home extends React.Component {
                investors: this.props.investors,
                startups: this.props.startups,
 
+               // Make the multiple option of the notification false
+               multiple: false
           })
      }
 
      async componentDidMount(){
+          window.scrollTo(0, 0);
           this.interval = setInterval(() => {
               this.countStartups()
           }, 2000);
@@ -50,7 +53,7 @@ class home extends React.Component {
      render(){
           return(
                <div className="Home">
-                     {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} onDismissed={() => this.setState({error: false})} />:null}
+                     {(this.state.error) ? <Notifyer message={this.state.errMessage} type={this.state.type} multiple={this.state.multiple} onDismissed={() => this.setState({error: false})} />:null}
                     <h1 className='Home-head'>Where your idea meets funding!</h1>
                     <Container className='homePage' fluid>
                          <Row className='flex-column-reverse flex-md-row'>

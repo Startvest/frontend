@@ -70,11 +70,13 @@ Form{
      border: none ;
      font-weight: bold;
 }
-.submit Button:hover{
-    background: transparent;
+.submit Button:hover , .submit Button:focus, .submit Button:active{
+     outline: none;
+     background: transparent;
     border: 2px solid var(--primary);
     color: var(--primary);
 }
+
 .icons{
      color: white;
      height: 1em;

@@ -6,15 +6,17 @@ import {Alert, AlertContainer} from 'react-bs-notifier';
 // Css
 import './notification.css';
 
+// Animation
+import {Slide} from 'react-reveal';
 
-export default function Notifyer({message, type, onDismissed}) {
+export default function Notifyer({message, type, onDismissed, multiple}) {
   // const [alertTimeout] = useState(3000);
 //   const [position] = useState('top-right');
 
 // info, warning, danger, or success 
         setTimeout(() => {
           onDismissed(); //Clears the notification after 3 seconds
-        },3000);
+        },5000);
 
          function icon(){
           switch(type){
@@ -28,7 +30,19 @@ export default function Notifyer({message, type, onDismissed}) {
   return (
           <div>
               <AlertContainer>
-                  <Alert type={type} >{icon()} {message}</Alert>
+                {/* If there are multiple messages, it loops them then show it */}
+                {(multiple) ? 
+                message.map((v,i) => 
+                <Slide right>
+                <Alert type={type} >{icon()} {v}</Alert>
+                </Slide>
+                )
+                : 
+                <Slide right>
+                <Alert type={type} >{icon()} {message}</Alert>
+                </Slide>
+                }
+               
                 </AlertContainer>
           </div>
   );

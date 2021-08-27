@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 
 import {Button, Form, Col, Row} from 'react-bootstrap';
-import {Info, ArrowLeft} from 'react-bootstrap-icons';
+import {Info} from 'react-bootstrap-icons';
 
 // Back button
 import {} from 'react-bootstrap-icons';
@@ -21,20 +21,17 @@ class StartupForm extends React.Component {
           this.setState({ [target.name]: target.type === 'checkbox' ? target.checked : target.value });
      };
 
-     // sendData = () => {
-     //      this.props.goback();
-     // }
-
+   
 render(){
      return(
           <div className='form shadow'>
                <Row>
-                    <Col xs={1} >
+                    {/* <Col xs={1} >
                          <ArrowLeft className='icon-back' width={30} height={30} onClick={this.props.goback}/>
-                    </Col>
+                    </Col> */}
 
                     <Col>
-                         <h3 className="profile-head">Registration form for starturps</h3>
+                         <h3 className="profile-head">Register your startup</h3>
                     </Col>
                </Row>
                <Form>
@@ -83,7 +80,9 @@ render(){
 
 
                <Form.Group>
-               <Form.File id="exampleFormControlFile1" label="Startup's Logo" />
+               {/* <Form.Label>Default file input example</Form.Label>
+               <Form.Control type="file" /> */}
+               <Form.File id="exampleFormControlFile1" label="Startup's Logo" type='image'/>
                </Form.Group>
 
                <Form.Group>

@@ -3,15 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 
 import {Button, Form, Col, Row} from 'react-bootstrap';
-import {ArrowLeft} from 'react-bootstrap-icons';
+
 
 const InvestorForm = ({goback})=>{
      return(
           <div className='form shadow'>
                <Row>
-                    <Col xs={1} >
+                    {/* <Col xs={1} >
                          <ArrowLeft className='icon-back' width={30} height={30} onClick={goback}/>
-                    </Col>
+                    </Col> */}
 
                     <Col>
                     <h3 className="profile-head">Registration as an Investor</h3>

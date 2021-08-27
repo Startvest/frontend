@@ -15,7 +15,7 @@ export default async function ConnectDB(){
                })
                .then(response => response.json())
                .then(data => {    
-               localStorage.clear('token');
+               localStorage.removeItem('token');
                localStorage.setItem('token', data.access_token);
                console.log('Server connected successfully');
                console.log(data);

@@ -43,12 +43,15 @@
      list-style-type: none;
      margin: auto;
  }
-
- .footer-links ul li:not(.links-head) {
+ .footer-links ul li a{
+      text-decoration: none;
+      color: inherit;
+ }
+ .footer-links ul li a:not(.links-head) {
      cursor: pointer;
 }
  
-.footer-links ul li:not(.links-head, .coming-soon):hover{
+.footer-links ul li a:not(.links-head, .coming-soon):hover{
      color: white;
 }
 

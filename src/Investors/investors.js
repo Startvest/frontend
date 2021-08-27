@@ -14,6 +14,7 @@ class investors extends React.Component {
      }
      
      async componentDidMount() {
+          window.scrollTo(0, 0);
      }
 
      render(){

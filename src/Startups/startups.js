@@ -23,7 +23,15 @@ class Startup extends React.Component {
 
             hover: true
           })
+          console.log(this.state.startups);
         }
+
+
+        
+     componentDidMount(){
+          window.scrollTo(0, 0);
+     }
+
 
      // Render the startups in column view
      startups = () => {  
@@ -40,7 +48,7 @@ class Startup extends React.Component {
                                    <p>{val.snapshot}</p>
                                    <Row>
                                         <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => v )}</Col>
-                                        {(val.jobs.length > 0) ? <Col className='col-startup-job' onClick={() => {this.setState({view: 'job', id: index})}}>{Object.keys(val.jobs).length} job</Col> :''}
+                                        {/* {(val.jobs.length > 0) ? <Col className='col-startup-job' onClick={() => {this.setState({view: 'job', id: index})}}>{Object.keys(val.jobs).length} job</Col> :''} */}
                                    </Row>
                               </Col>
                     )}
@@ -83,7 +91,7 @@ class Startup extends React.Component {
                         <Container fluid>
                          
                          <Row>
-                         <Col>
+                         <Col sm={'auto'}>
                          <h3 className="gallery-head">Gallery</h3>
                               {/* Add a .map function that loops throught the amount of picture given */}
                               {(startup.gallery.length > 0) ? 
@@ -132,7 +140,7 @@ class Startup extends React.Component {
                          
                          </Col>
                          
-                         <Col>
+                         <Col sm={'auto'}>
                          <h3 className="gallery-head">{startup.company_name + ' pitch'}</h3>
                          <img className='gallery-video' src={startup.pitch} alt={startup.company_name + ' pitch'}/>
                          </Col>

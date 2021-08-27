@@ -15,10 +15,16 @@ class jobs extends React.Component {
             view: 'jobs',
             id: null , //id number of the startup to open
 
-            startups: this.props.startups,
-            jobs: this.props.startups.jobs
+             jobs: this.props.jobs,
+
+          //    loader   
+          load: true
           })
          
+     }
+
+     componentDidMount(){
+          window.scrollTo(0, 0);
      }
 
      jobs = () =>{
@@ -35,7 +41,8 @@ class jobs extends React.Component {
                          <Row>
                          {/* <Col sm='auto'><CircleFill className='icon-back' height={50} width={50}/></Col> */}
                          <Col sm='auto'>
-                              <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: ind, view: 'job' })}}>{val.company}</div>
+                              <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: ind, view: 'job' })}}>{val.company.company_name}</div>
+                              <p>{val.description}</p>
                               <span>{val.job_title}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.job_type}</span>
                          </Col>
                          </Row>
@@ -58,7 +65,7 @@ class jobs extends React.Component {
           switch(this.state.view){
                default: return <div><Spinner className="load"  animation='border' color='#21295C'/></div>
                    case 'jobs': return this.jobs();
-                   case 'job': return <Job job={this.state.jobs[this.state.id]} goback={() =>{this.setState({view: 'jobs'})}}/>;
+                   case 'job': return <Job job={this.state.jobs[this.state.id]} id={this.state.id} goback={() =>{this.setState({view: 'jobs'})}}/>;
                    
            }
      }
@@ -66,6 +73,7 @@ class jobs extends React.Component {
      render(){
           return(
           <div className='job-view'>
+                
                {this.renderview()}
           </div>
           )

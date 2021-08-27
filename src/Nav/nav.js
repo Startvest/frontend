@@ -14,6 +14,8 @@ import Investors from '../Investors/investors';
 import Profile from '../Profile/profile';
 import Jobs from '../jobs/jobs';
 import Dashboard from '../dashboard/dashboard';
+import TC from '../policies/t&c';
+import Policy from '../policies/policy';
 
 
 // The logo
@@ -63,8 +65,11 @@ class nav extends React.Component {
                   <Route exact path="/startups"><Startups startups={this.props.startups}/></Route>
                   <Route exact path="/investors"><Investors investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile/></Route>  
-                  <Route exact path="/jobs"><Jobs startups={this.props.startups}/></Route>  
+                  <Route exact path="/jobs"><Jobs jobs={this.props.jobs}/></Route>  
                   <Route exact path="/dashboard"><Dashboard/></Route> 
+                  <Route exact path="/policy"><Policy/></Route> 
+                  <Route exact path="/terms"><TC/></Route> 
+                  
              </div>
              </HashRouter>
              

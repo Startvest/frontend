@@ -1,9 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {ExclamationTriangle} from 'react-bootstrap-icons';
-// Loading animation for react
-import ReactLoading from 'react-loading';
 import './Home.css';
+import {ExclamationTriangle} from 'react-bootstrap-icons';
+
+
+// New Loader
+import { css } from "@emotion/react";
+import BarLoader from "react-spinners/BarLoader";
+
 
 // Logo
 import Logo from '../images/load-logo.png';
@@ -28,10 +32,18 @@ class Loader extends React.Component {
                investors: [],
                startups: []
           }
+
      }
 
-     async componentDidMount() {
+     
+      override = css`
+          display: block;
+          margin: 2em auto;
+          border-radius: 40px;
+          background: none;
+          `;
 
+     async componentDidMount() {
           // Display a warnign message that the user internet is slow
           // If it takes long to change screen
           setTimeout(() => {
@@ -50,7 +62,7 @@ class Loader extends React.Component {
                     }})
                .then(response => response.json())
                .then(data => {    
-                    console.log('Investors: '+ JSON.stringify(data)); 
+                    // console.log('Investors: '+ JSON.stringify(data)); 
                     this.setState({ investors: data.results , load_start:true});
                })
                .catch((error) => {
@@ -64,16 +76,29 @@ class Loader extends React.Component {
                     }})
                .then(response => response.json())
                .then(data => {    
-                    console.log('Startups: '+ data); 
+                    // console.log('Startups: '+ JSON.stringify(data)); 
                     this.setState({ startups: data.results , load_invest:true});
                })
                .catch((error) => {
                console.error('Error:', error);
           });
            
+          fetch(`${staging}startups/viewjobs/`, {
+               method: 'GET', 
+               headers: {
+                         Authorization: `Bearer ${token}` 
+                    }})
+               .then(response => response.json())
+               .then(data => {    
+                    // console.log('Available jobs: '+ JSON.stringify(data)); 
+                    this.setState({ jobs: data.results , load_jobs:true});
+               })
+               .catch((error) => {
+               console.error('Error:', error);
+          });
                 // Check if all the data from the database has loaded before calling the main loadS
                 setInterval(() => {
-                    if(this.state.load_start===true && this.state.load_invest===true){
+                    if(this.state.load_start && this.state.load_invest  && this.state.load_jobs){
                          this.setState({load: false})   
                     }
                }, 40);
@@ -88,7 +113,7 @@ class Loader extends React.Component {
                <div>
                     <div className='Load'>
                          <div><img src={Logo} alt='Our logo' height={55}/></div>
-                          <ReactLoading className='load-animation' type='bubbles' color='#21295C' height={20} width={90} /> 
+                          <BarLoader color={'#21295C'} loading={true} css={this.override} height={3} width={200} speedMultiplier={0.8} />
                     </div>
 
                     {(this.state.internet === false) ? 
@@ -106,7 +131,7 @@ class Loader extends React.Component {
           switch(this.state.load){
                default: return this.loadScreen();
                case true: return this.loadScreen();
-               case false: return  <Nav investors={this.state.investors} startups={this.state.startups}/>;
+               case false: return  <Nav investors={this.state.investors} startups={this.state.startups} jobs={this.state.jobs}/>;
           }
      }
 
