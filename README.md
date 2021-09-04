@@ -4,7 +4,7 @@
  
  ---
 # The frontend of Startvest platform
-The live version is available at this [startvest.github.io/frontend](https://startvest.io/)
+The live version is available at this [https://startvest.io/](https://startvest.io/)
 
 ### Hosting
 
