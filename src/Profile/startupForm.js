@@ -13,6 +13,7 @@ import {Info} from 'react-bootstrap-icons';
 // Import Notifications
 import Notifyer from '../utility/notification';
 
+// THe proptypes for the function is below
 function StartupForm({registered, user_data, req, proceed}){
 
      const user = JSON.parse(user_data).user;
