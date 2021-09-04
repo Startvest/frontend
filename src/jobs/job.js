@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Startups/startups.css';
+import PropTypes from 'prop-types';
 
 import {Col, Container, Row, Button} from 'react-bootstrap';
 import {ArrowLeft, CircleFill, ArrowRightShort} from 'react-bootstrap-icons';
@@ -52,6 +53,11 @@ function Job({job, goback}){
               
           </div>
      )
+}
+
+Job.propTypes ={
+     job: PropTypes.object.isRequired, 
+     goback: PropTypes.func.isRequired
 }
 
 export default Job;

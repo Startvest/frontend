@@ -6,8 +6,9 @@
      margin: 0;
      position: absolute;
      top: 50%;
-     left: 50%;
+     left: 48%;
      color: var(--secondary);
+     
 }
 
 .profile{
@@ -53,6 +54,10 @@ Form{
 .user_type{
      text-align: left;
 }
+.pass-eye{
+    background: inherit;
+    border: none;
+}
 .forgot{
      color: var(--primary);
      cursor: pointer;
@@ -94,8 +99,12 @@ Form{
 
 
 /* Css for Startup Form and Investor form*/
+.required{
+     color: red;
+     font-size: large;
+}
 .form{
-     width: 70%;
+     width: 60%;
      height: max-content;
      border-radius: 10px;
      padding: 1em;
@@ -108,11 +117,16 @@ Form{
      border: 1px solid transparent;
      border-top: none;
      border-bottom: 1px solid #DDD;
-     box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.253), 0 -1px 1px #FFF, 0 1px 0 #FFF;
    }
 Form{
      color: var(--primary);
 }
+
+.form-input:invalid{
+     border: 1px solid red;
+}
+
 .google-signin{
      height: 2em;
      width: fit-content;
@@ -130,3 +144,16 @@ Form{
       }
 }
 
+
+/* Verify Email and LOading box */
+
+.box_design{
+     background-color: var(--accent);
+     border-radius:20px;
+     min-height: 30vh;
+     min-width: 50vw;
+     max-width: 60vw;
+     margin: auto;
+     padding: 1em;
+     margin-top: 20vh;
+}

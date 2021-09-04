@@ -45,6 +45,7 @@ class footer extends React.Component {
 
                     <Col className='footer-links' md={'auto'} sm={'auto'}>
                          <ul>
+                              
                               <li className='links-head'>Contact us</li>
                               <li><span><EnvelopeFill color='#9EB3C2' /></span> <span className='links-a-head'>Email</span> - <a className='contact-link' href='mailto:admin@startvest.io'>contact@startvest.io</a></li>
                               <li><span><TelephoneOutboundFill color='#9EB3C2' /></span> <span className='links-a-head'>Phone</span> - <a href='tel:+2349096281736'>+234 909 628 1736</a></li>

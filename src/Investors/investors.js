@@ -4,6 +4,7 @@ import './investors.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {Person, CircleFill} from 'react-bootstrap-icons';
 
+import PropTypes from 'prop-types';
 
 class investors extends React.Component {
      constructor(props) {
@@ -38,5 +39,9 @@ class investors extends React.Component {
           </div>
           )
      }
+}
+
+investors.propTypes = {
+     investors: PropTypes.object
 }
 export default investors;

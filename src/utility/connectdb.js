@@ -18,7 +18,8 @@ export default async function ConnectDB(){
                localStorage.removeItem('token');
                localStorage.setItem('token', data.access_token);
                console.log('Server connected successfully');
-               console.log(data);
+              
+              
                })
                .catch((error) => {
                console.error('Error:', error);

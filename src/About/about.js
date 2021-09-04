@@ -55,17 +55,17 @@ class about extends React.Component {
                     </Container>
 
                     <h2 className="teamHead">Meet our team</h2>
+                    <Container className='meet_the_team'>
                     <Row>
-                   
-                   
                     {Object.values(team).map((val, i)=>
-                    <Col className='team-container' key={i} md={6}>
+                    <Col className='team-container' key={i} md={3}>
                          <Col key={i}><p><span id='avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val.name}</b><p>{val.position}</p></Col>     
                     </Col>
                     //   <th key={ind}>{(val) ? val:' '}</th>
-                    )} 
-                        
+                    )}  
                     </Row>
+                    </Container>
+
                </Container>
           </div>
           )
