@@ -58,8 +58,7 @@ class profile extends React.Component {
 
      componentDidMount(){
           window.scrollTo(0, 0);
-
-
+ 
           // Take this function to the profile page to 
      // Check if the user is still signed in, then gives the form
      const tellDB = ((e) =>{
@@ -92,11 +91,25 @@ class profile extends React.Component {
 
                               this.setState({state: 'signup'});
                          }else{
+                              
                               // Stores the user data in the local storage
-                         this.setState({is_startup: (localStorage.getItem('is_startup').toLowerCase() === 'true'), user_data: localStorage.getItem('user_data'), state:'auth', registered: false});
+                         this.setState({is_startup: (localStorage.getItem('is_startup').toLowerCase() === 'true'), user_data: localStorage.getItem('user_data')});
 
                          // Thes are highlighted until the dashboard has been designed so a startup can get the appropriate information when called
-                         // localStorage.getItem('registered')
+                         // Get the registered field from the startup using a short fetch request
+                         fetch(`${staging}startups/${JSON.parse(localStorage.getItem('user_data')).user.pk}`,{
+                              method: 'GET', 
+                              headers:{
+                                   Authorization: `Bearer ${token}`
+                              }})
+                         .then(response => response.json())
+                         .then(startup => {
+                                
+                              this.setState({state: 'auth', registered: Boolean(false)}); //registered: Boolean(startup.registered)
+                              
+                         }).catch((error) => {this.setState({state: 'auth', registered: false}) });
+
+                         
                          }
                     }).catch((error) =>{
                          console.log(error);
@@ -258,21 +271,36 @@ class profile extends React.Component {
                                         // Stores the token in the local storage
                                    localStorage.setItem('user_token', data.access_token);
                                    localStorage.setItem('user_data', JSON.stringify(data));
+                                        let id = data.user.pk;
+                                        let token = data.access_token;
 
-                                   fetch(`${staging}users/get_user_type/${data.user.pk}`, {
+                                   fetch(`${staging}users/get_user_type/${id}`, {
                                         method: 'GET', 
                                         headers:{
-                                             Authorization: `Bearer ${data.access_token}`
+                                             Authorization: `Bearer ${token}`
                                         }})
                                         .then(response => response.json())
                                         .then(data => {    
                                              
                                              // Notification bar
                                              this.setState({error: true, errMessage:'Logged in successfully!', type:'success'})
-
-                                             // Change view
-                                             this.setState({is_startup : data.is_startup, state:'auth', user_data: localStorage.getItem('user_data'), registered: data.verified, loading:false}) 
                                             
+                                             // Set the data to the state First
+                                             this.setState({is_startup : data.is_startup, user_data: localStorage.getItem('user_data')}) ;
+
+                                             // Get the registered field from the startup using a short fetch request
+                                             fetch(`${staging}startups/${id}`,{
+                                                  method: 'GET', 
+                                                  headers:{
+                                                       Authorization: `Bearer ${token}`
+                                                  }})
+                                             .then(response => response.json())
+                                             .then(startup => {
+                                                    
+                                                  this.setState({state: 'auth', registered: Boolean(false), loading:false}); //registered: Boolean(startup.registered)
+                                                  
+                                             }).catch((error) => {this.setState({state: 'auth', registered: false, loading:false}) });
+
                                              // Stores the user data in the local storage
                                              localStorage.setItem('is_startup', data.is_startup);
                                              localStorage.setItem('registered', data.verified)
@@ -294,7 +322,7 @@ class profile extends React.Component {
                               })
                               .catch((error) => {
                               console.error('Error:', error);
-                              this.setState({error: true, errMessage:'Check your login details and try again', type:'danger', loading:false});
+                              this.setState({error: true, errMessage:'Internet Disconnected!', type:'danger', loading:false});
 
                               // Deletes the token from local storage
                               localStorage.removeItem('user_token');
@@ -329,7 +357,7 @@ class profile extends React.Component {
                                                   <Form.Label  > Password {this.required()}</Form.Label>
                                                   <InputGroup>
                                                        <Form.Control name='password' autoComplete="current-password" onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' placeholder="Enter password" required type={(this.state.show_pass) ? 'text' : 'password'}/>
-                                                       <InputGroup.Text className='pass-eye shadow-sm' onClick={this.handlePassChange}> {(this.state.show_pass) ? <Eye color={'#21295C'} height={20} width={20}/> : <EyeSlash color={'#21295C'} height={20} width={20}/>} </InputGroup.Text>
+                                                       {/* <InputGroup.Text className='pass-eye shadow-sm' onClick={this.handlePassChange}> {(this.state.show_pass) ? <Eye color={'#21295C'} height={20} width={20}/> : <EyeSlash color={'#21295C'} height={20} width={20}/>} </InputGroup.Text> */}
                                                   </InputGroup>
                                              </Form.Group>
                                         </Form.Row>

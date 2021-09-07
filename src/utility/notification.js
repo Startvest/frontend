@@ -33,8 +33,8 @@ export default function Notifyer({message, type, onDismissed, multiple}) {
                 {/* If there are multiple messages, it loops them then show it */}
                 {(multiple) ? 
                 message.map((v,i) => 
-                <Slide right>
-                <Alert type={type} >{icon()} {v}</Alert>
+                <Slide key={i} right>
+                <Alert key={i} type={type} >{icon()} {String(v)}</Alert>
                 </Slide>
                 )
                 : 

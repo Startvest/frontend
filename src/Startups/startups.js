@@ -47,7 +47,7 @@ class Startup extends React.Component {
                                    <p className='col-startup-sm'>Established {val.year_established}</p>
                                    <p>{val.snapshot}</p>
                                    <Row>
-                                        <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => v )}</Col>
+                                        <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => ` ${v} `)}</Col>
                                         {/* {(val.jobs.length > 0) ? <Col className='col-startup-job' onClick={() => {this.setState({view: 'job', id: index})}}>{Object.keys(val.jobs).length} job</Col> :''} */}
                                    </Row>
                               </Col>

@@ -3,21 +3,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 import PropTypes from'prop-types';
 
+
 import {Button, Form, Col, Row} from 'react-bootstrap';
 import {Info} from 'react-bootstrap-icons';
 
 // Back button
 // import {} from 'react-bootstrap-icons';
 
-
 // Import Notifications
 import Notifyer from '../utility/notification';
 
-// THe proptypes for the function is below
+// The proptypes for the function is below
 function StartupForm({registered, user_data, req, proceed}){
 
      const user = JSON.parse(user_data).user;
-
+     
      const [values, setValues] =  useState({
           'registered': true,
           'name':'',
@@ -39,6 +39,7 @@ function StartupForm({registered, user_data, req, proceed}){
           'funding_stage': 'Pre-seed'
      });
 
+     const [location, setLocation] = useState('');
      let years = [];
      (function (){
            // Create a dropdown of years from 1984
@@ -51,7 +52,6 @@ function StartupForm({registered, user_data, req, proceed}){
 
      })();
 
-         
 
       // Notification object
       const [notify, setNotify] = useState({
@@ -133,14 +133,16 @@ function StartupForm({registered, user_data, req, proceed}){
                     })
                     .then(res => res.json())
                     .then(data => { 
-                         if(data.user){
+                         if(data.user == user.pk ){
                               console.log(data);
                               proceed();
-                         }else{
+                         }else if(data.code == 'token_not_valid'){
+                              console.log('Return to the login screen or refresh the token')
+                         }
+                         else{
                               setNotify({err:true, message:Object.values(data), type:'danger', multiple:true})
                          }
-                        
-
+ 
                     }).catch((error) =>{
                          setNotify({err:true, message:Object.values(error), type:'danger', multiple:true})
                     });
@@ -198,21 +200,34 @@ function StartupForm({registered, user_data, req, proceed}){
                </Form.Text>
                </Form.Group>
 
+               {/* <Form.Group>
+                    <GooglePlacesAutocomplete selectProps={{
+               location,
+               onChange: setLocation,
+               }} apiKey={process.env.REACT_APP_MAPS_KEY} autocompletionRequest={{
+                    componentRestrictions: {
+                    country: ['ng'],
+                    }
+                  }}  onLoadFailed={(error) => (
+                    console.error("Could not inject Google script", error)
+                  )}/>
+               </Form.Group> */}
+
                <Form.Group controlId="startupWebsite">
                <Form.Label>Website Address {req}</Form.Label>
                <Form.Control className='form-input' type="url" placeholder="https://example.com" pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(\/[^\s]*)?"  name='website' value={values.website} onChange={handleChange} />
                </Form.Group>
 
-               <Form.Group>
+               {/* <Form.Group>
                <Form.File id="startuplogo" label="Startup's Logo" accept=".gif,.jpg,.jpeg,.png," name='logo' onChange={handleImage}/>
-               </Form.Group>
+               </Form.Group> */}
 
-               <Form.Group >
+               {/* <Form.Group >
                <Form.File id="startupGallery" label="Gallery" accept=".gif,.jpg,.jpeg,.png," multiple name='gallery' onChange={handleImage}/>
                <Form.Text className="text-muted">
                    <Info width={20} height={20}/>Choose multiple image files, less than 2mb each
                </Form.Text>
-               </Form.Group>
+               </Form.Group> */}
 
                <Form.Group controlId="startupBenefits">
                <Form.Label>Work Benefits</Form.Label>
@@ -227,9 +242,9 @@ function StartupForm({registered, user_data, req, proceed}){
                </Form.Group>
 
 
-               <Form.Group>
+               {/* <Form.Group>
                <Form.File id="startupPitch" label="Startup's pitch" accept=".webm ,.mpg, .mp2, .mpeg, .mpe, .mpv ,.ogg ,.mp4, .m4p, .m4v ,.avi ,.wmv ,.mov, .qt ·.flv, .mkv" name='pitch' onChange={handleImage}/>
-               </Form.Group>
+               </Form.Group> */}
 
                <Form.Group controlId="startupIndustry">
                <Form.Label>Industry {req}</Form.Label>
