@@ -25,6 +25,7 @@
      color: var(--primary);
      margin: 0;
 }
+
 .homeText{
     margin-top: 15%;
      font-weight: bold;
@@ -80,14 +81,46 @@
      padding: 0;
      margin-right: 0;
 }
+/* Unique selling points section */
+.tagline-italic{
+     font-style: italic;
+     font-weight: 100;
+     
+}
+.usp-container{
+     padding: 1em;
+     margin: 2em auto;
+     border-radius: 20px;
+     text-align: left;
+}
+
+.usp-title{
+     font-weight: bold;
+     color: var(--primary);
+     margin-bottom: 1.5em;
+     font-size: large;
+}
+.usp-logo{
+     border-radius: 5px;
+     /* background-color: #C2FFEB; */
+     width: max-content;
+     height: max-content;
+     padding: .2em;
+}
+.usp-description{
+     font-weight: normal;
+     font-size: medium;
+     
+}
 
 /* Startup view on homepage */
+.accent {
+     background-color: var(--accent);
+}
 .home-startup{
      padding: 1em;
      margin: 10% auto;
      /* border-radius: 8px; */
-
-     background-color: var(--accent);
 }
 .counter{
      font-size: xx-large;

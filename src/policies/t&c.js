@@ -1,7 +1,9 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 
-function policy(){
-
+function Policy(){
+     useEffect(() => {
+          window.scroll(0,0);
+     }, [])
      return(
           <div>
                <div className="tagline">Our terms and conditions @StartVest</div>
@@ -9,4 +11,4 @@ function policy(){
      )
 }
 
-export default policy;
+export default Policy;

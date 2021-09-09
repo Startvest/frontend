@@ -6,13 +6,14 @@ import {Link} from 'react-router-dom';
 
 // Importing the main homepage svg picture
 import Teampic from '../images/teamates.svg';
-import { ArrowRightShort, CircleFill} from 'react-bootstrap-icons';
+import { ArrowRightShort, CircleFill, ClockHistory, Shop, ShopWindow} from 'react-bootstrap-icons';
 
 import {Fade, Zoom, Slide} from 'react-reveal';
 
 // Notification bar
 import Notifyer from '../utility/notification';
 // import ConnectDB from '../utility/connectdb';
+
 
 class home extends React.Component {
      constructor(props) {
@@ -49,6 +50,27 @@ class home extends React.Component {
           }
      }
 
+     // data for the unique selling point
+     usp = [
+          {
+               "logo": {
+                    "img" : <ShopWindow height={20} width={30} color={'#A45CFF'}/>,
+                    "bg": "rgba(164, 92, 255, 0.05)"
+               },
+               "title": "We showcase budding startups", 
+               "desc": "They are startups looking for early stage funding, from the community to actualize their dreams"
+          },
+          {
+               "logo": {
+                    "img" : <ClockHistory height={20} width={30} color={'#75FDCD'}/>,
+                    "bg": "rgba(117, 253, 205, 0.1)"
+               },
+               "title": "Get started in minutes", 
+               "desc": "Create an investor account and start investing eith as little as N1000"
+          },    
+          
+     ]
+
 
      render(){
           return(
@@ -76,8 +98,30 @@ class home extends React.Component {
                          </Row>
                     </Container>
 
+                    {/* Container for unique selling points */}
+                    <Container className='home-startup ' >
+                         <Slide down>
+                              <h5 className='tagline'>We are the platform to invest in disruptive ideas <span className='tagline-italic'>early!</span></h5>
+                         </Slide>
+
+                         <Row>
+                              {this.usp.map((v,i) => 
+                               <Col md={4} sm={'auto'} className='usp-container '>
+                                    <Row>
+                                         <Col xs={2}><div style={{backgroundColor: `${v.logo.bg}`}}  className='usp-logo'>{v.logo.img}</div></Col>
+                                         <Col>
+                                         <div className='usp-title'>{v.title}</div>
+                                         <span className='usp-description'>{v.desc}</span>
+                                         </Col>
+                                    </Row>
+                                    
+                              </Col> 
+                              )}    
+                         </Row>
+                    </Container>
+
                     {/* Container for top investors*/}
-                    
+                    <div className='accent'>{/*accent colour change */}
                     <Container className='home-startup' fluid>
                          <Slide  right>
                          <div className='center'>
@@ -85,7 +129,7 @@ class home extends React.Component {
                          <p className='counter'>{this.state.investors.length}+ Investor{(this.state.investors > 1)? 's':''} looking for startups</p>
                          </div>
                          <Row >   
-                              {Object.values(this.state.investors).slice(0, 2).map((val, ind) => 
+                              {Object.values(this.state.investors).slice(0, 3).map((val, ind) => 
                               <div key={ind} className='job-container shad'>
                                    <Row>
                                    <Col sm='auto'>
@@ -128,6 +172,8 @@ class home extends React.Component {
                          </Zoom>
                          </Row>
                     </Container>
+
+                    </div>
 
 
 

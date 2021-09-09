@@ -33,8 +33,8 @@
      /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
      background-color: var(--accent);
 }
-#avatar{
-     border-radius: 50%;
+#abt-avatar{
+     border-radius: 10px;
      background-color: var(--primary);
      text-align: center;
      width: max-content;
@@ -42,7 +42,7 @@
      padding: 1em;
      display: inline-block;
 }
-#avatar Person{
+#abt-avatar Person{
      margin: 0.3em;
 }
 Col{

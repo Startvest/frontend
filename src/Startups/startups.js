@@ -154,7 +154,7 @@ class Startup extends React.Component {
                                    <h3 className="gallery-head">Key Executives</h3>
                                    <Row>
                                    {Object.values(startup.team).map((val, ind)=>
-                                   <Col key={ind}><p><span id='avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
+                                   <Col key={ind}><p><span id='start-avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
                                    )} 
                                    </Row>
                                    </Col>

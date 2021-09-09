@@ -35,23 +35,7 @@ class Loader extends React.Component {
 
      }
 
-     
-      override = css`
-          display: block;
-          margin: 2em auto;
-          border-radius: 40px;
-          background: none;
-          `;
-
-     async componentDidMount() {
-          // Display a warnign message that the user internet is slow
-          // If it takes long to change screen
-          setTimeout(() => {
-               if(this.state.load){
-                    this.setState({internet: false});
-               }
-          }, 8000);
-
+     connect = async () =>{
           let token = await Connect();
 
           const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';
@@ -102,7 +86,32 @@ class Loader extends React.Component {
                          this.setState({load: false})   
                     }
                }, 40);
+
+          }
+
+     
+      override = css`
+          display: block;
+          margin: 2em auto;
+          border-radius: 40px;
+          background: none;
+          `;
+
+     async componentDidMount() {
+          this.connect();
+          // Display a warnign message that the user internet is slow
+          // If it takes long to change screen
+          setTimeout(() => {
+               if(this.state.load){
+                    this.setState({internet: false});
+               }
+          }, 8000);
           
+          setInterval(() =>{
+               if(this.state.load){
+                    this.connect();
+               }
+          }, 1000)
      }
 
 

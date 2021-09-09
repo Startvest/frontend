@@ -132,7 +132,7 @@
 }
 
 /* Team */
-#avatar{
+#start-avatar{
      border-radius: 50%;
      background-color: var(--primary);
      text-align: center;
@@ -141,7 +141,7 @@
      padding: 1em;
      display: inline-block;
 }
-#avatar Person{
+#start-avatar Person{
      margin: 0.3em;
 }
 /* Working with company */

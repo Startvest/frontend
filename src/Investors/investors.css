@@ -18,13 +18,14 @@
 .investor-column{
      margin: 2em auto;
 }
-#avatar{
+#inv-avatar{
      border-radius: 50%;
      background-color: var(--primary);
      text-align: center;
      width: max-content;
      height: max-content;
      padding: 1em;
+     display: inline-block;
 }
 .investor-industry{
      color: var(--primary);
