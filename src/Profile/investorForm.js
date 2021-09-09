@@ -90,7 +90,7 @@ function InvestorForm ({proceed, user_data, registered}){
                     })
                     .then(res => res.json())
                     .then(data => { 
-                         console.log(data);
+                         // console.log(data);
                          proceed();
 
                     }).catch((error) =>{
