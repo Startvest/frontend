@@ -297,7 +297,7 @@ class profile extends React.Component {
                                              .then(response => response.json())
                                              .then(startup => {
                                                     
-                                                  this.setState({state: 'auth', registered: Boolean(false), loading:false}); //registered: Boolean(startup.registered)
+                                                  this.setState({state: 'auth', registered: Boolean(startup.registered), loading:false});
                                                   
                                              }).catch((error) => {this.setState({state: 'auth', registered: false, loading:false}) });
 

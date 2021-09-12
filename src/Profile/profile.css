@@ -152,9 +152,13 @@ Form{
      background-color: var(--accent);
      border-radius:20px;
      min-height: 30vh;
-     min-width: 50vw;
-     max-width: 60vw;
+     width: max-content;
+     max-width: 90vw;
      margin: auto;
      padding: 1em;
      margin-top: 20vh;
+     text-align: left;
+}
+.vemail-link{
+     color: var(--primary);
 }

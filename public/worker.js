@@ -24,27 +24,22 @@ self.addEventListener('fetch', event => {
       .then(function(response) {
         // Cache hit - return response
         if (response) {
-          console.log('ServiceWorker'+ response)
+          console.log('ServiceWorker'+ JSON.stringify(response))
           return response;
+        }else if(event.request.headers.get('accept').includes('text/html')){
+          return caches.match('/offline.html');
         }
         return fetch(event.request);
       }
     )
-    .catch(function(error){
-      const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(OFFLINE_URL);
-          return cachedResponse;
-    })
+    // .catch(function(error){
+    //   const cache = await caches.open(CACHE_NAME);
+    //       const cachedResponse = await cache.match(OFFLINE_URL);
+    //       return cachedResponse;
+    // })
   );
 });
 
-// self.addEventListener('fetch', function(event){
-//   event.respondWith(
-//     fetch(event.request).catch(function(){
-//       return caches.match('/offline.html');
-//     })
-//   );
-// });
 
 // Update a service worker
 self.addEventListener('activate', event => {

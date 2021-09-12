@@ -11,7 +11,7 @@ function VerifyEmail({email, setVerify}){
      return(
           <Container className='box_design shadow-sm'>
                <h3>Verify your email address</h3>
-               <p>An email has been sent to {email}</p>
+               <p>An email has been sent to <span id='vemail-link'>{email}</span></p>
           </Container>
      )
 }
