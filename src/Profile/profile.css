@@ -143,6 +143,11 @@ Form{
      .svgIcon-image{
           margin-top: 0;
       }
+      .vemail-logo{
+          /* height: 100%; */
+          width: 30%;
+     }
+    
 }
 
 
@@ -153,12 +158,43 @@ Form{
      border-radius:20px;
      min-height: 30vh;
      width: max-content;
-     max-width: 90vw;
+     max-width: 80vw;
      margin: auto;
-     padding: 1em;
+     padding: .4em;
      margin-top: 20vh;
-     text-align: left;
+     text-align: center;
+}
+.vemail-logo{
+     /* height: 100%; */
+     width: 10%;
+}
+.vemail-head{
+     margin-top: 2em;
+     font-weight: bold;
+     font-size: large;
+     text-align: center;
+}
+.vemail-body{
+     font-size: small;
+     margin-top: 2em;
 }
 .vemail-link{
-     color: var(--primary);
+     font-weight: bold;
+}
+.vemail-codes{
+     width: fit-content;
+     margin: auto;
+     /* border: 2px solid var(--primary); */
+     text-align: center;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

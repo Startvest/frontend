@@ -161,6 +161,7 @@ class profile extends React.Component {
           this.setState({error: true, errMessage:'One or more required fields are empty', type:'danger', loading:false})
        
           }else if(!this.state.emailVerify){
+               window.scrollTo(0, 0);
                this.setState({state: 'verifyEmail'});
           }else{
                     const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';

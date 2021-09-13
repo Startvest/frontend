@@ -133,10 +133,10 @@ function StartupForm({registered, user_data, req, proceed}){
                     })
                     .then(res => res.json())
                     .then(data => { 
-                         if(data.user == user.pk ){
+                         if(data.user === user.pk ){
                               console.log(data);
                               proceed();
-                         }else if(data.code == 'token_not_valid'){
+                         }else if(data.code === 'token_not_valid'){
                               console.log('Return to the login screen or refresh the token')
                          }
                          else{
