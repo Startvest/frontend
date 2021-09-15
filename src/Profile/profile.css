@@ -78,6 +78,7 @@ Form{
 }
 .submit Button:hover , .submit Button:focus, .submit Button:active{
      outline: none;
+     box-shadow: none;
      background: transparent;
     border: 2px solid var(--primary);
     color: var(--primary);
@@ -136,6 +137,87 @@ Form{
      color: white;
      padding: .25em;
 }
+
+
+
+/* Verify Email and LOading box */
+
+.box_design{
+     /* border: 2px solid var(--primary); */
+     background-color: var(--accent);
+     border-radius:20px;
+     min-height: 30vh;
+     width: max-content;
+     max-width: 50vw;
+     margin: auto;
+     padding: 1em;
+     margin: 10vh auto 2em;
+     text-align: center;
+}
+
+.vemail-head{
+     margin-top: 1em;
+     font-weight: bold;
+     font-size: x-large;
+     text-align: center;
+}
+.vemail-body{
+     font-size: small;
+     margin: 1em auto;
+}
+.vemail-link{
+     font-weight: bold;
+}
+.vemail-codes{
+     width: fit-content;
+     margin: 2em auto;
+     /* border: 2px solid var(--primary); */
+     text-align: center;
+}
+.vemail-input{
+     outline: none;
+     border: none;
+     text-align: center;
+     font-weight: bold;
+     font-size: x-large;
+     color: var(--primary);
+     border-radius: 5px;
+
+     /* Add the effect */
+     /* box-shadow: none;
+     background: #d3e2edde ;
+     box-shadow:  -6px 6px 12px #b3c0c9d5,
+                  3px -3px 12px #f3ffffce; */
+}
+/* .vemail-input:focus {
+     box-shadow: none;
+     border: none;
+     outline: none;
+     background-color: white;
+} */
+.vemail-alt{
+     margin: 3em auto .1em;
+     text-align: left;
+     font-size: small;
+}
+.vemail-resend{
+     font-weight: bold;
+     text-transform: uppercase;
+     cursor: pointer;
+}
+/* To remove the arrow in a number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @media only screen and (max-width: 600px) {
      .form{
           width: 90%;
@@ -147,54 +229,11 @@ Form{
           /* height: 100%; */
           width: 30%;
      }
+     .vemail-input{
+          font-size: large;
+     }
+     .box_design{
+          max-width: 80vw;
+     }
     
-}
-
-
-/* Verify Email and LOading box */
-
-.box_design{
-     background-color: var(--accent);
-     border-radius:20px;
-     min-height: 30vh;
-     width: max-content;
-     max-width: 80vw;
-     margin: auto;
-     padding: .4em;
-     margin-top: 20vh;
-     text-align: center;
-}
-.vemail-logo{
-     /* height: 100%; */
-     width: 10%;
-}
-.vemail-head{
-     margin-top: 2em;
-     font-weight: bold;
-     font-size: large;
-     text-align: center;
-}
-.vemail-body{
-     font-size: small;
-     margin-top: 2em;
-}
-.vemail-link{
-     font-weight: bold;
-}
-.vemail-codes{
-     width: fit-content;
-     margin: auto;
-     /* border: 2px solid var(--primary); */
-     text-align: center;
-}
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
 }

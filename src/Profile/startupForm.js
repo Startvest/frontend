@@ -39,7 +39,7 @@ function StartupForm({registered, user_data, req, proceed}){
           'funding_stage': 'Pre-seed'
      });
 
-     const [location, setLocation] = useState('');
+     
      let years = [];
      (function (){
            // Create a dropdown of years from 1984
@@ -74,14 +74,14 @@ function StartupForm({registered, user_data, req, proceed}){
           }));
      }
 
-     const handleImage = (e) =>{
-          // On file select (from the pop up)
-        // Update the state
-          setValues((values) => ({
-               ...values,
-               [e.target.name]: e.target.files[0]
-          }));
-     }
+     // const handleImage = (e) =>{
+     //      // On file select (from the pop up)
+     //    // Update the state
+     //      setValues((values) => ({
+     //           ...values,
+     //           [e.target.name]: e.target.files[0]
+     //      }));
+     // }
 
      const handleSubmit = (e) => {
 

@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 // Importing the main homepage svg picture
 import Teampic from '../images/teamates.svg';
-import { ArrowRightShort, CircleFill, ClockHistory, Shop, ShopWindow} from 'react-bootstrap-icons';
+import { ArrowRightShort, CircleFill, ClockHistory, ShopWindow} from 'react-bootstrap-icons';
 
 import {Fade, Zoom, Slide} from 'react-reveal';
 

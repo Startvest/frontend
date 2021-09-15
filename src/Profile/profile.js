@@ -1,7 +1,7 @@
 import React from 'react';
 import './profile.css';
 import { Container, Row, Col, Form, Spinner, Button, InputGroup } from 'react-bootstrap';
-import { Google, Eye, EyeSlash } from 'react-bootstrap-icons';
+import { Eye, EyeSlash } from 'react-bootstrap-icons';
 
 //Import the verify email screen
 import VerifyEmail from './verifyEmail';
@@ -61,9 +61,8 @@ class profile extends React.Component {
  
           // Take this function to the profile page to 
      // Check if the user is still signed in, then gives the form
-     const tellDB = ((e) =>{
-          // e.preventDefault();
-         
+     (() =>{
+                   
           // Set loading spinner
           this.setState({state: 'load'});
 
@@ -79,7 +78,7 @@ class profile extends React.Component {
                     body: JSON.stringify({
                          "token": token,
                     }),
-                    })
+               })
                     .then(res => res.json())
                     .then(data => { 
                          // console.log(data);
@@ -93,19 +92,21 @@ class profile extends React.Component {
                          }else{
                               
                               // Stores the user data in the local storage
+                         var sta_inv = (localStorage.getItem('is_startup').toLowerCase() === 'true') ? 'startups' : 'investors';
+                         
                          this.setState({is_startup: (localStorage.getItem('is_startup').toLowerCase() === 'true'), user_data: localStorage.getItem('user_data')});
 
                          // Thes are highlighted until the dashboard has been designed so a startup can get the appropriate information when called
                          // Get the registered field from the startup using a short fetch request
-                         fetch(`${staging}startups/${JSON.parse(localStorage.getItem('user_data')).user.pk}`,{
+                         fetch(`${staging}${sta_inv}/${JSON.parse(localStorage.getItem('user_data')).user.pk}`,{
                               method: 'GET', 
                               headers:{
                                    Authorization: `Bearer ${token}`
                               }})
                          .then(response => response.json())
                          .then(startup => {
-                                
-                              this.setState({state: 'auth', registered: Boolean(startup.registered)}); 
+                              var registered = (localStorage.getItem('is_startup').toLowerCase() === 'true') ? startup.registered: startup.verified;
+                              this.setState({state: 'auth', registered: registered}); 
                               
                          }).catch((error) => {this.setState({state: 'auth', registered: false}) });
 
@@ -288,9 +289,11 @@ class profile extends React.Component {
                                             
                                              // Set the data to the state First
                                              this.setState({is_startup : data.is_startup, user_data: localStorage.getItem('user_data')}) ;
-
+                                             
                                              // Get the registered field from the startup using a short fetch request
-                                             fetch(`${staging}startups/${id}`,{
+                                             var sta_inv = (data.is_startup) ? 'startups' : 'investors';
+                                             
+                                             fetch(`${staging}${sta_inv}/${id}`,{
                                                   method: 'GET', 
                                                   headers:{
                                                        Authorization: `Bearer ${token}`
@@ -298,7 +301,10 @@ class profile extends React.Component {
                                              .then(response => response.json())
                                              .then(startup => {
                                                     
-                                                  this.setState({state: 'auth', registered: Boolean(startup.registered), loading:false});
+                                                  var registered = (data.is_startup) ? startup.registered: startup.verified;
+
+                                                  this.setState({state: 'auth', registered: registered, loading:false});
+                                                  // startup.verified
                                                   
                                              }).catch((error) => {this.setState({state: 'auth', registered: false, loading:false}) });
 
@@ -484,10 +490,10 @@ class profile extends React.Component {
      altLogin = (signup = false) => {
           return (
                <div>
-                    <Form.Group as={ Row } controlId="formHorizontalAltLogin">
+                    {/* <Form.Group as={ Row } controlId="formHorizontalAltLogin">
                          <Col >{ (signup) ? 'Sign up with: ' : 'Login with: ' }</Col>
                          <Col><div className='google-signin'><Google className='icons' />{ (signup) ? 'Google  ' : 'Google ' }</div></Col>
-                    </Form.Group>
+                    </Form.Group> */}
 
 
                     {(signup) ?
@@ -516,7 +522,7 @@ class profile extends React.Component {
                case 'load': return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case 'signup': return (this.state.signup) ? this.Signin() : this.login();
                case 'auth': return (this.state.registered) ? <Dashboard/> : (this.state.is_startup) ? <StartForm  user_data={this.state.user_data} registered={this.state.registered} req={this.required()} proceed={() => {this.setState({state: 'auth', registered: true})}}/> : <InvestorForm  is_startup={this.state.is_startup} req={this.required()}  user_data={this.state.user_data} registered={this.state.registered} proceed={() => {this.setState({state: 'auth', registered: true})}}/> ; 
-               case 'verifyEmail': return  <VerifyEmail email={this.state.email} setVerify={() => this.setState({state: 'auth', error:true, errMessage:'Verified Email Successfully', type:'success'})}/>     
+               case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true})}} setVerify={() => {this.setState({state: 'auth', error:true, errMessage:'Verified Email Successfully', type:'success'})}}/>     
           }
      }
 

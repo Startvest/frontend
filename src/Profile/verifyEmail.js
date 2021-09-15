@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 
@@ -7,10 +7,9 @@ import {Container, Row, Col, Form} from 'react-bootstrap';
 import {X} from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 
-import VerifySVG from '../images/verify.svg';
+import VerifySVG from '../images/verify3.svg';
 
-// react code input 
-import ReactCodeInput from 'react-verification-code-input';
+
 function VerifyEmail({email, setVerify, close}){
 
      const [codes, setCodes] = useState({
@@ -19,51 +18,71 @@ function VerifyEmail({email, setVerify, close}){
           '3': '',
           '4': '',
      });
+    
+     useEffect(() => {
+          document.getElementById('1').focus();
+
+          // return function cleanup() {
+          //      document.getElementById('1').unfocus();
+          // };
+     }, [])
 
      const handleChange = (e)=>{
           e.preventDefault();
-          setCodes((values) => ({
-               ...values,
-               [e.target.name]: e.target.value ,
-          }));
-
-          if(e.target.value !== ''){
-               console.log(document.getElementById(String(e.target.id+1)))
-               // console.log(document.getElementById(String(e.target.id+1)));
-               if(document.getElementById(String(Number(e.target.id+1)))){
-                    document.getElementById(String(Number(e.target.id+1))).focus();
-                    console.log(e.target.id);
-               }
-               
-          };
+          if(e.target.value.length <= 1){
+               setCodes((values) => ({
+                    ...values,
+                    [e.target.name]: e.target.value ,
+               }));
           }
-         
-     // const CODE_length = new
+          if(e.target.value !== ''){
+               if(document.getElementById(String(Number(e.target.id)+1))){
+                    document.getElementById(String(Number(e.target.id)+1)).focus();
+               }
+          };
+     }
+
+     const checkcomplete = (e) =>{
+          // Verify is all the boxes have setValues
+          if(codes['1']  && codes['2'] && codes['3'] && codes['4']){
+               // Send a fetch request to the server
+               // As a different function on its own, so resend can use it
+               console.log(codes['1']  + codes['2'] + codes['3'] + codes['4']);
+               // setVerify();
+          }
+     }
+ 
      return(
-          <Container className='box_design shadow-sm'>
+          <Container className='box_design shadow'>
                <Row>
                     <Col > 
-                    {/* <img src={VerifySVG} alt='Verify Email' className='vemail-logo'/> */}
+                    <img src={VerifySVG}  height={80} alt='Verify Email' className='vemail-logo'/>
                     </Col>
-                    <Col xs={2}><X color={'#21295C'} height={40} width={40}/></Col>
+                    <Col xs={'auto'}><X onClick={close} color={'#21295C'} height={30} width={30} /></Col>
                </Row>
                <div className='vemail-head'>Verify your email address</div>
                <div className='vemail-body'>
                     To ensure that the email provided is real and belongs to you, 
-                    we have to verify. Please confirm by enetring the 4-digit code sent to <p className='vemail-link'>{email}</p>
+                    we have to verify. Please confirm by enetring the 4-digit code sent to <span className='vemail-link'>{email}</span>
                </div>
 
                     <Container className='vemail-codes' >
-                    {/* <ReactCodeInput type='number'/> */}
+                  
                     <Row className='justify-content-center'>
                          {Object.values(codes).map((v,i)=> 
-                         <Col lg={1} md={2} xs={3} key={i}>
-                              <Form.Control id={Number(i+1)} name={i+1} value={v} onChange={handleChange} maxLength="1" type="number" />
+                         <Col lg={2} md={3} xs={3} key={i}>
+                              <Form.Control className='vemail-input' id={Number(i+1)} name={i+1} value={v} onChange={handleChange} onKeyUp={checkcomplete} max={'1'} type="number" />
                          </Col>
                          )}
                     </Row>
                     </Container>
-                    
+               
+               <Container className='vemail-alt'>
+               
+                    It might take a minute to receive your email
+                    <p>Haven't received it? <span className='vemail-resend'>Resend Code</span></p>
+                   
+               </Container>
               
           </Container>
      )

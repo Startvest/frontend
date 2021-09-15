@@ -25,7 +25,7 @@ render() {
                <div className="teamHead">
                The dashboard 
                </div>
-               <h3>Welcome Startup</h3>
+               <h3>Welcome</h3>
           </div>
      )
 }}

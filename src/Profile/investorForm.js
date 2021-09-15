@@ -38,14 +38,14 @@ function InvestorForm ({proceed, user_data, registered}){
      };
 
 
-     const handleImgae = (e) =>{
-          // On file select (from the pop up)
-        // Update the state
-          setValues((values) => ({
-               ...values,
-               profile_picture: e.target.files[0]
-          }));
-     }
+     // const handleImgae = (e) =>{
+     //      // On file select (from the pop up)
+     //    // Update the state
+     //      setValues((values) => ({
+     //           ...values,
+     //           profile_picture: e.target.files[0]
+     //      }));
+     // }
     
      const handleSubmit = (e) => {
           e.preventDefault();
