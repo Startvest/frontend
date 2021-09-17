@@ -21,10 +21,6 @@ function VerifyEmail({email, setVerify, close}){
     
      useEffect(() => {
           document.getElementById('1').focus();
-
-          // return function cleanup() {
-          //      document.getElementById('1').unfocus();
-          // };
      }, [])
 
      const handleChange = (e)=>{
@@ -48,7 +44,8 @@ function VerifyEmail({email, setVerify, close}){
                // Send a fetch request to the server
                // As a different function on its own, so resend can use it
                console.log(codes['1']  + codes['2'] + codes['3'] + codes['4']);
-               // setVerify();
+               setVerify();
+               
           }
      }
  

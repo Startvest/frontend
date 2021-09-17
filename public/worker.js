@@ -24,7 +24,7 @@ self.addEventListener('fetch', event => {
       .then(function(response) {
         // Cache hit - return response
         if (response) {
-          console.log('ServiceWorker'+ JSON.stringify(response))
+          // console.log('ServiceWorker'+ JSON.stringify(response))
           return response;
         }else if(event.request.headers.get('accept').includes('text/html')){
           return caches.match('/offline.html');

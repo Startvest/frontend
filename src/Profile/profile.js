@@ -38,9 +38,14 @@ class profile extends React.Component {
                // Login or signup
                signup: false,
 
-               // st the default values of the radio buttons
+               // Form fields initialised here
+                    // st the default values of the radio buttons
                check2: true, //Making the radio of startup true
                check1: false,
+               username: '',
+               email: '',
+               password: '',
+               check: '',
 
                // Disable multiple notificationns by default
                multiple:false,
@@ -58,11 +63,12 @@ class profile extends React.Component {
 
      componentDidMount(){
           window.scrollTo(0, 0);
+          this.mounted = true;
  
-          // Take this function to the profile page to 
-     // Check if the user is still signed in, then gives the form
-     (() =>{
-                   
+     // this.mounted is a way to ensure that 
+     // there is no meomry leakasge for the self initialised function
+      if (this.mounted) {(() =>{
+                 // Check if the user is still signed in, then gives the form  
           // Set loading spinner
           this.setState({state: 'load'});
 
@@ -81,7 +87,7 @@ class profile extends React.Component {
                })
                     .then(res => res.json())
                     .then(data => { 
-                         // console.log(data);
+                         
                          if(data.code === "token_not_valid"){
                               localStorage.removeItem('user_token')
                               localStorage.removeItem('is_startup');
@@ -91,12 +97,12 @@ class profile extends React.Component {
                               this.setState({state: 'signup'});
                          }else{
                               
-                              // Stores the user data in the local storage
+                         // Stores the user data in the local storage
                          var sta_inv = (localStorage.getItem('is_startup').toLowerCase() === 'true') ? 'startups' : 'investors';
                          
                          this.setState({is_startup: (localStorage.getItem('is_startup').toLowerCase() === 'true'), user_data: localStorage.getItem('user_data')});
 
-                         // Thes are highlighted until the dashboard has been designed so a startup can get the appropriate information when called
+                         
                          // Get the registered field from the startup using a short fetch request
                          fetch(`${staging}${sta_inv}/${JSON.parse(localStorage.getItem('user_data')).user.pk}`,{
                               method: 'GET', 
@@ -119,10 +125,14 @@ class profile extends React.Component {
                     });
                
      })();
+}
      
         
      }
      
+     componentWillUnmount(){
+          this.mounted = false;
+     }
 
      handlecheckbox = ({target}) => {
           if(target.name === 'check1'){
@@ -144,7 +154,7 @@ class profile extends React.Component {
       // Function to get data from the form and 
      // send a notification if any of them is empty
      checkSignForm = (e) =>{
-          e.preventDefault();
+          if (e){e.preventDefault()};
 
           // Set the login button to load
           this.setState({loading: true});
@@ -164,7 +174,10 @@ class profile extends React.Component {
           }else if(!this.state.emailVerify){
                window.scrollTo(0, 0);
                this.setState({state: 'verifyEmail'});
-          }else{
+
+               console.log(this.state.emailVerify);
+
+          }else if(this.state.emailVerify){
                     const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';
 
                     fetch(`${staging}users/registration/`, {
@@ -240,7 +253,7 @@ class profile extends React.Component {
      }
 
      checkloginForm = (e) =>{
-          e.preventDefault();
+          if (e){e.preventDefault()};
 
           // Set the login button to load
           this.setState({loading: true});
@@ -522,7 +535,7 @@ class profile extends React.Component {
                case 'load': return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case 'signup': return (this.state.signup) ? this.Signin() : this.login();
                case 'auth': return (this.state.registered) ? <Dashboard/> : (this.state.is_startup) ? <StartForm  user_data={this.state.user_data} registered={this.state.registered} req={this.required()} proceed={() => {this.setState({state: 'auth', registered: true})}}/> : <InvestorForm  is_startup={this.state.is_startup} req={this.required()}  user_data={this.state.user_data} registered={this.state.registered} proceed={() => {this.setState({state: 'auth', registered: true})}}/> ; 
-               case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true})}} setVerify={() => {this.setState({state: 'auth', error:true, errMessage:'Verified Email Successfully', type:'success'})}}/>     
+               case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true, emailVerify:false})} } setVerify={() => {this.setState({emailVerify:true, state: 'signup', signup: true, error:true, errMessage:'Verified Email Successfully', type:'success'}); this.checkSignForm()}}/>     
           }
      }
 
