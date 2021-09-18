@@ -10,8 +10,10 @@ import PropTypes from 'prop-types';
 import VerifySVG from '../images/verify3.svg';
 
 
-function VerifyEmail({email, setVerify, close}){
-
+function VerifyEmail({email, setVerify, close, checkForm}){
+     useEffect(() => {
+          document.title = 'Verify your email';
+     })
      const [codes, setCodes] = useState({
           '1': '',
           '2': '',
@@ -45,8 +47,8 @@ function VerifyEmail({email, setVerify, close}){
                // As a different function on its own, so resend can use it
                console.log(codes['1']  + codes['2'] + codes['3'] + codes['4']);
                setVerify();
-               
-          }
+               checkForm();         
+           }
      }
  
      return(
@@ -95,7 +97,7 @@ function VerifyEmail({email, setVerify, close}){
 VerifyEmail.propTypes={
      email: PropTypes.string.isRequired,
      setVerify: PropTypes.func.isRequired,
-     close: PropTypes.func.isRequired
-
+     close: PropTypes.func.isRequired,
+     checkForm: PropTypes.func.isRequired
 }
 export default VerifyEmail;

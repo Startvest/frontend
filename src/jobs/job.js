@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Startups/startups.css';
 import PropTypes from 'prop-types';
@@ -8,6 +8,9 @@ import {ArrowLeft, CircleFill, ArrowRightShort} from 'react-bootstrap-icons';
 
 
 function Job({job, goback}){
+     useEffect(() => {
+          document.title = `${job.job_title} at ${job.company.company_name}`;
+     })
      return(
           <div>
                {/* {Object.values(job).map((val, ind) => */}

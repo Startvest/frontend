@@ -62,6 +62,7 @@ class profile extends React.Component {
           `;
 
      componentDidMount(){
+          document.title = 'Get started at StartVest'
           window.scrollTo(0, 0);
           this.mounted = true;
  
@@ -535,7 +536,7 @@ class profile extends React.Component {
                case 'load': return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case 'signup': return (this.state.signup) ? this.Signin() : this.login();
                case 'auth': return (this.state.registered) ? <Dashboard/> : (this.state.is_startup) ? <StartForm  user_data={this.state.user_data} registered={this.state.registered} req={this.required()} proceed={() => {this.setState({state: 'auth', registered: true})}}/> : <InvestorForm  is_startup={this.state.is_startup} req={this.required()}  user_data={this.state.user_data} registered={this.state.registered} proceed={() => {this.setState({state: 'auth', registered: true})}}/> ; 
-               case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true, emailVerify:false})} } setVerify={() => {this.setState({emailVerify:true, state: 'signup', signup: true, error:true, errMessage:'Verified Email Successfully', type:'success'}); this.checkSignForm()}}/>     
+               case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true, emailVerify:false})} } setVerify={() => this.setState({emailVerify:true, state: 'signup', signup: true, error:true, errMessage:'Verified Email Successfully', type:'success'})} checkForm={() => this.checkSignForm()}/>     
           }
      }
 

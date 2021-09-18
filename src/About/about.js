@@ -31,6 +31,7 @@ var team = {
 
 class about extends React.Component {
      componentDidMount(){
+          document.title = 'About Startvest';
           window.scrollTo(0, 0);
      }
      render(){

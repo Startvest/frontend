@@ -4,6 +4,9 @@ import './Home.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
+// Prototype Validation
+import PropTypes from 'prop-types';
+
 // Importing the main homepage svg picture
 import Teampic from '../images/teamates.svg';
 import { ArrowRightShort, CircleFill, ClockHistory, ShopWindow} from 'react-bootstrap-icons';
@@ -33,6 +36,7 @@ class home extends React.Component {
      }
 
      async componentDidMount(){
+          document.title = 'Home - Startvest'
           window.scrollTo(0, 0);
           this.interval = setInterval(() => {
               this.countStartups()
@@ -182,4 +186,9 @@ class home extends React.Component {
           
      }
 }
+
+home.propTypes = {
+     investors: PropTypes.object.isRequired,
+     startups: PropTypes.object.isRequired
+   };
 export default home;

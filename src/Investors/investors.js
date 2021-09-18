@@ -15,6 +15,7 @@ class investors extends React.Component {
      }
      
      async componentDidMount() {
+          document.title = 'Find top investors - Startvest'
           window.scrollTo(0, 0);
      }
 

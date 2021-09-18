@@ -29,6 +29,7 @@ class Startup extends React.Component {
 
         
      componentDidMount(){
+          document.title = 'See top startups';
           window.scrollTo(0, 0);
      }
 
@@ -60,8 +61,10 @@ class Startup extends React.Component {
 
       // Render the detailed view of a startup
       startup = () => {
+          
            var id = this.state.id;
            var startup = Object.values(this.state.startups)[id];
+           document.title = `${startup.company_name} - StartVest`;
           //  console.log(arr[id]);
           return(
                <div className='startups'>

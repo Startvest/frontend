@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 import PropTypes from 'prop-types';
@@ -10,6 +10,10 @@ import Notifyer from '../utility/notification';
 
 function InvestorForm ({proceed, user_data, registered}){
 
+     useEffect(() => {
+          document.title = 'Register as an Investor';
+     })
+     
      const user = JSON.parse(user_data).user;
      
      const [values, setValues] =  useState({

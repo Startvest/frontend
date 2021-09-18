@@ -2,6 +2,7 @@ import {React, useEffect} from 'react';
 
 function Policy(){
      useEffect(() => {
+          document.title = 'Terms and Conditions';
           window.scroll(0,0);
      }, [])
      return(

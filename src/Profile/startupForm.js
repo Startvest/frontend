@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 import PropTypes from'prop-types';
@@ -15,6 +15,10 @@ import Notifyer from '../utility/notification';
 
 // The proptypes for the function is below
 function StartupForm({registered, user_data, req, proceed}){
+    
+     useEffect(() => {
+          document.title = 'Register as a Startup';
+     })
 
      const user = JSON.parse(user_data).user;
      

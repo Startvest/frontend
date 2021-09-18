@@ -24,6 +24,7 @@ class jobs extends React.Component {
      }
 
      componentDidMount(){
+          document.title = 'Jobs at startups';
           window.scrollTo(0, 0);
      }
 
