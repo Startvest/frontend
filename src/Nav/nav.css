@@ -29,17 +29,24 @@
 .Navlinks{
      font-weight: bold;
      font-size: large;
+     width: max-content;
      margin: auto 1em;
      color: var(--primary) !important;
-   
 }
-.Navlinks:hover{
+.Navlinks:not(.quick-signin-nav){
+     opacity: .7;
+}
+.Navlinks:hover:not(.quick-signin-nav){
      text-decoration: none;
-     border-bottom: 3px solid var(--primary);
-
+     border-bottom: 3px solid var(--alternate);
+     opacity: 1;
+     color: var(--alternate) !important;
 }
-.Navlinks[active]{
-     border-bottom: 2px solid black;
+
+/* Set the active function, then give the nav from each link, if it is mounted */
+.active{
+     color: var(--secondary) !important;
+     opacity: 1 !important;
 }
 
 .line-break{
@@ -51,6 +58,23 @@
      opacity: .5;
      
 }
+.quick-signin{
+     background-color: var(--primary);
+     border-radius:5px;
+     padding:.25em 1em;
+     color: white !important;
+     font-weight: normal !important;
+     font-size: medium !important;
+     margin: auto;
+     text-shadow: .5px .5jjdpx 1px var(--faded);
+}
 .views{
      min-height: 81vh;
+}
+
+/* Style for mobile view only */
+@media only screen and (max-width: 600px) {
+     /* .Navlinks{
+          margin: auto !important;
+     } */
 }

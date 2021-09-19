@@ -29,8 +29,13 @@ class Startup extends React.Component {
 
         
      componentDidMount(){
+          this.props.active();
           document.title = 'See top startups';
           window.scrollTo(0, 0);
+     }
+
+     componentWillUnmount(){
+          this.props.not_active();
      }
 
 

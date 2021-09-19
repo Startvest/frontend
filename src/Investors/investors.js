@@ -14,9 +14,14 @@ class investors extends React.Component {
           })
      }
      
-     async componentDidMount() {
+     componentDidMount() {
+          this.props.active();
           document.title = 'Find top investors - Startvest'
           window.scrollTo(0, 0);
+     }
+
+     componentWillUnmount(){
+          this.props.not_active();
      }
 
      render(){

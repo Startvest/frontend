@@ -24,8 +24,13 @@ class jobs extends React.Component {
      }
 
      componentDidMount(){
+          this.props.active();
           document.title = 'Jobs at startups';
           window.scrollTo(0, 0);
+     }
+
+     componentWillUnmount(){
+          this.props.not_active();
      }
 
      jobs = () =>{

@@ -36,12 +36,18 @@ class home extends React.Component {
      }
 
      async componentDidMount(){
-          document.title = 'Home - Startvest'
+          document.title = 'Home - Startvest';
+          this.props.active();
           window.scrollTo(0, 0);
+          
           this.interval = setInterval(() => {
               this.countStartups()
           }, 2000);
      
+     }
+
+     componentWillUnmount(){
+          this.props.not_active();
      }
 
 

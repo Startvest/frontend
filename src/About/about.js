@@ -31,8 +31,12 @@ var team = {
 
 class about extends React.Component {
      componentDidMount(){
+          this.props.active();
           document.title = 'About Startvest';
           window.scrollTo(0, 0);
+     }
+     componentWillUnmount(){
+          this.props.not_active();
      }
      render(){
           return(

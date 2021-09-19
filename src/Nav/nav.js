@@ -3,7 +3,6 @@ import  {Navbar, Nav}  from 'react-bootstrap';
 import {HashRouter, Link, Route} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {PersonCircle} from 'react-bootstrap-icons';
 
 
 // Import the views
@@ -27,7 +26,13 @@ class nav extends React.Component {
   constructor(props) {
       super(props);
       this.state =({
-          key: "home",
+          // Set all the active states of the links
+          home_active: false,
+          about_active: false,
+          jobs_active: false,
+          startups_active: false,
+          investors_active: false,
+          profile_active: false,
       })
     }
 
@@ -47,25 +52,29 @@ class nav extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle'/>
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  
-                  <Nav.Link href="#/" className='Navlinks' active>Home</Nav.Link>
-                  <Nav.Link href="#about"  className='Navlinks'>About</Nav.Link>
-                  <Nav.Link href="#jobs"  className='Navlinks'>Jobs</Nav.Link>
-                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                  <Nav.Link href="#startups"  className='Navlinks'>Startups</Nav.Link>
-                  <Nav.Link href="#investors"  className='Navlinks'>Investors</Nav.Link>
-                  <Nav.Item><div className='line-break'></div></Nav.Item>
-                  <Nav.Link href="#profile"  className='Navlinks'><PersonCircle color='#21295C' height={30} width={30}/></Nav.Link>
+                  <Nav.Link href="#/" className={`Navlinks ${(this.state.home_active) ? 'active' : ''}`}>Home</Nav.Link>
+                  <Nav.Link href="#about"  className={`Navlinks ${(this.state.about_active) ? 'active' : ''}`}>About</Nav.Link>
+                  <Nav.Link href="#jobs" className={`Navlinks ${(this.state.jobs_active) ? 'active' : ''}`}>Jobs</Nav.Link>
+                  {/* <Nav.Item><div className='line-break'></div></Nav.Item> */}
+                  <Nav.Link href="#startups"  className={`Navlinks ${(this.state.startups_active) ? 'active' : ''}`}>Startups</Nav.Link>
+                  <Nav.Link href="#investors"  className={`Navlinks ${(this.state.investors_active) ? 'active' : ''}`}>Investors</Nav.Link>
+                  {/* <Nav.Item><div className='line-break'></div></Nav.Item> */}
+                  {/* <Nav.Link href="#profile"  className='Navlinks'><PersonCircle color='#21295C' height={30} width={30}/></Nav.Link> */}
+                  <Nav.Link href="#profile" className={`Navlinks quick-signin-nav`}><div className='quick-signin shadow'>Sign Up For Free</div></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
                </Navbar>
              
              <div className='views'>
-                  <Route exact path="/"><Home investors={this.props.investors} startups={this.props.startups}/></Route>  
-                  <Route exact path="/about"><About/></Route>  
-                  <Route exact path="/startups"><Startups startups={this.props.startups}/></Route>
-                  <Route exact path="/investors"><Investors investors={this.props.investors}/></Route>  
-                  <Route exact path="/profile"><Profile/></Route>  
-                  <Route exact path="/jobs"><Jobs jobs={this.props.jobs}/></Route>  
+                  <Route exact path="/">
+                       <Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/>
+                  </Route>  
+
+                  <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
+                  <Route exact path="/startups"><Startups active={() => this.setState({startups_active: true})} not_active={() => this.setState({startups_active: false})} startups={this.props.startups}/></Route>
+                  <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
+                  <Route exact path="/profile"><Profile active={() => this.setState({profile_active: true})} not_active={() => this.setState({profile_active: false})}/></Route>  
+                  <Route exact path="/jobs"><Jobs active={() => this.setState({jobs_active: true})} not_active={() => this.setState({jobs_active: false})} jobs={this.props.jobs}/></Route>  
                   <Route exact path="/dashboard"><Dashboard/></Route> 
                   <Route exact path="/policy"><Policy/></Route> 
                   <Route exact path="/terms"><TC/></Route> 
