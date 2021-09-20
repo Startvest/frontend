@@ -154,11 +154,18 @@ Form{
      margin: 10vh auto 2em;
      text-align: center;
 }
+#no_disp{
+     visibility: hidden;
+}
+.vemail-logo{
+     height: max-content;
+     width: max-content;
+}
 
 .vemail-head{
      margin-top: 1em;
      font-weight: bold;
-     font-size: x-large;
+     font-size: large;
      text-align: center;
 }
 .vemail-body{

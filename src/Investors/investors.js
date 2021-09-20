@@ -48,6 +48,8 @@ class investors extends React.Component {
 }
 
 investors.propTypes = {
-     investors: PropTypes.object
+     investors: PropTypes.array.isRequired,
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
 }
 export default investors;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './profile.css';
+import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Spinner, Button, InputGroup } from 'react-bootstrap';
 import { Eye, EyeSlash } from 'react-bootstrap-icons';
 
@@ -68,8 +69,9 @@ class profile extends React.Component {
  
      // this.mounted is a way to ensure that 
      // there is no meomry leakasge for the self initialised function
-      if (this.mounted) {(() =>{
-                 // Check if the user is still signed in, then gives the form  
+      if (this.mounted) {
+           (() =>{
+          // Check if the user is still signed in, then gives the form  
           // Set loading spinner
           this.setState({state: 'load'});
 
@@ -174,7 +176,7 @@ class profile extends React.Component {
        
           }else if(!this.state.emailVerify){
                window.scrollTo(0, 0);
-               this.setState({state: 'verifyEmail'});
+               this.setState({loading: false, state: 'verifyEmail'});
 
                console.log(this.state.emailVerify);
 
@@ -351,11 +353,12 @@ class profile extends React.Component {
           }
      }
 
+     // Astericks for required fields 
      required = () =>{
           return(<span className='required'>*</span>)
      }
 
-     // Astericks for required fields
+     
      //   Render the login screen
      login = () => {
           return (
@@ -378,7 +381,6 @@ class profile extends React.Component {
                                                   <Form.Label  > Password {this.required()}</Form.Label>
                                                   <InputGroup>
                                                        <Form.Control name='password' autoComplete="current-password" onChange={ this.handleChange } value={ this.state.password } className='shadow-sm textbox' placeholder="Enter password" required type={(this.state.show_pass) ? 'text' : 'password'}/>
-                                                       {/* <InputGroup.Text className='pass-eye shadow-sm' onClick={this.handlePassChange}> {(this.state.show_pass) ? <Eye color={'#21295C'} height={20} width={20}/> : <EyeSlash color={'#21295C'} height={20} width={20}/>} </InputGroup.Text> */}
                                                   </InputGroup>
                                              </Form.Group>
                                         </Form.Row>
@@ -551,4 +553,10 @@ class profile extends React.Component {
           );
      }
 }
+
+profile.propTypes = {
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
+}
+
 export default profile;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
 import { Spinner, Col, Container, Row, Carousel, Button} from 'react-bootstrap';
@@ -203,4 +204,11 @@ class Startup extends React.Component {
           )
      }
 }
+
+Startup.propTypes = {
+     startups: PropTypes.array.isRequired,
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
+}
+
 export default Startup;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './about.css';
 import {Container, Row, Col} from 'react-bootstrap';
@@ -81,4 +82,9 @@ class about extends React.Component {
           )
      }
 }
+
+about.propTypes = {
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
+};
 export default about;

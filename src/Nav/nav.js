@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  {Navbar, Nav}  from 'react-bootstrap';
 import {HashRouter, Link, Route} from 'react-router-dom';
 import './nav.css';
@@ -22,6 +23,7 @@ import Logo from '../images/logo.png';
 
 // Import footer
 import Footer from '../footer/footer';
+
 class nav extends React.Component {
   constructor(props) {
       super(props);
@@ -36,13 +38,6 @@ class nav extends React.Component {
       })
     }
 
-    //   handleSelect(key){
-    //     this.setState({
-    //         key: key
-    //     })
-    //     alert(`selected ${key}`);
-    //onSelect={this.handleSelect}>   
-    // }
      render() {
           return(
                <div>
@@ -55,22 +50,15 @@ class nav extends React.Component {
                   <Nav.Link href="#/" className={`Navlinks ${(this.state.home_active) ? 'active' : ''}`}>Home</Nav.Link>
                   <Nav.Link href="#about"  className={`Navlinks ${(this.state.about_active) ? 'active' : ''}`}>About</Nav.Link>
                   <Nav.Link href="#jobs" className={`Navlinks ${(this.state.jobs_active) ? 'active' : ''}`}>Jobs</Nav.Link>
-                  {/* <Nav.Item><div className='line-break'></div></Nav.Item> */}
                   <Nav.Link href="#startups"  className={`Navlinks ${(this.state.startups_active) ? 'active' : ''}`}>Startups</Nav.Link>
                   <Nav.Link href="#investors"  className={`Navlinks ${(this.state.investors_active) ? 'active' : ''}`}>Investors</Nav.Link>
-                  {/* <Nav.Item><div className='line-break'></div></Nav.Item> */}
-                  {/* <Nav.Link href="#profile"  className='Navlinks'><PersonCircle color='#21295C' height={30} width={30}/></Nav.Link> */}
                   <Nav.Link href="#profile" className={`Navlinks quick-signin-nav`}><div className='quick-signin shadow'>Sign Up For Free</div></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
                </Navbar>
              
              <div className='views'>
-                  <Route exact path="/">
-                       <Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/>
-                  </Route>  
-
-                  <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
+                  <Route exact path="/"><Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/></Route>                    <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
                   <Route exact path="/startups"><Startups active={() => this.setState({startups_active: true})} not_active={() => this.setState({startups_active: false})} startups={this.props.startups}/></Route>
                   <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile active={() => this.setState({profile_active: true})} not_active={() => this.setState({profile_active: false})}/></Route>  
@@ -78,7 +66,6 @@ class nav extends React.Component {
                   <Route exact path="/dashboard"><Dashboard/></Route> 
                   <Route exact path="/policy"><Policy/></Route> 
                   <Route exact path="/terms"><TC/></Route> 
-                  
              </div>
              </HashRouter>
              
@@ -89,5 +76,10 @@ class nav extends React.Component {
      }
 }
 
+nav.propTypes = {
+     investors: PropTypes.oneOfType([PropTypes.array,PropTypes.object,]).isRequired,
+     startups: PropTypes.oneOfType([PropTypes.array,PropTypes.object,]).isRequired,
+     jobs: PropTypes.array.isRequired,
+}
 
 export default nav;

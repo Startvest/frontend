@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './jobs.css';
 import { Row, Col , Container, Spinner} from 'react-bootstrap';
@@ -78,11 +79,17 @@ class jobs extends React.Component {
 
      render(){
           return(
-          <div className='job-view'>
-                
+          <div className='job-view'>   
                {this.renderview()}
           </div>
           )
      }
 }
+
+jobs.propTypes = {
+     jobs: PropTypes.array.isRequired,
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
+}
+
 export default jobs;

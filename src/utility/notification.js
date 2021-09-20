@@ -9,6 +9,9 @@ import './notification.css';
 // Animation
 import {Slide} from 'react-reveal';
 
+// PropTypes
+import PropTypes from 'prop-types';
+
 export default function Notifyer({message, type, onDismissed, multiple}) {
   // const [alertTimeout] = useState(3000);
 //   const [position] = useState('top-right');
@@ -46,4 +49,11 @@ export default function Notifyer({message, type, onDismissed, multiple}) {
                 </AlertContainer>
           </div>
   );
+}
+
+Notifyer.propTypes = {
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.array,]).isRequired,
+  type: PropTypes.oneOf(['info', 'warning', 'danger', 'success']),
+  onDismissed: PropTypes.func.isRequired,
+  multiple: PropTypes.bool.isRequired
 }

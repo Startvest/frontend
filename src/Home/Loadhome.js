@@ -28,9 +28,14 @@ class Loader extends React.Component {
                data: [],
                url: 'https://startvest.github.io/frontend',
 
-
                investors: [],
-               startups: []
+               startups: [],
+               jobs: [],
+
+               // State for loading the information
+               load_start: false,
+               load_invest: false,
+               load_jobs: false
           }
 
      }
@@ -46,7 +51,6 @@ class Loader extends React.Component {
                     }})
                .then(response => response.json())
                .then(data => {    
-                    // console.log('Investors: '+ JSON.stringify(data)); 
                     this.setState({ investors: data.results , load_start:true});
                })
                .catch((error) => {
@@ -89,7 +93,7 @@ class Loader extends React.Component {
 
           }
 
-     
+     // The the overide css for the loading icon on the home screen
       override = css`
           display: block;
           margin: 2em auto;
@@ -98,15 +102,19 @@ class Loader extends React.Component {
           `;
 
      async componentDidMount() {
+          
+          // Call the connect function immediately after it mounts
           this.connect();
-          // Display a warnign message that the user internet is slow
-          // If it takes long to change screen
+
+          // Display a warning message that the user internet is slow
+          // If it takes long to load the app
           setTimeout(() => {
                if(this.state.load){
                     this.setState({internet: false});
                }
           }, 8000);
           
+          // Reloads the connect function every 1 second
           setInterval(() =>{
                if(this.state.load){
                     this.connect();

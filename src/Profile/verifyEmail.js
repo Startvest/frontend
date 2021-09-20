@@ -53,12 +53,17 @@ function VerifyEmail({email, setVerify, close, checkForm}){
  
      return(
           <Container className='box_design shadow'>
-               <Row>
-                    <Col > 
-                    <img src={VerifySVG}  height={80} alt='Verify Email' className='vemail-logo'/>
-                    </Col>
-                    <Col xs={'auto'}><X onClick={close} color={'#21295C'} height={30} width={30} /></Col>
-               </Row>
+               <div className='d-flex justify-content-between ' >
+               
+               {/* This is an unauthodox method to cnter the svg Icon */}
+               {/* Correct it later */}
+               <div id='no_disp'><X onClick={close} color={'#21295C'}  height={30} width={30} /></div>
+               
+               <div className='flex-fill'> <img src={VerifySVG} alt='Verify Email' className='vemail-logo '/></div>
+               
+               <div ><X onClick={close} color={'#21295C'} height={30} width={30} /></div>
+               </div>
+
                <div className='vemail-head'>Verify your email address</div>
                <div className='vemail-body'>
                     To ensure that the email provided is real and belongs to you, 

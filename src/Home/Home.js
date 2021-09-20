@@ -194,7 +194,9 @@ class home extends React.Component {
 }
 
 home.propTypes = {
-     investors: PropTypes.object.isRequired,
-     startups: PropTypes.object.isRequired
-   };
+     investors: PropTypes.array.isRequired,
+     startups: PropTypes.array.isRequired,
+     active: PropTypes.func.isRequired,
+     not_active: PropTypes.func.isRequired
+};
 export default home;
