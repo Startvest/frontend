@@ -24,6 +24,9 @@ import Logo from '../images/logo.png';
 // Import footer
 import Footer from '../footer/footer';
 
+// Menu Icon
+import {List, X} from 'react-bootstrap-icons';
+
 class nav extends React.Component {
   constructor(props) {
       super(props);
@@ -35,7 +38,16 @@ class nav extends React.Component {
           startups_active: false,
           investors_active: false,
           profile_active: false,
+
+          // The state of the toggle button
+          expanded : false
       })
+    }
+
+    setExpanded = () =>{
+          console.log(!this.state.expanded)
+          this.setState({expanded: !this.state.expanded})
+          
     }
 
      render() {
@@ -44,7 +56,9 @@ class nav extends React.Component {
                <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
                <Link to='/'><Navbar.Brand><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand></Link>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle'/>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle' onClick={this.setExpanded}>
+                     {(this.state.expanded) ? <X height={30} width={30} />: <List height={30} width={30} color='#21295C'/>}
+                </Navbar.Toggle>
                 <Navbar.Collapse id="responsive-navbar-nav" >
                   <Nav className="ml-auto navitems" defaultActiveKey="/">  
                   <Nav.Link href="#/" className={`Navlinks ${(this.state.home_active) ? 'active' : ''}`}>Home</Nav.Link>

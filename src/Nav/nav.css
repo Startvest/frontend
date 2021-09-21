@@ -30,7 +30,7 @@
      font-weight: bold;
      font-size: large;
      width: max-content;
-     margin: auto 1em;
+     margin: auto .5em;
      color: var(--primary) !important;
 }
 .Navlinks:not(.quick-signin-nav){

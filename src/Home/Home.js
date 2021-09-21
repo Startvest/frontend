@@ -194,6 +194,10 @@ class home extends React.Component {
 }
 
 home.propTypes = {
+     /**
+   * An Array Containing the investors data extracted from the server
+   * A fetch request was made in the LoadHome file
+   */
      investors: PropTypes.array.isRequired,
      startups: PropTypes.array.isRequired,
      active: PropTypes.func.isRequired,
