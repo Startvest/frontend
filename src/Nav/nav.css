@@ -38,9 +38,9 @@
 }
 .Navlinks:hover:not(.quick-signin-nav){
      text-decoration: none;
-     border-bottom: 3px solid var(--alternate);
+     border-bottom: 3px solid var(--primary);
      opacity: 1;
-     color: var(--alternate) !important;
+     color: var(--primary) !important;
 }
 
 /* Set the active function, then give the nav from each link, if it is mounted */

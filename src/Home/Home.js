@@ -199,8 +199,20 @@ home.propTypes = {
    * A fetch request was made in the LoadHome file
    */
      investors: PropTypes.array.isRequired,
+     /**
+   * An Array Containing the Startups data extracted from the server
+   * A fetch request was made in the LoadHome file
+   */
      startups: PropTypes.array.isRequired,
+     /**
+   * A function to inform the navigation, 
+   * that the component is currently active, 
+   */
      active: PropTypes.func.isRequired,
+     /**
+   * A function to inform the navigation, 
+   * that the component is currently not active, before the component unmounts
+   */
      not_active: PropTypes.func.isRequired
 };
 export default home;

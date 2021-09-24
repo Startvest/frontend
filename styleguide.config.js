@@ -1,3 +1,5 @@
 module.exports = {
-     components: 'src/Home/*.js'
-   };
+     components: ['src/**.js', 'src/*/*.js',],
+     ignore: ['**/index.js','**/App.test.js','**/reportWebVitals.js', '**/serviceWorker.js', '**/setupTests.js', '**/connectdb.js'],
+     
+};

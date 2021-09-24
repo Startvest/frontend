@@ -24,8 +24,8 @@ export default function Notifyer({message, type, onDismissed, multiple}) {
          function icon(){
           switch(type){
             default: return <CheckLg width={20} className='not-icon'/>;
-            case 'success': return <CheckLg width={20} className='not-icon'/>;
-            case 'danger': return <ExclamationCircleFill width={20} className='not-icon'/>;
+            case 'success': return <CheckLg width={20} className='not-icon green'/>;
+            case 'danger': return <ExclamationCircleFill width={20} className='not-icon red'/>;
             case 'warning': return <ExclamationTriangle width={20} className='not-icon'/>;
           }
         }
@@ -37,12 +37,12 @@ export default function Notifyer({message, type, onDismissed, multiple}) {
                 {(multiple) ? 
                 message.map((v,i) => 
                 <Slide key={i} right>
-                <Alert key={i} type={type} >{icon()} {String(v)}</Alert>
+                <Alert key={i} type={type} showIcon={false} >{icon()} {String(v)}</Alert>
                 </Slide>
                 )
                 : 
                 <Slide right>
-                <Alert type={type} >{icon()} {message}</Alert>
+                <Alert type={type} showIcon={false} >{icon()} {message}</Alert>
                 </Slide>
                 }
                
