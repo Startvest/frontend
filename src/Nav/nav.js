@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import  {Navbar, Nav}  from 'react-bootstrap';
-import {HashRouter, Link, Route} from 'react-router-dom';
+import {HashRouter, Link, Route, Switch} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +16,7 @@ import Jobs from '../jobs/jobs';
 import Dashboard from '../dashboard/dashboard';
 import TC from '../policies/t&c';
 import Policy from '../policies/policy';
-
+import NoMatch from '../utility/404';
 
 // The logo
 import Logo from '../images/logo.png';
@@ -72,6 +72,7 @@ class nav extends React.Component {
                </Navbar>
              
              <div className='views'>
+                  <Switch>
                   <Route exact path="/"><Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/></Route>                    <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
                   <Route exact path="/startups"><Startups active={() => this.setState({startups_active: true})} not_active={() => this.setState({startups_active: false})} startups={this.props.startups}/></Route>
                   <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
@@ -80,6 +81,8 @@ class nav extends React.Component {
                   <Route exact path="/dashboard"><Dashboard/></Route> 
                   <Route exact path="/policy"><Policy/></Route> 
                   <Route exact path="/terms"><TC/></Route> 
+                  <Route><NoMatch/></Route> 
+                  </Switch>
              </div>
              </HashRouter>
              

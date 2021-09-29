@@ -11,8 +11,8 @@
 /* Styling to change the appearance of the scroll bars */
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 /* Track */
@@ -23,7 +23,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 /* The arrows at the beginning and end*/
 ::-webkit-scrollbar-button{
