@@ -56,6 +56,15 @@ class profile extends React.Component {
           });
      }
 
+     // Function to redirect the user to the dashboard page
+     redirect_dash = () => {
+          if(window.location.hostname === 'localhost'){
+               window.location = `http://${window.location.hostname}:${window.location.port}/#/dashboard`
+          }else{
+               window.location = `https://dashboard.${window.location.hostname}`
+          }
+     }
+
      // override css file for loading bar
      override = css`
           display: block;
@@ -67,6 +76,7 @@ class profile extends React.Component {
           window.scrollTo(0, 0);
           this.mounted = true;
  
+          console.log(window.location.hostname);
      // this.mounted is a way to ensure that 
      // there is no meomry leakasge for the self initialised function
       if (this.mounted) {
@@ -537,7 +547,7 @@ class profile extends React.Component {
                default: return <Container className="box_design shadow-sm"><Spinner className="load" animation='border' color='#21295C' /></Container>;
                case 'load': return <div><Spinner className="load" animation='border' color='#21295C' /></div>;
                case 'signup': return (this.state.signup) ? this.Signin() : this.login();
-               case 'auth': return (this.state.registered) ? <Dashboard/> : (this.state.is_startup) ? <StartForm  user_data={this.state.user_data} registered={this.state.registered} req={this.required()} proceed={() => {this.setState({state: 'auth', registered: true})}}/> : <InvestorForm  is_startup={this.state.is_startup} req={this.required()}  user_data={this.state.user_data} registered={this.state.registered} proceed={() => {this.setState({state: 'auth', registered: true})}}/> ; 
+               case 'auth': return (this.state.registered) ? this.redirect_dash() : (this.state.is_startup) ? <StartForm  user_data={this.state.user_data} registered={this.state.registered} req={this.required()} proceed={() => {this.setState({state: 'auth', registered: true})}}/> : <InvestorForm  is_startup={this.state.is_startup} req={this.required()}  user_data={this.state.user_data} registered={this.state.registered} proceed={() => {this.setState({state: 'auth', registered: true})}}/> ; 
                case 'verifyEmail': return  <VerifyEmail email={this.state.email} close={() => {this.setState({state: 'signup', signup: true, emailVerify:false})} } setVerify={() => this.setState({emailVerify:true, state: 'signup', signup: true, error:true, errMessage:'Verified Email Successfully', type:'success'})} checkForm={() => this.checkSignForm()}/>     
           }
      }

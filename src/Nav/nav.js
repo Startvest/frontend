@@ -13,7 +13,6 @@ import Startups from '../Startups/startups';
 import Investors from '../Investors/investors';
 import Profile from '../Profile/profile';
 import Jobs from '../jobs/jobs';
-import Dashboard from '../dashboard/dashboard';
 import TC from '../policies/t&c';
 import Policy from '../policies/policy';
 import NoMatch from '../utility/404';
@@ -78,7 +77,10 @@ class nav extends React.Component {
                   <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile active={() => this.setState({profile_active: true})} not_active={() => this.setState({profile_active: false})}/></Route>  
                   <Route exact path="/jobs"><Jobs active={() => this.setState({jobs_active: true})} not_active={() => this.setState({jobs_active: false})} jobs={this.props.jobs}/></Route>  
-                  <Route exact path="/dashboard"><Dashboard/></Route> 
+                  <Route path='/dashboard' component={() => { 
+                         window.location.href = 'https://dashboard.startvest.io/'; 
+                         return null;
+                    }}/>
                   <Route exact path="/policy"><Policy/></Route> 
                   <Route exact path="/terms"><TC/></Route> 
                   <Route><NoMatch/></Route> 
