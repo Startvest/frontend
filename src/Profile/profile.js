@@ -61,7 +61,7 @@ class profile extends React.Component {
           if(window.location.hostname === 'localhost'){
                window.location = `http://${window.location.hostname}:${window.location.port}/#/dashboard`
           }else{
-               window.location = `https://dashboard.${window.location.hostname}`
+               window.location = `https://dashboard.startvest.io/`
           }
      }
 
