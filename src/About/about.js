@@ -26,7 +26,12 @@ var team = {
      'member4': {
           'image':false, 
           'name':'Fortune Aliebiesu', 
-          'position':'Backened Developer'
+          'position':'Frontend Developer'
+     },
+     'member5': {
+          'image':false, 
+          'name':'Steven Iguza', 
+          'position':'Documentation & Content creation'
      }
 }
 
