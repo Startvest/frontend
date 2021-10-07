@@ -11,12 +11,12 @@ var team = {
      'member1': {
           'image':false, 
           'name':'Okorite Briggs', 
-          'position':'Backened Developer'
+          'position':'Backened Developer & ML'
      },
      'member2': {
           'image':false, 
           'name':'Hanif Adedotun', 
-          'position':'Frontend Developer & Graphics Designer'
+          'position':'Frontend Developer, Graphics Designer & ML'
      },
      'member3': {
           'image':false, 
@@ -32,6 +32,11 @@ var team = {
           'image':false, 
           'name':'Steven Iguza', 
           'position':'Documentation & Content creation'
+     },
+     'member6': {
+          'image':false, 
+          'name':'Zikora Ogbuagu', 
+          'position':'Backend Developer'
      }
 }
 
@@ -67,13 +72,13 @@ class about extends React.Component {
 
                     <h2 className="teamHead">Meet our team</h2>
                     <Container className='meet_the_team'>
-                    <Row>
+                    <Row className="justify-content-md-center">
                     {Object.values(team).map((val, i)=>
-                    <Col className='team-container' key={i} md={3}>
+                    <Col className='team-container' key={i} md={3} xs={6}>
                          <Col key={i}>
                               <p><span id='abt-avatar'><Person color='white' margin={3} height={30} width={30}/></span></p>
                               <b>{val.name}</b>
-                              <p>{val.position}</p>
+                              <p className='team-position'>{val.position}</p>
                          </Col>     
                     </Col>
 

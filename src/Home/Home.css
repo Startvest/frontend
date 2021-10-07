@@ -116,10 +116,11 @@
 /* Startup view on homepage */
 .accent {
      background-color: var(--accent);
+     padding-bottom: 2em;
 }
 .home-startup{
-     padding: 1em;
-     margin: 10% auto;
+     padding: 2em;
+     margin-top: 10%;
      /* border-radius: 8px; */
 }
 .counter{
