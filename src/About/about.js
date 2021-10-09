@@ -57,8 +57,10 @@ class about extends React.Component {
                     <Row className="teambrief" >
                          <Col><img src={TeamPic} className='about-team-image ' sm={12} md={6} alt="Team pic svg"/></Col>
 
-                         <Col sm={12} md={6} >
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper tortor sit amet consequat semper. Proin malesuada enim vel felis rhoncus, vel cursus tellus porttitor. Nulla facilisis vehicula mattis. Sed dapibus sem a urna malesuada fermentum. Pellentesque aliquet lorem eget turpis molestie aliquam. Cras pharetra, metus in consectetur interdum, tellus tellus gravida tortor, eu tristique neque ex non nisi. Nulla elementum a risus at mollis. Cras elit dui, auctor hendrerit nisl id, posuere elementum dolor. Vivamus consectetur iaculis libero convallis volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In eleifend sem commodo lorem volutpat, sit amet bibendum ipsum bibendum. Etiam lacinia, nibh sit amet mattis hendrerit, purus dolor venenatis eros, et tempor nisl erat malesuada nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi sed erat lobortis, maximus risus ut, auctor risus. Aliquam venenatis massa a dapibus iaculis. </p>
+                         <Col sm={12} md={6} className='about-startup'>
+                         <p>Starvest is an equity crowdfunding platform that allows people with innovative ideas to register and get funded; gives everyone the opportunity to invest in startups; and allows startups to post openings in their companies for job seekers.</p>
+                         <p>The idea was borne from the observation of the high rate of poverty and unemployment in Nigeria even though the nation is home to some of the most creative minds in the world. This unfortunate reality can be attributed to the non-inclusive nature of the economy, and a high rate of nepotism.</p>
+                         <p>With startvest, we want to give everyone a chance to achieve their financial goals by making it easy for them to get jobs, invest, and even get investment for the creative ideas they have.</p>
                          </Col>
                          
                     </Row>

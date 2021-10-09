@@ -7,6 +7,9 @@
      height: 100%;
      width: 100%;
 }
+.about-startup{
+     text-align: left;
+}
 .heading{
      font-size: xx-large;
      font-weight: bold;
@@ -20,6 +23,7 @@
 }
 .teambrief{
      height: max-content;
+     margin: 8% auto;
 }
 .teamHead{
      font-weight: bold;
