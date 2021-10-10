@@ -112,7 +112,7 @@ class Loader extends React.Component {
                if(this.state.load){
                     this.setState({internet: false});
                }
-          }, 8000);
+          }, 30000);
           
           // Reloads the connect function every 1 second
           setInterval(() =>{
