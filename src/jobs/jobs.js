@@ -40,7 +40,7 @@ class jobs extends React.Component {
                <h1 className='investors-head'>Latest jobs at startups</h1>
                {(this.state.jobs) ?
                <div>
-                    <h5>Showing <b></b>{Object.keys(this.state.jobs).length} available jobs</h5>  
+                    <h5>Showing <b></b>{Object.keys(this.state.jobs).length} available job{(Object.keys(this.state.jobs).length>1) ? 's': ''}</h5>  
                     <Container >
                          <Row>
                          {Object.values(this.state.jobs).map((val, ind) => 
@@ -48,9 +48,9 @@ class jobs extends React.Component {
                          <Row>
                          {/* <Col sm='auto'><CircleFill className='icon-back' height={50} width={50}/></Col> */}
                          <Col sm='auto'>
-                              <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: ind, view: 'job' })}}>{val.company.company_name}</div>
+                              <div key={ind} className='col-startup-name' onClick={() => {this.setState({id: ind, view: 'job' })}}>{val.job_title}</div>
                               <p>{val.description}</p>
-                              <span>{val.job_title}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.job_type}</span>
+                              <span>{val.company.company_name}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.location}</span> <span><CircleFill className='icon-back' height={5} width={5}/></span> <span >{val.job_type}</span>
                          </Col>
                          </Row>
                          </div>

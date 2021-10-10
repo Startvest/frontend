@@ -40,6 +40,13 @@ var team = {
      }
 }
 
+var summary = {
+     'p1': `Starvest is an equity crowdfunding platform that allows people with creative ideas to register and get funded.
+     We provide everyone the option to invest in startups, and we also give startups the platform to post job vacancies for job seekers.`,
+     'p2': `Despite the fact that startup investment in Africa has expanded dramatically in recent years, African startups are still less well-funded than startups anywhere else in the globe. Our main goal at StartVest is to use crowdsourcing to close the gap in underfunding of early stage entrepreneurs in Africa.`,
+     'p3': `We want to provide everyone an opportunity to fulfill their dreams with StartVest by making it simple for people to seek investment for their innovative ideas, find jobs, and invest in disruptive companies.`
+}
+
 class about extends React.Component {
      componentDidMount(){
           this.props.active();
@@ -58,22 +65,27 @@ class about extends React.Component {
                          <Col><img src={TeamPic} className='about-team-image ' sm={12} md={6} alt="Team pic svg"/></Col>
 
                          <Col sm={12} md={6} className='about-startup'>
-                         <p>Starvest is an equity crowdfunding platform that allows people with innovative ideas to register and get funded; gives everyone the opportunity to invest in startups; and allows startups to post openings in their companies for job seekers.</p>
-                         <p>The idea was borne from the observation of the high rate of poverty and unemployment in Nigeria even though the nation is home to some of the most creative minds in the world. This unfortunate reality can be attributed to the non-inclusive nature of the economy, and a high rate of nepotism.</p>
-                         <p>With startvest, we want to give everyone a chance to achieve their financial goals by making it easy for them to get jobs, invest, and even get investment for the creative ideas they have.</p>
+                         <p>Starvest is an equity crowdfunding platform that allows people with innovative ideas to register and get funded, we give everyone the opportunity to invest in startups, We also give the platform for startups to post openings in their companies for job seekers.</p>
+                         <p>The solution was inspired by the high prevalence of poverty and unemployment in Nigeria, despite the fact that the country is home to some of the world's most creative brains. The non-inclusive nature of the economy, as well as a high degree of nepotism, are to blame for this unpleasant reality.</p>
+                         <p>At StartVest, we want to provide everyone an opportunity to fulfill their financial goals by making it simple for people to find jobs, invest, and even seek investment for their innovative ideas.</p>
                          </Col>
                          
                     </Row>
                     <Container>
-                         <h3 className="teamHead">Vision Statement</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-
+                         <div className='teamHead-cont'>
                          <h3 className="teamHead">Mission Statement</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                         <p>To be the platform that collaboratively build a safe network between startups and investors, to provide every job seeker  an opportunity to have their dream job by creating enabling environment in which ideas can become profit generating businesses as easily as possible.</p>
+                         </div>
+
+                         <div className='teamHead-cont'>
+                         <h3 className="teamHead">Vision Statement</h3>
+                         <p>To be the company that gives people the power and means to archive great success in life.</p>
+                         </div>
                     </Container>
 
-                    <h2 className="teamHead">Meet our team</h2>
+                    
                     <Container className='meet_the_team'>
+                    <h2 className="teamHead">Meet our team</h2>
                     <Row className="justify-content-md-center">
                     {Object.values(team).map((val, i)=>
                     <Col className='team-container' key={i} md={3} xs={6}>

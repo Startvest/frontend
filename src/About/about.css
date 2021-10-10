@@ -23,11 +23,18 @@
 }
 .teambrief{
      height: max-content;
-     margin: 8% auto;
+     margin: 6% auto;
+}
+.teamHead-cont{
+     margin: 5% auto;
 }
 .teamHead{
      font-weight: bold;
      color: var(--primary);
+    
+}
+.meet_the_team{
+     margin-top: 6%;
 }
 .team-container{
      border-radius: 10px;
@@ -53,4 +60,8 @@
 Col{
      text-align: center;
 }
-
+@media only screen and (max-width: 600px){
+     .about-startup{
+          margin-top: 10%;
+     }
+}
