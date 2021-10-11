@@ -66,7 +66,7 @@
      font-weight: normal !important;
      font-size: medium !important;
      margin: auto;
-     text-shadow: .5px .5jjdpx 1px var(--faded);
+     text-shadow: .5px .5px 1px var(--secondary);
 }
 .views{
      min-height: 81vh;

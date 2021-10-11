@@ -4,44 +4,57 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './about.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import TeamPic from '../images/team_3.svg';
-import { Person } from 'react-bootstrap-icons';
+import { Person, Linkedin, Github } from 'react-bootstrap-icons';
+
+// Images of members
+import Hanif from '../images/devs/hanif.png';
+import Briggs from '../images/devs/briggs.jpg';
+import David from '../images/devs/david.jpg';
+import Fortune from '../images/devs/fortune.jpg';
+import Steven from '../images/devs/steven.jpg';
 
 // Format of team members [avatarurl, name, position] 
 var team = {
      'member1': {
-          'image':false, 
+          'image':Briggs, 
           'name':'Okorite Briggs', 
-          'position':'Backened Developer & ML'
+          'position':'Backened Developer & ML',
+          'links': ['https://www.linkedin.com/in/tamunokorite-briggs-731551211/','https://github.com/Tamunokorite']
      },
      'member2': {
-          'image':false, 
+          'image':Hanif, 
           'name':'Hanif Adedotun', 
-          'position':'Frontend Developer, Graphics Designer & ML'
+          'position':'Frontend Developer, Graphics Designer & ML',
+          'links': ['https://www.linkedin.com/in/hanif-adedotun/','https://github.com/Hanif-adedotun']
      },
      'member3': {
-          'image':false, 
+          'image':David, 
           'name':'David Utee Usiere', 
-          'position':'Frontend Developer & Scribe'
+          'position':'Frontend Developer & Scribe',
+          'links': ['','https://github.com/Utee203']
      },
      'member4': {
-          'image':false, 
+          'image':Fortune, 
           'name':'Fortune Aliebiesu', 
-          'position':'Frontend Developer'
+          'position':'Frontend Developer',
+          'links': ['https://www.linkedin.com/in/fortune-alebiosu-6954b3207/','https://github.com/fortune710']
      },
      'member5': {
-          'image':false, 
+          'image':Steven, 
           'name':'Steven Iguza', 
-          'position':'Documentation & Content creation'
+          'position':'Documentation & Content creator',
+          'links': ['https://www.linkedin.com/in/iguza-steven-a6ba04214/','']
      },
      'member6': {
           'image':false, 
           'name':'Zikora Ogbuagu', 
-          'position':'Backend Developer'
+          'position':'Backend Developer',
+          'links': ['','https://github.com/zikorano']
      }
 }
 
 var summary = {
-     'p1': `Starvest is an equity crowdfunding platform that allows people with creative ideas to register and get funded.
+     'p1': `StartVest is an equity crowdfunding platform that allows people with creative ideas to register and get funded.
      We provide everyone the option to invest in startups, and we also give startups the platform to post job vacancies for job seekers.`,
      'p2': `Despite the fact that startup investment in Africa has expanded dramatically in recent years, African startups are still less well-funded than startups anywhere else in the globe especially at the pre-seed stage. Our main goal at StartVest is to use crowdsourcing to close the gap in underfunding of early stage entrepreneurs in Africa.`,
      'p3': `We want to provide everyone an opportunity to fulfill their dreams by making it simple for people to seek investment for their innovative ideas, find jobs, and invest in disruptive companies.`
@@ -92,11 +105,16 @@ class about extends React.Component {
                     <h2 className="teamHead">Meet our team</h2>
                     <Row className="justify-content-md-center">
                     {Object.values(team).map((val, i)=>
-                    <Col className='team-container' key={i} md={3} xs={6}>
+                    <Col className='team-container' key={i} md={4} xs={12}>
                          <Col key={i}>
-                              <p><span id='abt-avatar'><Person color='white' margin={3} height={30} width={30}/></span></p>
+                              <p><span id='abt-avatar'>
+                                  {(val.image) ? 
+                                  <img src={val.image} className='abt-image'/>
+                                  :<Person color='white' margin={3} height={30} width={30}/>} 
+                                   </span></p>
                               <b>{val.name}</b>
                               <p className='team-position'>{val.position}</p>
+                              <p><a href={val.links[0]} target='_blank'><Linkedin  className='team-link' color='#21295C' margin={5} height={20} width={20}/></a>  <a href={val.links[1]} target='_blank'><Github  className='team-link' color='#21295C' margin={5} height={20} width={20}/></a></p>
                          </Col>     
                     </Col>
 

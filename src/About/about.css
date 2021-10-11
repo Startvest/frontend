@@ -53,12 +53,30 @@
      padding: 1em;
      display: inline-block;
 }
+
+.abt-image{
+     width: 200px;
+     height: auto;
+     /* border-radius: 20px; */
+}
+
+#abt-avatar img{
+     margin: 0.3em;
+}
+
 #abt-avatar Person{
      margin: 0.3em;
 }
 
 Col{
      text-align: center;
+}
+.team-position{
+     font-size: medium;
+}
+.team-link{
+     margin: auto .5em;
+     cursor: pointer;
 }
 @media only screen and (max-width: 600px){
      .about-startup{

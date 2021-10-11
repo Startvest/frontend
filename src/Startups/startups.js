@@ -24,7 +24,6 @@ class Startup extends React.Component {
 
             hover: true
           })
-          console.log(this.state.startups);
         }
 
 
