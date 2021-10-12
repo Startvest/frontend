@@ -7,7 +7,7 @@ import TeamPic from '../images/team_3.svg';
 import { Person, Linkedin, Github } from 'react-bootstrap-icons';
 
 // Images of members
-import Hanif from '../images/devs/hanif.png';
+import Hanif from '../images/devs/hanif2.png';
 import Briggs from '../images/devs/briggs.jpg';
 import David from '../images/devs/david.jpg';
 import Fortune from '../images/devs/fortune.jpg';
