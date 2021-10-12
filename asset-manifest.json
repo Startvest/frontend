@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f119fdc2.chunk.css",
-    "main.js": "/static/js/main.c1353c3d.chunk.js",
+    "main.js": "/static/js/main.bac97148.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.fcaba1f8.js",
     "static/css/2.e847e501.chunk.css": "/static/css/2.e847e501.chunk.css",
     "static/js/2.35f16382.chunk.js": "/static/js/2.35f16382.chunk.js",
@@ -13,7 +13,7 @@
     "static/media/fortune.b758f6fd.jpg": "/static/media/fortune.b758f6fd.jpg",
     "static/media/gallery1.9b8ad916.png": "/static/media/gallery1.9b8ad916.png",
     "static/media/gallery2.cd19bb9b.png": "/static/media/gallery2.cd19bb9b.png",
-    "static/media/hanif.b82632c7.png": "/static/media/hanif.b82632c7.png",
+    "static/media/hanif2.24f0689b.png": "/static/media/hanif2.24f0689b.png",
     "static/media/load-logo.9bae8eca.png": "/static/media/load-logo.9bae8eca.png",
     "static/media/login.1523a620.svg": "/static/media/login.1523a620.svg",
     "static/media/logo-white.98074506.png": "/static/media/logo-white.98074506.png",
@@ -29,6 +29,6 @@
     "static/css/2.e847e501.chunk.css",
     "static/js/2.35f16382.chunk.js",
     "static/css/main.f119fdc2.chunk.css",
-    "static/js/main.c1353c3d.chunk.js"
+    "static/js/main.bac97148.chunk.js"
   ]
 }
