@@ -54,7 +54,7 @@ class nav extends React.Component {
                <HashRouter basename='/'>
                <Navbar className="navigation shadow-sm"  collapseOnSelect expand="md" bg="light" sticky='top' >
                <Link to='/'><Navbar.Brand><img src={Logo} height={30} alt='Startvest logo'/></Navbar.Brand></Link>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle' onClick={this.setExpanded}>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle' onChange={this.setExpanded}>
                      {(this.state.expanded) ? <X height={30} width={30} />: <List height={30} width={30} color='#21295C'/>}
                 </Navbar.Toggle>
                 <Navbar.Collapse id="responsive-navbar-nav" >
@@ -70,7 +70,7 @@ class nav extends React.Component {
                </Navbar>
              
              <div className='views'>
-                  <Switch>
+                  <Switch> 
                   <Route exact path="/"><Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/></Route>                    <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
                   <Route exact path="/startups"><Startups active={() => this.setState({startups_active: true})} not_active={() => this.setState({startups_active: false})} startups={this.props.startups}/></Route>
                   <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
