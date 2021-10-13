@@ -96,7 +96,7 @@ class about extends React.Component {
                          <div className='teamHead-cont'>
                          <h3 className="teamHead">Vision Statement</h3>
                          {/* <p>To be the bridge between an idea and a successful venture </p> */}
-                         <p>To be the company that gives entrepreneurs the power and means to archive great success.</p>
+                         <p>To be the company that gives everyone the platform and opportunity to achieve great success.</p>
                          </div>
                     </Container>
 

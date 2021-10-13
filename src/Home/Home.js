@@ -76,7 +76,7 @@ class home extends React.Component {
                     "bg": "rgba(117, 253, 205, 0.1)"
                },
                "title": "Get started in minutes", 
-               "desc": "Create an investor account and start investing eith as little as N1000"
+               "desc": "Create an investor account and start investing with as little as N10,000"
           },    
           
      ]
