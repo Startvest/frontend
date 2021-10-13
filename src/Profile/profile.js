@@ -57,9 +57,9 @@ class profile extends React.Component {
      }
 
      // Function to redirect the user to the dashboard page
-     redirect_dash = () => {
+     redirect_dash = (startup=true) => {
           if(window.location.hostname === 'localhost'){
-               window.location = `http://${window.location.hostname}:${window.location.port}/#/dashboard`
+               window.location = `http://${window.location.hostname}:${window.location.port}/#/dashboard/${(startup) ? 'startup' : 'investor'}`;
           }else{
                window.location = `https://dashboard.startvest.io/`
           }

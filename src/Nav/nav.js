@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import  {Navbar, Nav}  from 'react-bootstrap';
-import {HashRouter, Link, Route, Switch} from 'react-router-dom';
+import {HashRouter, Link, Route, Switch, useLocation} from 'react-router-dom';
 import './nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -76,8 +76,12 @@ class nav extends React.Component {
                   <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile active={() => this.setState({profile_active: true})} not_active={() => this.setState({profile_active: false})}/></Route>  
                   <Route exact path="/jobs"><Jobs active={() => this.setState({jobs_active: true})} not_active={() => this.setState({jobs_active: false})} jobs={this.props.jobs}/></Route>  
-                  <Route path='/dashboard' component={() => { 
-                         window.location.href = 'https://dashboard.startvest.io/'; 
+                  <Route path='/dashboard/investor' component={() => { 
+                         window.location.href = 'https://dashboard.startvest.io/#/investor';  
+                         return null;
+                    }}/>
+                    <Route path='/dashboard/startup' component={() => { 
+                         window.location.href = 'https://dashboard.startvest.io/#/startup'; 
                          return null;
                     }}/>
                   <Route exact path="/policy"><Policy/></Route> 
