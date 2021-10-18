@@ -57,7 +57,8 @@ var summary = {
      'p1': `StartVest is an equity crowdfunding platform that allows people with creative ideas to register and get funded.
      We provide everyone the option to invest in startups, and we also give startups the platform to post job vacancies for job seekers.`,
      'p2': `Despite the fact that startup investment in Africa has expanded dramatically in recent years, African startups are still less well-funded than startups anywhere else in the globe especially at the pre-seed stage. Our main goal at StartVest is to use crowdsourcing to close the gap in underfunding of early stage entrepreneurs in Africa.`,
-     'p3': `We want to provide everyone an opportunity to fulfill their dreams by making it simple for people to seek investment for their innovative ideas, find jobs, and invest in disruptive companies.`
+     'p3': `We want to provide everyone an opportunity to fulfill their dreams by making it simple for people to seek investment for their innovative ideas, find jobs, and invest in disruptive companies.`,
+     'p4': `Join us in changing how startups are funded!`
 }
 
 class about extends React.Component {
