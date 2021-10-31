@@ -8,7 +8,9 @@ import {ArrowLeft, CircleFill, ArrowRightShort} from 'react-bootstrap-icons';
 
 
 function Job({job, goback}){
+
      useEffect(() => {
+          console.log(job);
           document.title = `${job.job_title} at ${job.company.company_name}`;
      })
      return(
@@ -24,11 +26,11 @@ function Job({job, goback}){
                      </Col>
                 </Row>
                 <Row className='job-group'>
-                     <Col md={6} sm={12}>
+                     <Col md={6} sm={12} className='job-col'>
                           <h3 className='gallery-head'>Job description</h3>
                           <p>{job.description}</p>
                     </Col>
-                    <Col md={6} sm={12}>
+                    <Col md={6} sm={12} className='job-col'>
                          <h3 className='gallery-head'>Requirements</h3>
                          <ul className='working-list'> 
                               {job.requirements.map((val, ind) => 
@@ -48,7 +50,7 @@ function Job({job, goback}){
                     </Col>
                 </Row>
                 {/* <Row className='more-information'>
-                For more information or questions contact us at <span ><a className='alt-link' href = {"mailto: " + startup.email}>{startup.email}</a></span> or phone number  <span ><a className='alt-link' href={'tel:'+startup.number}>{startup.number}</a></span>
+                For more information or questions contact us at <span ><a className='alt-link' href = {"mailto: " + job.company.email}>{job.company.email}</a></span> or phone number  <span ><a className='alt-link' href={'tel:'+job.company.number}>{job.company.number}</a></span>
                 </Row> */}
                 <span className='btn-fill'><Button ><a target="_blank" rel="noreferrer" href = { 'http://'+job.application_link}>Apply now</a><ArrowRightShort  height={25} width={25}/></Button></span>
                </Container>
