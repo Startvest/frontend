@@ -73,8 +73,8 @@
 }
 
 /* Style for mobile view only */
-@media only screen and (max-width: 600px) {
-     /* .Navlinks{
-          margin: auto !important;
-     } */
+@media only screen and (max-width: 700px) {
+     .Navlinks{
+          margin-left: auto !important;
+     }
 }

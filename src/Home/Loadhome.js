@@ -10,7 +10,7 @@ import BarLoader from "react-spinners/BarLoader";
 
 
 // Logo
-import Logo from '../images/load-logo.png';
+import Logo from '../images/logo-3.png';
 
 // Import navigation view
 import Nav from '../Nav/nav';
@@ -129,7 +129,7 @@ class Loader extends React.Component {
           return(
                <div>
                     <div className='Load'>
-                         <div><img src={Logo} alt='Our logo' height={55}/></div>
+                         <div><img src={Logo} alt='Our logo' height={120}/></div>
                           <BarLoader color={'#21295C'} loading={true} css={this.override} height={3} width={200} speedMultiplier={0.8} />
                     </div>
 
