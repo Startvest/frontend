@@ -2,8 +2,10 @@
 :root{
      --primary: #21295C;
      --secondary: #1B3B6F;
+     --sec-10: #1B3B6F1A;;
      --alternate: #065A82;
      --accent: #D3E2ED;
+     --altaccent: #CED7ED;
      --faded: #9EB3C2;
      --altfade: #E8EAEF;
 }

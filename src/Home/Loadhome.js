@@ -26,9 +26,8 @@ class Loader extends React.Component {
                load: true,
                internet: true, //Assumes internet is true for the website to load
                data: [],
-               url: 'https://startvest.github.io/frontend',
+               url: 'https://startvest.io',
 
-               investors: [],
                startups: [],
                jobs: [],
 
@@ -44,18 +43,18 @@ class Loader extends React.Component {
           let token = await Connect();
 
           const staging =  'https://startvest-staging.herokuapp.com/api/v1.0/';
-          fetch(`${staging}investors/`, {
-               method: 'GET', 
-               headers: {
-                         Authorization: `Bearer ${token}` 
-                    }})
-               .then(response => response.json())
-               .then(data => {    
-                    this.setState({ investors: data.results , load_start:true});
-               })
-               .catch((error) => {
-               console.error('Error:', error);
-          });
+          // fetch(`${staging}investors/`, {
+          //      method: 'GET', 
+          //      headers: {
+          //                Authorization: `Bearer ${token}` 
+          //           }})
+          //      .then(response => response.json())
+          //      .then(data => {    
+          //           this.setState({ investors: data.results , load_start:true});
+          //      })
+          //      .catch((error) => {
+          //      console.error('Error:', error);
+          // });
 
           fetch(`${staging}startups/`, {
                method: 'GET', 
@@ -65,7 +64,7 @@ class Loader extends React.Component {
                .then(response => response.json())
                .then(data => {    
                     // console.log('Startups: '+ JSON.stringify(data)); 
-                    this.setState({ startups: data.results , load_invest:true});
+                    this.setState({ startups: data.results , load_start:true});
                })
                .catch((error) => {
                console.error('Error:', error);
@@ -86,7 +85,7 @@ class Loader extends React.Component {
           });
                 // Check if all the data from the database has loaded before calling the main loadS
                 setInterval(() => {
-                    if(this.state.load_start && this.state.load_invest  && this.state.load_jobs){
+                    if(this.state.load_start  && this.state.load_jobs){
                          this.setState({load: false})   
                     }
                }, 40);

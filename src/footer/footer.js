@@ -57,9 +57,6 @@ class footer extends React.Component {
                     <Col >
                     &copy;  2021 StartVest Inc. All rights reserved   
                     </Col>
-                    {/* <Col className='ml-auto'>
-                    <span><Twitter color='#9EB3C2' /></span>  <span>{<Github color='#9EB3C2 '/>}</span>
-                    </Col> */}
                </Row>
               
                </Container>

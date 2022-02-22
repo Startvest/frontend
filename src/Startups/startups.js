@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
-import { Spinner, Col, Container, Row, Carousel, Button} from 'react-bootstrap';
-import {ArrowLeft, ArrowRightShort, Person, CircleFill} from 'react-bootstrap-icons';
+import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup} from 'react-bootstrap';
+import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search} from 'react-bootstrap-icons';
 // import ReactPlayer from "react-player";
 
 // Import Job view
@@ -12,8 +12,8 @@ import Job from '../jobs/job';
 // Import pictures
 import Teampic1 from '../images/gallery1.png';
 import Teampic2 from '../images/gallery2.png';
-
-
+import StartupThumb from '../images/startuptn.jpg';
+import StartupLogo from '../images/startuplogo.png';
 class Startup extends React.Component {
      constructor(props) {
           super(props);
@@ -22,7 +22,8 @@ class Startup extends React.Component {
             view: 'startups',
             id: null , //id number of the startup to open
 
-            hover: true
+            hover: true, 
+            logoHeight: 0,
           })
         }
 
@@ -32,6 +33,9 @@ class Startup extends React.Component {
           this.props.active();
           document.title = 'See top startups';
           window.scrollTo(0, 0);
+
+          this.setState({logoHeight: document.getElementById('s-logo').clientHeight});
+          
      }
 
      componentWillUnmount(){
@@ -41,20 +45,34 @@ class Startup extends React.Component {
 
      // Render the startups in column view
      startups = () => {  
+          
           return(
                <div>
                     <h1 className='startups-head'>Startups</h1>
-                    <Container fluid >
+                    <Container>
+                         <Row>
+                              <Col xs={5}>
+                                   <InputGroup size='sm' className='startups-s'>
+                                        <InputGroup.Text className='startups-s-icon' id="basic-addon1"><Search height={15} width={15}/></InputGroup.Text>
+                                        <Form.Control className='startups-s-text'  type="text" placeholder="Search..." />
+                                   </InputGroup>
+                              </Col>
+                              <Col xs={5}><Form.Control className="startups-s-text" size="sm" type="text" placeholder="Industry" /></Col>
+                              <Col xs={2} className="startups-search"><Button>Search</Button></Col>
+                         </Row>
+                    </Container>
+                    <Container  >
                     <Row className='center col-startups-row'>
                     {Object.values(this.state.startups).map((val, index)=>
-                              <Col className='col-startup ' key={index}  sm={5} >
+                              <Col className='col-startup ' key={index}  md={4} >
+                                   <div><img id="s-logo" src={StartupThumb} className="col-startup-bg"/></div>
+                                   <img src={StartupLogo} className="col-startup-logo" style={{top: this.state.logoHeight-(this.state.logoHeight*0.2)}}/>
                                    <h3 className='col-startup-name' onClick={()=> {this.setState({view: 'startup', id: index})}}>{val.company_name}</h3>
                                    <p className='col-startup-sm'>{val.location}</p>
                                    <p className='col-startup-sm'>Established {val.year_established}</p>
-                                   <p>{val.snapshot}</p>
+                                   <p className='col-startup-sc'>{val.snapshot}</p>
                                    <Row>
-                                        <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => ` ${v} `)}</Col>
-                                        {/* {(val.jobs.length > 0) ? <Col className='col-startup-job' onClick={() => {this.setState({view: 'job', id: index})}}>{Object.keys(val.jobs).length} job</Col> :''} */}
+                                        <Col className='col-startup-sm' >{Object.values(val.category).map((v,i) => <span>{v}</span>)}</Col>
                                    </Row>
                               </Col>
                     )}

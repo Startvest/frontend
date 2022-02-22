@@ -23,11 +23,9 @@ class home extends React.Component {
           super(props);
           this.state =({
                count_startup: 0,
-               count_investors: 0,
                shadow: false,
                
                // The investors list from the database
-               investors: this.props.investors,
                startups: this.props.startups,
 
                // Make the multiple option of the notification false
@@ -136,9 +134,9 @@ class home extends React.Component {
                          <Slide  right>
                          <div className='center'>
                          <h5 className='tagline ' >Connect to top investors</h5>            
-                         <p className='counter'>{this.state.investors.length}+ Investor{(this.state.investors > 1)? 's':''} looking for startups</p>
+                         {/* <p className='counter'>{this.state.investors.length}+ Investor{(this.state.investors > 1)? 's':''} looking for startups</p> */}
                          </div>
-                         <Row >   
+                         {/* <Row >   
                               {Object.values(this.state.investors).slice(0, 3).map((val, ind) => 
                               <div key={ind} className='job-container shad'>
                                    <Row>
@@ -151,7 +149,7 @@ class home extends React.Component {
                               </div>
                               )}
                               
-                         </Row>
+                         </Row> */}
                          </Slide>
                     </Container>
 

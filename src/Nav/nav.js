@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from '../Home/Home';
 import About from '../About/about';
 import Startups from '../Startups/startups';
-import Investors from '../Investors/investors';
 import Profile from '../Profile/profile';
 import Jobs from '../jobs/jobs';
 import TC from '../policies/t&c';
@@ -63,7 +62,6 @@ class nav extends React.Component {
                   <Nav.Link href="#about"  className={`Navlinks ${(this.state.about_active) ? 'active' : ''}`}>About</Nav.Link>
                   <Nav.Link href="#jobs" className={`Navlinks ${(this.state.jobs_active) ? 'active' : ''}`}>Jobs</Nav.Link>
                   <Nav.Link href="#startups"  className={`Navlinks ${(this.state.startups_active) ? 'active' : ''}`}>Startups</Nav.Link>
-                  <Nav.Link href="#investors"  className={`Navlinks ${(this.state.investors_active) ? 'active' : ''}`}>Investors</Nav.Link>
                   <Nav.Link href="#profile" className={`Navlinks quick-signin-nav`}><div className='quick-signin shadow'>Sign Up For Free</div></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
@@ -73,7 +71,6 @@ class nav extends React.Component {
                   <Switch> 
                   <Route exact path="/"><Home active={() => this.setState({home_active: true})} not_active={() => this.setState({home_active: false})}  investors={this.props.investors} startups={this.props.startups}/></Route>                    <Route exact path="/about"><About active={() => this.setState({about_active: true})} not_active={() => this.setState({about_active: false})}/></Route>  
                   <Route exact path="/startups"><Startups active={() => this.setState({startups_active: true})} not_active={() => this.setState({startups_active: false})} startups={this.props.startups}/></Route>
-                  <Route exact path="/investors"><Investors active={() => this.setState({investors_active: true})} not_active={() => this.setState({investors_active: false})} investors={this.props.investors}/></Route>  
                   <Route exact path="/profile"><Profile active={() => this.setState({profile_active: true})} not_active={() => this.setState({profile_active: false})}/></Route>  
                   <Route exact path="/jobs"><Jobs active={() => this.setState({jobs_active: true})} not_active={() => this.setState({jobs_active: false})} jobs={this.props.jobs}/></Route>  
                   <Route path='/dashboard/investor' component={() => { 

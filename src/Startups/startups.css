@@ -21,36 +21,57 @@
      left: 50%;
      color: var(--secondary);
 }
+.startups-s-icon{
+     border: none !important;
+     color: var(--faded) !important;
+     background-color: var(--sec-10);
+}
+.startups-s-text{
+     background-color: var(--sec-10);
+     border: none !important;
+}
+.startups-s-text:hover , .startups-s-text:active{
+     border: none !important;
+}
+.startups-search Button{
+     background-color: var(--primary);
+     border: none;
+     box-shadow: 2px 2px 10px 1px #21295c5d;
+}
+.startups-search Button:hover{
+     background-color: var(--secondary);
+}
 .col-startup{
      width: fit-content;
      height: max-content;
-     background-color: var(--accent);
+     background-color: white;
      border-radius: 20px;
      margin: 2em auto;
-     padding: 1em;
-}
-.col-startup:hover{
-     /* box-shadow: 2px 2px 10px 7px var(--altfade); */
+     padding:0;
+     padding-bottom: 1em;
+     text-align: left !important;
 
-      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.1);
 }
-.logo{
-     width: min-content;
-     height: min-content;
-     background-color: var(--primary);
-     border-radius:  50%;
-     display: inline-block;
-     color: white;
-     padding: 1em;
-     margin: 0;
+
+.col-startup-bg{
+     width: 100%;
+     height: auto;
+     border-radius: 20px 20px 0 0;
 }
-.col-startups-row{
-     text-align: center !important
+.col-startup-logo{
+     max-width: 60px;
+     height: auto;
+     position: absolute;
+     right: 5%;
 }
+
 .col-startup-name{
      font-size: xx-large;
      font-weight: bold;
      color: var(--primary);
+     margin-left:5%;
+     margin-top: 1em;
 }
 .col-startup-name:hover{
      color: var(--secondary);
@@ -60,14 +81,16 @@
      color: var(--primary);
      font-size: small;
      font-weight: bold;
+     margin-left: 5%;
 }
-.col-startup-job{
-     background-color: var(--primary);
-     border-radius: 20px;
-     width: min-content;
-     height: max-content;
-     color: white;
-     cursor: pointer;
+.col-startup-sm span{
+     background-color: var(--altaccent);
+     padding:.4em .8em;
+     margin: auto .5em;
+     border-radius: 15px
+}
+.col-startup-sc{
+     margin-left: 5%;
 }
 .col-startup-job:hover{
      background-color: transparent;
