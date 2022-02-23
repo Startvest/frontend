@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
-import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup} from 'react-bootstrap';
+import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup, Nav} from 'react-bootstrap';
 import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search, GeoAltFill, BoxArrowUpRight} from 'react-bootstrap-icons';
 // import ReactPlayer from "react-player";
 
@@ -117,20 +117,47 @@ class Startup extends React.Component {
                          <Row><Col>Business Model</Col><Col className='bold'>{startup.business_model}</Col></Row>
                          <Row><Col>Funding Stage</Col><Col className='bold'>{startup.funding_stage}</Col></Row>
                          </Col>
-                         <Col md={'8'} sm='auto'>
+                         <Col md={'2'}></Col>
+                         <Col md={'6'} sm='auto'>
                               Unique selling points
                               <ul>
-                                   <li></li>
+                                   <li>Easy to use</li>
+                                   <li>Proprietary Artificial Intelligence software</li>
+                                   <li>Over $10 billion in transactions</li>
+                                   <li>1m+ active customers</li>
                               </ul>
                          </Col>
                     </Row>
+                   </Container>
+
+                   <Container>
+                   <Nav variant="pills" defaultActiveKey="/pitch">
+                    <Nav.Item>
+                    <Nav.Link href="/pitch">Pitch</Nav.Link>
+                    </Nav.Item>
+
+                    <Nav.Item>
+                         <Nav.Link eventKey="contact">Contact</Nav.Link>
+                    </Nav.Item>
+
+                    <Nav.Item>
+                         <Nav.Link eventKey="team">Team</Nav.Link>
+                    </Nav.Item>
+
+                    <Nav.Item>
+                         <Nav.Link eventKey="docs">Documents</Nav.Link>
+                    </Nav.Item>
+                    
+                    </Nav>
+
+                    
                    </Container>
 
                         {/* Gallery Section */}
                         <Container fluid>
                          
                          <Row>
-                         <Col sm={'auto'}>
+                         <Col xs={'12'}>
                          <h3 className="gallery-head">Gallery</h3>
                               {/* Add a .map function that loops throught the amount of picture given */}
                               {(startup.gallery.length > 0) ? 
@@ -179,10 +206,10 @@ class Startup extends React.Component {
                          
                          </Col>
                          
-                         <Col sm={'auto'}>
+                         {/* <Col sm={'auto'}>
                          <h3 className="gallery-head">{startup.company_name + ' pitch'}</h3>
                          <img className='gallery-video' src={startup.pitch} alt={startup.company_name + ' pitch'}/>
-                         </Col>
+                         </Col> */}
                          </Row>
                          </Container>
 
