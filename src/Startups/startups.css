@@ -55,6 +55,7 @@
 }
 
 .col-startup-bg{
+     min-height: 10em;
      width: 100%;
      height: auto;
      border-radius: 20px 20px 0 0;
@@ -62,8 +63,7 @@
 .col-startup-logo{
      max-width: 60px;
      height: auto;
-     position: absolute;
-     right: 5%;
+      /* margin-right: 0; */
 }
 
 .col-startup-name{
@@ -102,12 +102,45 @@
 }
 
 /* Css for Detailed view of startup */
+.sp{
+     margin-top: 0 !important;
+}
+.sp-bg{
+     width: 100%;
+     height: auto;
+}
+.sp-back{
+     position: absolute;
+     left: 1%;
+     top: 2em;
+     z-index: 99 !important;
+}
+.sp-logo{
+     max-width: 60px;
+     height: auto;
+     
+     margin-left: 0 !important;
+    
+     text-align: left;
+}
+.sp-sm{
+     color: var(--primary);
+     font-size: small;
+     font-weight: bold;
+}
 .icon-back{
      color: var(--primary);
+     
 }
 .icon-back:hover{ 
      color: var(--faded);
      cursor: pointer;
+}
+.sp-details{
+     text-align: left;
+}
+.sp-details .startups-head{
+     text-align: left;
 }
 .description {
      text-align:left;
@@ -155,7 +188,7 @@
 }
 
 /* Team */
-#start-avatar{
+/* #start-avatar{
      border-radius: 50%;
      background-color: var(--primary);
      text-align: center;
@@ -166,7 +199,7 @@
 }
 #start-avatar Person{
      margin: 0.3em;
-}
+} */
 /* Working with company */
 .working-list li{
      text-align: left;

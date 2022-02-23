@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
 import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup} from 'react-bootstrap';
-import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search} from 'react-bootstrap-icons';
+import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search, GeoAltFill, BoxArrowUpRight} from 'react-bootstrap-icons';
 // import ReactPlayer from "react-player";
 
 // Import Job view
@@ -14,6 +14,8 @@ import Teampic1 from '../images/gallery1.png';
 import Teampic2 from '../images/gallery2.png';
 import StartupThumb from '../images/startuptn.jpg';
 import StartupLogo from '../images/startuplogo.png';
+import StartupBG from '../images/startupbg.png';
+
 class Startup extends React.Component {
      constructor(props) {
           super(props);
@@ -65,8 +67,8 @@ class Startup extends React.Component {
                     <Row className='center col-startups-row'>
                     {Object.values(this.state.startups).map((val, index)=>
                               <Col className='col-startup ' key={index}  md={4} >
-                                   <div><img id="s-logo" src={StartupThumb} className="col-startup-bg"/></div>
-                                   <img src={StartupLogo} className="col-startup-logo" style={{top: this.state.logoHeight-(this.state.logoHeight*0.2)}}/>
+                                   <div><img  src={StartupThumb} className="col-startup-bg"/></div>
+                                   <img id="s-logo" src={StartupLogo} className="col-startup-logo" style={{marginTop: (-1/2)*(this.state.logoHeight)}}/>
                                    <h3 className='col-startup-name' onClick={()=> {this.setState({view: 'startup', id: index})}}>{val.company_name}</h3>
                                    <p className='col-startup-sm'>{val.location}</p>
                                    <p className='col-startup-sm'>Established {val.year_established}</p>
@@ -87,20 +89,25 @@ class Startup extends React.Component {
           
            var id = this.state.id;
            var startup = Object.values(this.state.startups)[id];
-           document.title = `${startup.company_name} - StartVest`;
+           document.title = `${startup.company_name} @ StartVest`;
+          //  const iconImg = document.getElementById("sp-img").clientHeight;
           //  console.log(arr[id]);
           return(
-               <div className='startups'>
-                    <Container fluid>
-                         <Row>
-                              <Col xs={1}><ArrowLeft className='icon-back' width={30} height={30} onClick={() =>{this.setState({view: 'startups'})}}/></Col>
-                              <Col sm='auto'><span className='logo'><img src={startup.logo} alt={startup.company_name + ' Logo'}/></span></Col>
-                              <Col sm='auto'><h3 className='startups-head'>{startup.company_name}</h3><p className='col-startup-sm'>{startup.location}</p></Col>
-                         </Row>
+               <div className='sp'>
+                    <img alt={startup.company_name + " cover image"} src={(startup.logo) ? startup.logo:StartupBG} className='sp-bg'/>
+                    <div className='sp-back'><ArrowLeft className='icon-back' width={30} height={30} onClick={() =>{this.setState({view: 'startups'})}}/></div>
+                    <img id='sp-img' style={{marginTop:  -(this.state.logoHeight)/2}} className='sp-logo' src={(startup.logo) ? startup.logo:StartupLogo} alt={startup.company_name + ' Logo'}/>
+
+                    <Container className="sp-details">
+                    <h3 className='startups-head'>{startup.company_name} <BoxArrowUpRight height={30} width={30} /></h3>
+                    <p className='sp-sm'><GeoAltFill height={10} width={10}/> {startup.location}</p>
+
+                    <p>{startup.snapshot}</p>
                     </Container>
-                   <Container fluid className='description'>
+
+                   <Container className='description'>
                     <Row>
-                         <Col md={'8'} sm='auto'>{startup.snapshot}</Col>
+                         
                          <Col md='4' sm='auto' className='description-desc'>
                          <Row ><Col>Website</Col><Col><a href={startup.website} className='link bold'>{startup.website}</a></Col></Row>
                          <Row><Col>Staff Strength</Col><Col className='bold'>{startup.company_size}</Col></Row>
@@ -109,6 +116,12 @@ class Startup extends React.Component {
                          <Row><Col>Industry</Col><Col className='bold'>{Object.values(startup.category).map((v,i) => v )}</Col></Row>
                          <Row><Col>Business Model</Col><Col className='bold'>{startup.business_model}</Col></Row>
                          <Row><Col>Funding Stage</Col><Col className='bold'>{startup.funding_stage}</Col></Row>
+                         </Col>
+                         <Col md={'8'} sm='auto'>
+                              Unique selling points
+                              <ul>
+                                   <li></li>
+                              </ul>
                          </Col>
                     </Row>
                    </Container>
