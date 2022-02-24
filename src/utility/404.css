@@ -1,0 +1,38 @@
+@import url("./colors.css");
+
+.f04-cont{
+     height: 81vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.f04{
+     display: block;
+}
+
+.f04 h2{
+     font-size: 5em;
+     color: var(--primary);
+}
+.f04 p{
+     font-size: large;
+     color: var(--primary);
+}
+.f04-cont .hm-btn{
+     background-color: var(--primary);
+     color: white;
+     padding: .5em 1em;
+     border: none;
+     border-radius: 7px;
+}
+.f04-cont .hm-btn:hover{
+     box-shadow: 3px 2px 10px 1px #21295c5d;
+}
+.f04-cont .hm-btn:active{
+     background-color: var(--secondary);
+}
+.f04-cont .hm-btn a{
+     text-decoration: none;
+     color: white;
+     margin-left: .5em;
+}
