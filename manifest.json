@@ -3,6 +3,11 @@
   "name": "Startvest",
   "icons": [
     {
+      "src": "logo-alt.png",
+      "type": "image/png",
+      "sizes": "364x364"
+    },
+    {
       "src": "logo-2.png",
       "type": "image/png",
       "sizes": "364x364"

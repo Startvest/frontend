@@ -1,34 +1,36 @@
 {
   "files": {
-    "main.css": "/static/css/main.f119fdc2.chunk.css",
-    "main.js": "/static/js/main.009794a9.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.fcaba1f8.js",
+    "main.css": "/static/css/main.c756bf3c.chunk.css",
+    "main.js": "/static/js/main.4b88a488.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.5711a2a7.js",
     "static/css/2.e847e501.chunk.css": "/static/css/2.e847e501.chunk.css",
-    "static/js/2.35f16382.chunk.js": "/static/js/2.35f16382.chunk.js",
-    "static/js/3.e49e69d2.chunk.js": "/static/js/3.e49e69d2.chunk.js",
+    "static/js/2.b2a5a944.chunk.js": "/static/js/2.b2a5a944.chunk.js",
+    "static/js/3.82eaa72b.chunk.js": "/static/js/3.82eaa72b.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.35f16382.chunk.js.LICENSE.txt": "/static/js/2.35f16382.chunk.js.LICENSE.txt",
+    "static/js/2.b2a5a944.chunk.js.LICENSE.txt": "/static/js/2.b2a5a944.chunk.js.LICENSE.txt",
     "static/media/briggs.34b721e7.jpg": "/static/media/briggs.34b721e7.jpg",
     "static/media/david.7a0dc5d5.jpg": "/static/media/david.7a0dc5d5.jpg",
     "static/media/fortune.b758f6fd.jpg": "/static/media/fortune.b758f6fd.jpg",
     "static/media/gallery1.9b8ad916.png": "/static/media/gallery1.9b8ad916.png",
     "static/media/gallery2.cd19bb9b.png": "/static/media/gallery2.cd19bb9b.png",
     "static/media/hanif2.24f0689b.png": "/static/media/hanif2.24f0689b.png",
-    "static/media/load-logo.9bae8eca.png": "/static/media/load-logo.9bae8eca.png",
     "static/media/login.1523a620.svg": "/static/media/login.1523a620.svg",
+    "static/media/logo-3.308d928a.png": "/static/media/logo-3.308d928a.png",
     "static/media/logo-white.98074506.png": "/static/media/logo-white.98074506.png",
     "static/media/logo.25f5eefa.png": "/static/media/logo.25f5eefa.png",
     "static/media/sign_in.7e270e9a.svg": "/static/media/sign_in.7e270e9a.svg",
+    "static/media/startupbg.ec4b5367.png": "/static/media/startupbg.ec4b5367.png",
+    "static/media/startuptn.e1daf59f.jpg": "/static/media/startuptn.e1daf59f.jpg",
     "static/media/steven.0d75ddb4.jpg": "/static/media/steven.0d75ddb4.jpg",
     "static/media/team_3.9c902ffd.svg": "/static/media/team_3.9c902ffd.svg",
     "static/media/teamates.bbf5f2c8.svg": "/static/media/teamates.bbf5f2c8.svg",
     "static/media/verify3.559f8f63.svg": "/static/media/verify3.559f8f63.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fcaba1f8.js",
+    "static/js/runtime-main.5711a2a7.js",
     "static/css/2.e847e501.chunk.css",
-    "static/js/2.35f16382.chunk.js",
-    "static/css/main.f119fdc2.chunk.css",
-    "static/js/main.009794a9.chunk.js"
+    "static/js/2.b2a5a944.chunk.js",
+    "static/css/main.c756bf3c.chunk.css",
+    "static/js/main.4b88a488.chunk.js"
   ]
 }
