@@ -91,13 +91,14 @@ class about extends React.Component {
                     <Container>
                          <div className='teamHead-cont'>
                          <h3 className="teamHead">Mission Statement</h3>
-                         <p>To be the platform that collaboratively build a safe network between startups and investors, to provide every job seeker  an opportunity to have their dream job by creating enabling environment in which ideas can become profit generating businesses as easily as possible.</p>
+                         <p>To be the platform that facilitates the creation of a secure network
+between entrepreneurs and investors, to foster an atmosphere in
+which ideas can be readily transformed into profitable businesses.</p>
                          </div>
 
                          <div className='teamHead-cont'>
                          <h3 className="teamHead">Vision Statement</h3>
-                         {/* <p>To be the bridge between an idea and a successful venture </p> */}
-                         <p>To be the company that gives everyone the platform and opportunity to achieve great success.</p>
+                         <p>To be the initial point of contact for anyone interested in investing in Africa's startup ecosystem.</p>
                          </div>
                     </Container>
 

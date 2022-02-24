@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './startups.css';
-import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup, Nav} from 'react-bootstrap';
-import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search, GeoAltFill, BoxArrowUpRight} from 'react-bootstrap-icons';
+import { Spinner, Col, Container, Row, Carousel, Button, Form, InputGroup, Tabs, Tab} from 'react-bootstrap';
+import {ArrowLeft, ArrowRightShort, Person, CircleFill, Search, GeoAltFill, BoxArrowUpRight,
+     Globe, TelephoneFill, EnvelopeFill, Twitter, Linkedin, Instagram
+     } from 'react-bootstrap-icons';
 // import ReactPlayer from "react-player";
 
 // Import Job view
@@ -117,38 +119,57 @@ class Startup extends React.Component {
                          <Row><Col>Business Model</Col><Col className='bold'>{startup.business_model}</Col></Row>
                          <Row><Col>Funding Stage</Col><Col className='bold'>{startup.funding_stage}</Col></Row>
                          </Col>
-                         <Col md={'2'}></Col>
-                         <Col md={'6'} sm='auto'>
-                              Unique selling points
-                              <ul>
-                                   <li>Easy to use</li>
-                                   <li>Proprietary Artificial Intelligence software</li>
-                                   <li>Over $10 billion in transactions</li>
-                                   <li>1m+ active customers</li>
+                         <Col md={{ span: 6, offset: 2 }} sm='auto'>
+                              <h3 className="gallery-head" id='benefits'>Working at {startup.company_name}</h3>
+                              <ul className='working-list'> 
+                                   {startup.work_benefits.map((val, ind) => 
+                                   <li key={ind}><CircleFill className='icon-back' height={10} width={10}/>  {val} </li>
+                                   )}
                               </ul>
                          </Col>
                     </Row>
                    </Container>
 
-                   <Container>
-                   <Nav variant="pills" defaultActiveKey="/pitch">
-                    <Nav.Item>
-                    <Nav.Link href="/pitch">Pitch</Nav.Link>
-                    </Nav.Item>
+                   <Container className="sp-tab-cont">
+                   <Tabs defaultActiveKey="pitch" className='sp-tabs'>
+                    <Tab eventKey="pitch" title="Pitch" className='sp-tab'>
+                         <h3 className="gallery-head">{startup.company_name + ' pitch'}</h3>
+                         <video controls className='gallery-video' >
+                              {/* <img className='gallery-video' src={startup.pitch} alt={startup.company_name + ' pitch'}/> */}
+                              <source src={startup.pitch} type="video/mp4"/>
+                         </video>
+                    </Tab>
 
-                    <Nav.Item>
-                         <Nav.Link eventKey="contact">Contact</Nav.Link>
-                    </Nav.Item>
+                    <Tab eventKey="contact" title="Contact">
+                    <h3 className="gallery-head">Contact us</h3>
+                         <Row className='sm-contact-row'>
+                              <Col xs={6} md={{offset: 2}}><Globe height={"25"} width="25"/> <a className='sm-contact-a' href="http://startup.com/">{"www.startup.com"}</a></Col>
+                              <Col xs={6} md={{offset: 2}}><EnvelopeFill height="20" width="20"/> <a className='sm-contact-a' href={`mailto:${startup.email}`}>{"@startup"}</a></Col>
+                         </Row>
+                         <Row  className='sm-contact-row'>
+                              <Col xs={6} md={{offset: 2}}><TelephoneFill height="20" width="20"/> <a className='sm-contact-a' href={`tel:+23456768906`}>{"090348332"}</a></Col>
+                              <Col xs={6} md={{offset: 2}}><Twitter height="20" width="20"/> <a className='sm-contact-a' href="http://twitter.com/">{"@startup"}</a></Col>
+                         </Row>
+                         <Row  className='sm-contact-row'>
+                              <Col xs={6} md={{offset: 2}}><Linkedin height="20" width="20"/><a className='sm-contact-a' href={`http://www.linkedin.com/`}>{"@startup"}</a></Col>
+                              <Col xs={6} md={{offset: 2}}><Instagram height="20" width="20"/> <a className='sm-contact-a' href={`http://instagram.com/`}>{"@startup"}</a></Col>
+                         </Row>
+                    </Tab>
 
-                    <Nav.Item>
-                         <Nav.Link eventKey="team">Team</Nav.Link>
-                    </Nav.Item>
+                    <Tab eventKey="team" title="Team">
+                         <h3 className="gallery-head">Key Executives</h3>
+                         <Row>
+                              {Object.values(startup.team).map((val, ind)=>
+                              <Col key={ind}><p><span id='start-avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
+                              )} 
+                         </Row>
+                    </Tab>
 
-                    <Nav.Item>
-                         <Nav.Link eventKey="docs">Documents</Nav.Link>
-                    </Nav.Item>
+                    <Tab eventKey="docs" title="Documents">
+                    <p>Documents</p>
+                    </Tab>
                     
-                    </Nav>
+                    </Tabs>
 
                     
                    </Container>
@@ -196,50 +217,15 @@ class Startup extends React.Component {
                                    src={Teampic2}
                                    alt="Second slide"
                               />
-                             
-                              {/* <Carousel.Caption>
-                                   <h3>Second slide label</h3>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </Carousel.Caption> */}
+
                               </Carousel.Item>
                               </Carousel>}
                          
                          </Col>
-                         
-                         {/* <Col sm={'auto'}>
-                         <h3 className="gallery-head">{startup.company_name + ' pitch'}</h3>
-                         <img className='gallery-video' src={startup.pitch} alt={startup.company_name + ' pitch'}/>
-                         </Col> */}
+                   
                          </Row>
                          </Container>
 
-                         {/* Team Executives Section */}
-                         <Container>
-                              <Row>
-                                   <Col md={'auto'}>
-                                   <h3 className="gallery-head">Key Executives</h3>
-                                   <Row>
-                                   {Object.values(startup.team).map((val, ind)=>
-                                   <Col key={ind}><p><span id='start-avatar'><Person color='white' margin={3} height={30} width={30}/></span></p><b>{val}</b><p>{val}</p></Col>      // <th key={ind}>{(val) ? val:' '}</th>
-                                   )} 
-                                   </Row>
-                                   </Col>
-                                   
-
-                                   {/* Benefits of working */}
-                                   <Col md={'auto'}>
-                                        <h3 className="gallery-head">Working at {startup.company_name}</h3>
-                                        <ul className='working-list'> 
-                                             {startup.work_benefits.map((val, ind) => 
-                                             <li key={ind}><CircleFill className='icon-back' height={10} width={10}/>  {val} </li>
-                                             )}
-                                        </ul>
-                                   </Col>
-                              </Row>
-                         </Container>
-
-                         {/* Send a mail */}
-                         <span className='btn-fill'><Button ><a href = {"mailto: startup.email"}>Send a mail</a><ArrowRightShort  height={25} width={25}/></Button></span>
                </div>
           )
      }

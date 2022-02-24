@@ -167,7 +167,7 @@
 .gallery{
      height: fit-content;
      width: fit-content;
-     margin: 1em ;
+     margin: 1em auto;
      color: black;
 }
 .gallery-head{
@@ -177,29 +177,50 @@
      margin-top: 2em;
      color: var(--primary);
 }
+#benefits{
+     text-align: left; 
+}
 .gallery-pic{
      width: 100%;
      height: 100%;
 }
 .gallery-video{
+     border-radius: 15px;
      width: 100%;
-     height: 100%;
-     border-radius: 20px;
+     height: auto;
 }
 
-/* Team */
-/* #start-avatar{
-     border-radius: 50%;
-     background-color: var(--primary);
-     text-align: center;
-     width: max-content;
-     height: max-content;
-     padding: 1em;
-     display: inline-block;
+/* Tabs section */
+.sp-tab-cont{
+     margin: auto;
 }
-#start-avatar Person{
-     margin: 0.3em;
-} */
+.sp-tabs{
+     margin: auto;
+     width: max-content;
+    
+}
+.sp-tabs .nav-item{
+     color: var(--primary) !important;
+}
+
+.sp-tabs .active{
+     font-weight: bold;
+}
+.sm-contact-row{
+     text-align: left;
+     margin: 2em auto;
+}
+.sm-contact-a{
+    text-decoration: none;
+    color: var(--secondary);
+    margin-left: .5em;
+}
+.sm-contact-a:hover{
+     text-decoration: none;
+     color: var(--altaccent);
+     transform: scale(2, 2) ;
+}
+
 /* Working with company */
 .working-list li{
      text-align: left;
