@@ -18,6 +18,6 @@ To be the initial point of contact for anyone interested in investing in Africa'
 
  ---
 ## Our Website
-The live version is available at this [https://startvest.io/#](https://startvest.io/)
+The live version is available at this [https://startvest.io/](https://startvest.io/#)
 
 
